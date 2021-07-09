@@ -24,3 +24,16 @@ The package is an Oracle VirtualBox `OVA` image which must be loaded into a runn
   - Windows 10: [VirtualBox-6.1.22-144080-Win.exe](https://www.dropbox.com/s/jzqby6fblqj95ph/VirtualBox-6.1.22-144080-Win.exe?dl=1)
   - Linux: [virtualbox-6.1_6.1.22-1440…buntu_eoan_amd64.deb](https://www.dropbox.com/s/9e4f4gdlmnjso0z/virtualbox-6.1_6.1.22-144080_Ubuntu_eoan_amd64.deb?dl=1)
   - MAC OSX: [Mac OS X build instructions](https://www.virtualbox.org/wiki/Mac%20OS%20X%20build%20instructions)
+
+#### Deploy the GeoNode VM OVA
+* Run the Oracle VirtualBox and select `Import Appliance` from the `File` menu
+   ![image](https://user-images.githubusercontent.com/1278021/125091753-fb5e1b00-e0d0-11eb-972c-d531d12a45bd.png)
+* Select the downloaded file as shown in the figure below
+   ![image](https://user-images.githubusercontent.com/1278021/125092546-bdadc200-e0d1-11eb-9477-1b213259fc69.png)
+* Click the `Next` button
+   ![image](https://user-images.githubusercontent.com/1278021/125092713-e3d36200-e0d1-11eb-99d2-60458c865896.png)
+* Leave all the `defaults` option, except for the destination folder; you will need to select a location with at least `30GB` memory free
+   ![image](https://user-images.githubusercontent.com/1278021/125092985-2c8b1b00-e0d2-11eb-9949-188f0fdb10bf.png)
+* Click the `Import` button and wait for the progress bar to be finished; it will require up to `20 minutes` depending on your system
+* If everything goes well, you should be able to se the new `Appliance` available from the Oracle VirtualBox panel
+   ![image](https://user-images.githubusercontent.com/1278021/125093258-6c520280-e0d2-11eb-8b6f-b9acfd56ea01.png)
