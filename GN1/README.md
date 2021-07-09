@@ -53,4 +53,4 @@ Developer Mailing List: https://lists.osgeo.org/cgi-bin/mailman/listinfo/geonode
 
 Gitter Chat: https://gitter.im/GeoNode/general
 
-#### [Next Section: GeoNode Basics](GN1/BASICS.md)
+#### [Next Section: GeoNode Basics](BASICS.md)
