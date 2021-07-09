@@ -1,0 +1,1 @@
+# GeoNode Virtual Machine Structure
