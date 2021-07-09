@@ -45,7 +45,8 @@ The package is an Oracle VirtualBox `OVA` image which must be loaded into a runn
 
 ## Start and test the GeoNode Virtual Machine
 * Select the GeoNode 3.2.1 image and click on the `Start` button
-     ![Uploading image.png…]()
+     ![image](https://user-images.githubusercontent.com/1278021/125098426-4844f000-e0d7-11eb-8cc6-7050ab9045e3.png)
 
 * Wait for the system to startup, you should be able to see the `Ubuntu` desktop
-      
+     ![image](https://user-images.githubusercontent.com/1278021/125098808-a70a6980-e0d7-11eb-8aee-508bed48f814.png)
+
