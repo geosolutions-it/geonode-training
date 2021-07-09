@@ -27,13 +27,25 @@ The package is an Oracle VirtualBox `OVA` image which must be loaded into a runn
 
 #### Deploy the GeoNode VM OVA
 * Run the Oracle VirtualBox and select `Import Appliance` from the `File` menu
-   ![image](https://user-images.githubusercontent.com/1278021/125091753-fb5e1b00-e0d0-11eb-972c-d531d12a45bd.png)
+     ![image](https://user-images.githubusercontent.com/1278021/125091753-fb5e1b00-e0d0-11eb-972c-d531d12a45bd.png)
+
 * Select the downloaded file as shown in the figure below
-   ![image](https://user-images.githubusercontent.com/1278021/125092546-bdadc200-e0d1-11eb-9477-1b213259fc69.png)
+     ![image](https://user-images.githubusercontent.com/1278021/125092546-bdadc200-e0d1-11eb-9477-1b213259fc69.png)
+
 * Click the `Next` button
-   ![image](https://user-images.githubusercontent.com/1278021/125092713-e3d36200-e0d1-11eb-99d2-60458c865896.png)
+     ![image](https://user-images.githubusercontent.com/1278021/125092713-e3d36200-e0d1-11eb-99d2-60458c865896.png)
+
 * Leave all the `defaults` option, except for the destination folder; you will need to select a location with at least `30GB` memory free
-   ![image](https://user-images.githubusercontent.com/1278021/125092985-2c8b1b00-e0d2-11eb-9949-188f0fdb10bf.png)
+     ![image](https://user-images.githubusercontent.com/1278021/125092985-2c8b1b00-e0d2-11eb-9949-188f0fdb10bf.png)
+
 * Click the `Import` button and wait for the progress bar to be finished; it will require up to `20 minutes` depending on your system
+
 * If everything goes well, you should be able to se the new `Appliance` available from the Oracle VirtualBox panel
-   ![image](https://user-images.githubusercontent.com/1278021/125093258-6c520280-e0d2-11eb-8b6f-b9acfd56ea01.png)
+     ![image](https://user-images.githubusercontent.com/1278021/125093258-6c520280-e0d2-11eb-8b6f-b9acfd56ea01.png)
+
+## Start and test the GeoNode Virtual Machine
+* Select the GeoNode 3.2.1 image and click on the `Start` button
+     ![Uploading image.png…]()
+
+* Wait for the system to startup, you should be able to see the `Ubuntu` desktop
+      
