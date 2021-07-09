@@ -16,6 +16,7 @@ The package is an Oracle VirtualBox `OVA` image which must be loaded into a runn
  - At least `8GB` of RAM
  - At least `4 CPUs`
  - At least `30GB` of free space on the `HD`
+ - A stable and fast `Internet connection`
 
 ### How to install the Virtual Machine
 
@@ -50,3 +51,7 @@ The package is an Oracle VirtualBox `OVA` image which must be loaded into a runn
 * Wait for the system to startup, you should be able to see the `Ubuntu` desktop
      ![image](https://user-images.githubusercontent.com/1278021/125098808-a70a6980-e0d7-11eb-8aee-508bed48f814.png)
 
+* Open the `Chrome` WEB browser, enter the password `geonode` if is asks for, and go to the location: `http://localhost/`
+      ![image](https://user-images.githubusercontent.com/1278021/125109761-0bcbc100-e0e4-11eb-8489-f78f0ea767f5.png)
+
+#### [Next Section: GeoNode Training Virtual Machine Structure](VM_STRUCTURE.md)
