@@ -80,5 +80,4 @@ Notice that your personal information will be updated accordingly and shown on t
 - The updated avatar will be displayed both on the edit profile page and, as a small icon, beside the user name
      ![image](https://user-images.githubusercontent.com/1278021/125308963-a5d47900-e331-11eb-9180-a7c12bc2191d.png)
 
-
-
+#### [Next Section: Managing Favorite Shortcuts](USER_FAVORITES.md)
