@@ -72,6 +72,7 @@ When accessing GeoNode you will be redirected automatically to the default home 
  2. A footer provides some shortcuts to the GeoNode main sections
  3. Copyrights and statemnts provides information on the portal maintainers; those links can be customized
  4. A language dropbox allows to select the portal language translation among the available ones; this list can be reduced
+
     **NOTE**: Since this is an Open Source project, the translations have been provided through the commuity contributions; those might be incomplete and wrong!
 
 #### [Next Section: GeoNode Training Virtual Machine Structure](VM_STRUCTURE.md)
