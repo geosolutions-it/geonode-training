@@ -33,4 +33,10 @@ Once the maps are saved, it is possible to embed them in any web page or get a P
 ## GeoNode as a building block
 A handful of other Open Source projects extend GeoNode’s functionality by tapping into the re-usability of Django applications.
 
+GeoNode can be integrated on other Django applications as a dependency or as a building block of a wider architecture.
+
+ - Thanks to the GeoNode APIs, it is possible to use the component as a pure middleware and/or backend and storage for your geospatial datasets.
+
+ - Thanks to the compatibility with standard security protocols, it can be used as a security framework and users' credentials storage.
+
 #### [Next Section: Quick installation guide](QUICK_INSTALL.md)
