@@ -54,4 +54,24 @@ The package is an Oracle VirtualBox `OVA` image which must be loaded into a runn
 * Open the `Chrome` WEB browser, enter the password `geonode` if is asks for, and go to the location: `http://localhost/`
       ![image](https://user-images.githubusercontent.com/1278021/125109761-0bcbc100-e0e4-11eb-8489-f78f0ea767f5.png)
 
+## The GeoNode Default Home Page
+When accessing GeoNode you will be redirected automatically to the default home page; other than the GeoNode logo, you can notice different sections from this landing page
+![image](https://user-images.githubusercontent.com/1278021/125319973-8cd0c580-e33b-11eb-8796-1f2a3c1188ac.png)
+
+ 1. A navigation bar presents a set of quick-access menu links
+ 2. There's a small search box allowing you to perform quick content searches
+ 3. A registration link allows you to create a new GeoNode registered member
+ 4. A sign-in link allows you to login by using an existing GeoNode registered member
+ 5. A welcome text along with the main site title is presented to the user; this section can be customized eventually
+ 6. A big search box allows you to perform quick searches on the GeoNode contents
+ 7. An advanced search link allows you to redirect to a specific page for more refined searches
+
+![image](https://user-images.githubusercontent.com/1278021/125320527-184a5680-e33c-11eb-81d6-53530a676435.png)
+
+ 1. This section summarizes the contents available on GeoNode and provides some shortcuts to the different data types
+ 2. A footer provides some shortcuts to the GeoNode main sections
+ 3. Copyrights and statemnts provides information on the portal maintainers; those links can be customized
+ 4. A language dropbox allows to select the portal language translation among the available ones; this list can be reduced
+    **NOTE**: Since this is an Open Source project, the translations have been provided through the commuity contributions; those might be incomplete and wrong!
+
 #### [Next Section: GeoNode Training Virtual Machine Structure](VM_STRUCTURE.md)
