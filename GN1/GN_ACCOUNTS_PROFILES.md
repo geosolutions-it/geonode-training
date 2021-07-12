@@ -48,19 +48,37 @@ This is why it is a good practice to and **strongly recommended** to carefully e
  - Once logged in, click on the `username` from the top-rigt side of the navigation bar; a dropdown menu will list a set of useful menu links. Click on the `Profile` one
        ![image](https://user-images.githubusercontent.com/1278021/125289898-0a86d800-e320-11eb-8976-33aa172cdda7.png)
 
- - Click on the `Edit Profile` link from the right-side menu; start entering some information as shown on the screenshot here below
-       ![image](https://user-images.githubusercontent.com/1278021/125290551-b92b1880-e320-11eb-81a8-4788cd66a391.png)
+- Click on the `Edit Profile` link from the right-side menu; start entering some information as shown on the screenshot here below
+     ![image](https://user-images.githubusercontent.com/1278021/125290551-b92b1880-e320-11eb-81a8-4788cd66a391.png)
 
- - Once finished, click on `Update Profile` in order to persist the changes
-       ![image](https://user-images.githubusercontent.com/1278021/125290731-ed063e00-e320-11eb-9775-54f21bca5e83.png)
+- Once finished, click on `Update Profile` in order to persist the changes
+     ![image](https://user-images.githubusercontent.com/1278021/125290731-ed063e00-e320-11eb-9775-54f21bca5e83.png)
        
 Notice that your personal information will be updated accordingly and shown on the profile page.
 
-It is possible, eventually, to add also a personalized `Avatar` by clicking on the `Change Your Avatar` button from the `Edit Profile` page
+- It is possible, eventually, to add also a personalized `Avatar` by clicking on the `Change Your Avatar` button from the `Edit Profile` page
+     ![image](https://user-images.githubusercontent.com/1278021/125291821-1bd0e400-e322-11eb-8a1c-4f71a67cf1ca.png)
 
-   ![image](https://user-images.githubusercontent.com/1278021/125291821-1bd0e400-e322-11eb-8a1c-4f71a67cf1ca.png)
+- Click on the `Choose file` button as shown below
+     ![image](https://user-images.githubusercontent.com/1278021/125291928-37d48580-e322-11eb-839c-d0d88e21838a.png)
 
-Click on the `Choose file` button as shown below
+- Click on the button `Other Locations` and then `Computer`
+     ![image](https://user-images.githubusercontent.com/1278021/125307877-bafcd800-e330-11eb-9f24-ddf35fafa526.png)
 
-   ![image](https://user-images.githubusercontent.com/1278021/125291928-37d48580-e322-11eb-839c-d0d88e21838a.png)
+- Search for the `opt` folder and double click on it
+     ![image](https://user-images.githubusercontent.com/1278021/125308072-e384d200-e330-11eb-8e47-c1034653330f.png)
+
+- Keep navigating till `opt/data/sample_data/documents/images` and search for the file `flowers.jpg`; select the file and click on the `Open` button
+     ![image](https://user-images.githubusercontent.com/1278021/125308459-352d5c80-e331-11eb-8f70-7c18fdb5a19c.png)
+
+- Notice the file name appearing on the upload form; click on the `Upload New Image button`
+     ![image](https://user-images.githubusercontent.com/1278021/125308651-5f7f1a00-e331-11eb-887f-18f0a55c95b8.png)
+
+- Your current avatar will be updated accordingly; click then on the back button in order to move to the edit profile page
+     ![image](https://user-images.githubusercontent.com/1278021/125308854-8d645e80-e331-11eb-8606-11bef4ba427a.png)
+
+- The updated avatar will be displayed both on the edit profile page and, as a small icon, beside the user name
+     ![image](https://user-images.githubusercontent.com/1278021/125308963-a5d47900-e331-11eb-9180-a7c12bc2191d.png)
+
+
 
