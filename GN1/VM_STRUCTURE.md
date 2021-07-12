@@ -193,5 +193,49 @@ This service allows to proxy every HTTP based application through the `http://lo
 
   `sudo vim /etc/nginx/sites-enabled/geonode`
 
+### GeoNode 3.2.1
+GeoNode is provided by an instance of the [UWSGI](https://uwsgi-docs.readthedocs.io/en/latest/Systemd.html) service.
+
+You can access the GeoNode interface by pointing the browser to:
+
+`http://localhost/`
+
+#### GeoNode Source Code
+- Everytime touching the GeoNode source code, or any of its components, you **must** enable the correct `VIRTUALENV`. You can do that by running the following command:
+
+  `workon geonode`
+
+- The GeoNode source code and settings are based on the following folder:
+
+  `cd /opt/geonode`
+
+- The GeoNode current commit is set to `b87472a44f8d5af75647620f6dcddd9164332d22 (HEAD -> 3.2.x, origin/3.2.x) - Thu Jul 8 17:06:37 2021 +0200`.
+- You can check the GeoNode source code version and history by running the following command from the GeoNode source code folder:
+
+  `git log`
+
+#### Change the .env settings and restart GeoNode
+- The GeoNode settings are currently stored on a `UWSGI ini` file:
+
+  `sudo vim /etc/uwsgi/apps-enabled/geonode.ini`
+ 
+- Whenever you need to change the settings and restart GeoNode, you can simply run the following command:
+
+  `touch /opt/geonode/geonode/wsgi.py`
+
+#### Update the GeoNode Statics Files (UI and clieng updates)
+
+- Whenever you need to the `STATICS` files of GeoNode, you can simply run the following command from the GeoNode source folder:
+
+  ```shell
+  ./manage_dev.sh collectstatic
+  touch /opt/geonode/geonode/wsgi.py
+  ```
+
+#### GeoNode Logs
+
+- Follow the GeoNode log file by running the following command:
+
+  `sudo tail -500f /var/log/uwsgi/app/geonode.log`
 
 #### [Next Section: Accounts and User Profile](GN_ACCOUNTS_PROFILES.md)
