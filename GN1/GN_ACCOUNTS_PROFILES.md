@@ -35,3 +35,32 @@ Follow these step to create a new one:
 
      ![image](https://user-images.githubusercontent.com/1278021/125273589-5f6d2300-e30d-11eb-9865-a1133a677189.png)
 
+## Updating the Profile
+A regisetered account on GeoNode not only allows you to create and publish your own contents, but also to access private resources and collaborate with other members by editing the data and metadata of the existing ones.
+
+Having a good metadata set associated to the datasets is something critical. Once the contents have been created into GeoNode, the platform will be able to expose them through a **Metadata Catalog** and allow external clients to search and explore them via different protocols.
+
+GeoNode will use the information associated with your profile to enrich the contents metadata, thus allowing the clients to perform accurate queries against the catalog interface.
+
+This is why it is a good practice to and **strongly recommended** to carefully edit your profile information as a first action.
+
+### Editing the Profile information
+ - Once logged in, click on the `username` from the top-rigt side of the navigation bar; a dropdown menu will list a set of useful menu links. Click on the `Profile` one
+       ![image](https://user-images.githubusercontent.com/1278021/125289898-0a86d800-e320-11eb-8976-33aa172cdda7.png)
+
+ - Click on the `Edit Profile` link from the right-side menu; start entering some information as shown on the screenshot here below
+       ![image](https://user-images.githubusercontent.com/1278021/125290551-b92b1880-e320-11eb-81a8-4788cd66a391.png)
+
+ - Once finished, click on `Update Profile` in order to persist the changes
+       ![image](https://user-images.githubusercontent.com/1278021/125290731-ed063e00-e320-11eb-9775-54f21bca5e83.png)
+       
+Notice that your personal information will be updated accordingly and shown on the profile page.
+
+It is possible, eventually, to add also a personalized `Avatar` by clicking on the `Change Your Avatar` button from the `Edit Profile` page
+
+   ![image](https://user-images.githubusercontent.com/1278021/125291821-1bd0e400-e322-11eb-8a1c-4f71a67cf1ca.png)
+
+Click on the `Choose file` button as shown below
+
+   ![image](https://user-images.githubusercontent.com/1278021/125291928-37d48580-e322-11eb-839c-d0d88e21838a.png)
+
