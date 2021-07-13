@@ -63,3 +63,5 @@ As an example we will learn how to upload a `ShapeFile` and `GeoTIFF` into GeoNo
 
 - Make sure you can navigate the map preview from the layer details page
     ![image](https://user-images.githubusercontent.com/1278021/125458137-c7ede57e-af4c-4ae4-a3eb-f3437976d0d3.png)
+
+#### [Next Section: Styling with GeoNode](STYLING_BASE.md)
