@@ -324,3 +324,20 @@ This procedure allows us to quickly update andh replace the current layer defaul
      ![image](https://user-images.githubusercontent.com/1278021/125512068-36e44fdd-f8d3-4d1d-b8da-db5bb5ec2d02.png)
 
 - Set the thumbnail as we have done previously
+
+### Remaining Boulders Layers
+- From the location `/opt/data/sample_data/pretty_maps/data/boulder` upload the layers:
+   * `srtm_boulder`
+   * `Streets`
+   * `Trails
+   * `Wetlands_regulatory_area`
+   
+   ![image](https://user-images.githubusercontent.com/1278021/125514558-d53f817a-8c94-4d90-a7a8-2f37f6206464.png)
+
+- From the location `/opt/data/sample_data/pretty_maps/styles` upload the styles:
+   * `foss4g_dem2.sld` to `srtm_boulder`
+   * `foss4g_streets.sld` to `Streets`
+   * `foss4g_trails.sld` to `Trails`
+   * `foss4g_wetlands.sld` to `Wetlands_regulatory_area`
+
+#### [Next Section: Pretty Maps with GeoNode](MAPPING_GEONODE.md)
