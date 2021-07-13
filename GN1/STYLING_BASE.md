@@ -40,3 +40,15 @@ This procedure allows us to quickly update andh replace the current layer defaul
 - From the `Style Upload` page, click on the `Choose files` button and navigate to `/opt/data/sample_data/user_data`, select the file `foss4g_mainrd.sld` and then click on `Open`
     ![image](https://user-images.githubusercontent.com/1278021/125468962-9bfd3df5-e734-4947-aba5-d5f947e7819a.png)
 
+- Click on `Upload file` and, once finished, on `Return to Layer`
+    ![image](https://user-images.githubusercontent.com/1278021/125474719-af6321bc-039c-4be7-9d8d-66f6ba2bcee8.png)
+
+  **WARNING**: If the page does not refresh correctly, click together `CTRL-SHIFT-CANC` and clear the browser image cache from the last hour
+  
+     ![image](https://user-images.githubusercontent.com/1278021/125475210-f204713a-cac0-478f-9b0b-c178cff9a8dd.png)
+
+- Go back to the layer detail page, refresh the page; notice how the `Legend` has changed and also the styling of the layer. Trying to zoom in, you will notice also some labels appering.
+    ![image](https://user-images.githubusercontent.com/1278021/125475684-be2c1907-e031-49ce-b164-cf32b49e12a9.png)
+
+
+
