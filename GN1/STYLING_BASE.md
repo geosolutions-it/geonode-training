@@ -1,4 +1,4 @@
-# Styling with GeoNode
+# Styling with GeoNode (Basics)
 This section introduces the concepts of the **Styled Layer Descriptor** (`SLD`) markup language.
 
 `SLD` is the styling engine used by the GIS backend (i.e. GeoServer). It allows us to create beautiful and informative portryals out of raw geospatial data.
@@ -186,5 +186,141 @@ This procedure allows us to quickly update andh replace the current layer defaul
         </sld:UserLayer>
       </sld:StyledLayerDescriptor>
      ```
+
+- Set the thumbnail as we have done previously
+
+### Parcels
+- From the location `/opt/data/sample_data/pretty_maps/data/boulder` upload the layer `Parcels`
+    ![image](https://user-images.githubusercontent.com/1278021/125496679-5de686c3-68e7-486b-908d-2ee4454eebf6.png)
+
+- From the location `/opt/data/sample_data/pretty_maps/styles` upload the style `foss4g_parcels.sld`; the layer appear only at very high levels of zoom
+    ![image](https://user-images.githubusercontent.com/1278021/125497076-f23a3f82-adaa-43b3-a748-3f3c84f46698.png)
+
+- Set the thumbnail as we have done previously
+
+### Pointlm
+- From the location `/opt/data/sample_data/pretty_maps/data/boulder` upload the layer `pointlm`
+- From the location `/opt/data/sample_data/pretty_maps/styles` upload the style `foss4g_point_landmark_ds_ns.sld`
+- At a first glance, the layer appear as a set of grey suqare points; let's take a closer look at the `SLD` definition
+
+   ```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+      <sld:StyledLayerDescriptor
+      xmlns="http://www.opengis.net/sld"
+      xmlns:sld="http://www.opengis.net/sld"
+      xmlns:ogc="http://www.opengis.net/ogc"
+      xmlns:gml="http://www.opengis.net/gml"
+      xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0.0">
+
+        <sld:UserLayer>
+          <sld:LayerFeatureConstraints>
+            <sld:FeatureTypeConstraint/>
+          </sld:LayerFeatureConstraints>
+          <sld:UserStyle>
+            <sld:Name>tl 2010 08013 pointlm</sld:Name>
+            <sld:Title/>
+            <sld:FeatureTypeStyle>
+              <sld:Rule>
+                <sld:Name>landmarks</sld:Name>
+                <ogc:Filter>
+                    <ogc:PropertyIsGreaterThan>
+                      <ogc:Function name="strLength">
+                        <ogc:PropertyName>IMAGE</ogc:PropertyName>
+                      </ogc:Function>
+                      <ogc:Literal>0</ogc:Literal>
+                    </ogc:PropertyIsGreaterThan>
+                </ogc:Filter>
+                <sld:PointSymbolizer>
+                  <sld:Graphic>
+                    <sld:ExternalGraphic>
+                      <sld:OnlineResource xlink:type="simple" xlink:href="./img/landmarks/${IMAGE}" />
+                      <sld:Format>image/png</sld:Format>
+                    </sld:ExternalGraphic>
+                  </sld:Graphic>
+                  <VendorOption name="labelObstacle">true</VendorOption>
+                </sld:PointSymbolizer>
+                <sld:TextSymbolizer>
+                  <sld:Label>
+                    <ogc:PropertyName>FULLNAME</ogc:PropertyName>
+                  </sld:Label>
+                  <sld:Font>
+                    <sld:CssParameter name="font-family">Arial</sld:CssParameter>
+                    <sld:CssParameter name="font-size">12.0</sld:CssParameter>
+                    <sld:CssParameter name="font-style">normal</sld:CssParameter>
+                    <sld:CssParameter name="font-weight">normal</sld:CssParameter>
+                  </sld:Font>
+                  <sld:LabelPlacement>
+                    <sld:PointPlacement>
+                      <sld:AnchorPoint>
+                        <sld:AnchorPointX>
+                          <ogc:Literal>0.5</ogc:Literal>
+                        </sld:AnchorPointX>
+                        <sld:AnchorPointY>
+                          <ogc:Literal>1.0</ogc:Literal>
+                        </sld:AnchorPointY>
+                      </sld:AnchorPoint>
+                      <sld:Displacement>
+                        <sld:DisplacementX>
+                          <ogc:Literal>0.0</ogc:Literal>
+                        </sld:DisplacementX>
+                        <sld:DisplacementY>
+                          <ogc:Literal>-14.0</ogc:Literal>
+                        </sld:DisplacementY>
+                      </sld:Displacement>
+                      <sld:Rotation>
+                        <ogc:Literal>0.0</ogc:Literal>
+                      </sld:Rotation>
+                    </sld:PointPlacement>
+                  </sld:LabelPlacement>
+                  <sld:Halo>
+                    <sld:Radius>
+                      <ogc:Literal>1.5</ogc:Literal>
+                    </sld:Radius>
+                    <sld:Fill>
+                      <sld:CssParameter name="fill">#FFFFFF</sld:CssParameter>
+                    </sld:Fill>
+                  </sld:Halo>
+                  <sld:Fill>
+                    <sld:CssParameter name="fill">#000033</sld:CssParameter>
+                  </sld:Fill>
+                  <sld:Priority>200000</sld:Priority>
+                  <sld:VendorOption name="autoWrap">100</sld:VendorOption>
+                </sld:TextSymbolizer>
+              </sld:Rule>
+            </sld:FeatureTypeStyle>
+          </sld:UserStyle>
+        </sld:UserLayer>
+      </sld:StyledLayerDescriptor>
+   ```
+
+   We can notice the notation `xlink:href="./img/landmarks/${IMAGE}"`; this is a GeoServer extension allowing us to read some values from the source dataset attributes and use them to dynamically render the `SLD`.
+
+  In that specific case, GeoServer looks for some file names accordingly to the `${IMAGE}` attribute value into a relative folder named `./img/landmarks/`.
+  
+  In order to correctly render this style, we will need to copy this folder containing the images correctly named, into the GeoServer `styles` folder.
+  
+  We will have also to give to that folder the correct permissions allowing GeoServer to be able to access it.
+  
+- The first step is to copy the `img` folder into the correct GeoServer `styles` one
+   * Open a `system file browser` window and go to `/opt/data/sample_data/pretty_maps/styles`
+   * `RIGHT-CLICK` on the `img` folder
+   * Select `Copy` from the side menu
+
+   ![image](https://user-images.githubusercontent.com/1278021/125500351-4e9bc2dc-3365-4e41-aa24-359d8b8c7e32.png)
+
+- From the `system file browser` window go to `/opt/data/geoserver_data/workspaces/geonode/`; it will probably ask for `ROOT` permissions. Just insert the password `geonode` everytime it asks for
+    ![image](https://user-images.githubusercontent.com/1278021/125500660-64aa4008-7351-4fca-9fe7-e7ca2f8db221.png)
+
+- Go to the styles folder inside the geonode workspace and hit `CTRL+V`; this will copy the `img` folder into the new location
+     ![image](https://user-images.githubusercontent.com/1278021/125500772-e3cda6da-2880-4949-b6df-51e1eaa8e890.png)
+
+- `RIGHT-CLICK` on the newly created `img` folder and click on the `Properties` link of the context menu
+     ![image](https://user-images.githubusercontent.com/1278021/125511826-992480b8-83a4-4669-8c92-3566d447fd05.png)
+
+- Assign the permissions to the `others group` like shown in the figure below
+     ![image](https://user-images.githubusercontent.com/1278021/125511930-e603e010-3ccd-4e3c-98a6-734b3ca3eed6.png)
+
+- Refresh the layer page, you should be able to see the icons appearing on the map preview
+     ![image](https://user-images.githubusercontent.com/1278021/125512068-36e44fdd-f8d3-4d1d-b8da-db5bb5ec2d02.png)
 
 - Set the thumbnail as we have done previously
