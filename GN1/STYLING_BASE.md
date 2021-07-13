@@ -50,5 +50,13 @@ This procedure allows us to quickly update andh replace the current layer defaul
 - Go back to the layer detail page, refresh the page; notice how the `Legend` has changed and also the styling of the layer. Trying to zoom in, you will notice also some labels appering.
     ![image](https://user-images.githubusercontent.com/1278021/125475684-be2c1907-e031-49ce-b164-cf32b49e12a9.png)
 
+- Go ahead and update the `Thumbnail` by clicking on the Editing Tools menu and then on the `Thumbnail > Set` link
+    ![image](https://user-images.githubusercontent.com/1278021/125491670-ae82feff-4753-4587-ae95-37bc8a5d829a.png)
+
+- Once the thumbnail has been saved
+    ![image](https://user-images.githubusercontent.com/1278021/125491828-63ef4644-dcfd-45de-9fab-fddbcf79b158.png)
+
+- Go back to the layers list and verify is has been updated
+    ![image](https://user-images.githubusercontent.com/1278021/125491890-6dfe8ab4-bb04-4046-a670-34a59a0261fb.png)
 
 
