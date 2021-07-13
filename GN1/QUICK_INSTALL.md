@@ -7,7 +7,7 @@ In order to simplify the installation procedure, a self-contained package compri
 
 The package is an Oracle VirtualBox `OVA` image which must be loaded into a running Virtual Box instance.
 
-**WARNING**: The package is about `7GB` big, therefore consider downloading it and setting up VirtualBox, as explained below, **before** the training sessions start.
+**WARNING**: The package is about `8.56 GB` big, therefore consider downloading it and setting up VirtualBox, as explained below, **before** the training sessions start.
 
 ## Installing Oracle VirtualBox
 ![image](https://user-images.githubusercontent.com/1278021/125089414-a6b9a080-e0ce-11eb-887b-0e9ed1069638.png)
