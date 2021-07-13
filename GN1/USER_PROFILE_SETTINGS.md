@@ -21,13 +21,16 @@ Now check/uncheck the notification types you wish to receive or not receive. It 
 ![image](https://user-images.githubusercontent.com/1278021/125316223-3615bc80-e338-11eb-8cb4-c074323b5aaa.png)
 
 Click on the `Change` button when finished.
+
 ![image](https://user-images.githubusercontent.com/1278021/125316292-488ff600-e338-11eb-82c9-71a4c50b1bd0.png)
 
 ## Managing the Password
 To change your password, click on the `Set/Change password` link of the `Profile` page (see Updating the Profile section). You will be asked to enter your current password and the new one (two times). Click on `Change my password` to perform the change.
+
 ![image](https://user-images.githubusercontent.com/1278021/125316443-6b220f00-e338-11eb-88be-1281bc669574.png)
 
 If no errors occur you will see a confirmation message.
+
 ![image](https://user-images.githubusercontent.com/1278021/125316487-72e1b380-e338-11eb-9820-3a8196f1ed03.png)
 
 Next time you log in you will have to use the new password.
