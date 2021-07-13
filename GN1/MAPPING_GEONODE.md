@@ -232,5 +232,30 @@ The “here” is specified by giving the coordinate of the pixel that the user 
 
 As an example, go to any of the layers' details page and click on a point of the map corresponding to some data. You'll get information about the data on that specific position.
 
+## Creating a Base Map
+- From the `Maps` dropdown menu on the `navbar`, click on `Create Map` link
+    ![image](https://user-images.githubusercontent.com/1278021/125528667-d7ed8c07-9017-45f1-a48a-09a527a29417.png)
+
+- GeoNode will show an empty map with a default background; from the `burger menu` on top-left corner, click on the `Add Layers` button
+    ![image](https://user-images.githubusercontent.com/1278021/125528841-92c3eb97-6f71-4a4d-b63e-5a6b4099bb7e.png)
+
+- The catalog side menu will appear by showing the available layers; start adding the overlays as shwon in the figure below.
+
+  **WARNING**: the order of the overlays is important on a map; you can always change the order by dragging the layer up and down
+  
+  ![image](https://user-images.githubusercontent.com/1278021/125529081-2d1ce9bf-5125-41e9-91db-b1d7a3725e47.png)
+
+- Change the opacity of the background layer as shown in the figure below. Zoom in and out in order to show/hide the layer details
+    ![image](https://user-images.githubusercontent.com/1278021/125529180-a328d26f-48d8-4509-b18a-de64f8c5204e.png)
+
+- Once happy, click on the `top-right burger` menu and select `Save As` from the dropdown list
+    ![image](https://user-images.githubusercontent.com/1278021/125529320-9c7c7a3c-1509-43c1-823d-04e7365ef66a.png)
+
+- Provide a name and a description and then click on `Save As` button
+    ![image](https://user-images.githubusercontent.com/1278021/125529387-7851d0e3-60c3-4dd4-968a-b89a888bb8fd.png)
+
+- If the machine is particularly slow, the save action might display a `timeout error`; you can ignore it and go to the `maps list`. Select the newly created map in order to enter the `Map details` page
+    ![image](https://user-images.githubusercontent.com/1278021/125529519-f4961dbd-0f30-4045-acbc-ed497ffc4798.png)
+
 
 
