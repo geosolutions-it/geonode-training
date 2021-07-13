@@ -59,4 +59,132 @@ This procedure allows us to quickly update andh replace the current layer defaul
 - Go back to the layers list and verify is has been updated
     ![image](https://user-images.githubusercontent.com/1278021/125491890-6dfe8ab4-bb04-4046-a670-34a59a0261fb.png)
 
+## Adding more Base Layers and Styles
 
+### Boulder City Limits
+- From the location `/opt/data/sample_data/pretty_maps/data/boulder` upload the layer `BoulderCityLimits`
+    ![image](https://user-images.githubusercontent.com/1278021/125492291-7a273f3d-ea37-4362-9cf8-45a252c1ad0b.png)
+
+- From the location `/opt/data/sample_data/pretty_maps/styles` upload the style `foss4g_citylimits.sld`
+    ![image](https://user-images.githubusercontent.com/1278021/125492744-294439f0-6d4a-4a2d-a5ed-98b4df9d477f.png)
+
+- The layer and legend should appear as shown here
+    ![image](https://user-images.githubusercontent.com/1278021/125492951-1ee1ba46-95b4-44ca-a2fc-04fb7bac8637.png)
+
+- Set the thumbnail as we have done previously
+
+### Buildings
+- From the location `/opt/data/sample_data/pretty_maps/data/boulder` upload the layer `Buildings050714`
+  **WARNING**: pay attention to select the files shown in figure, do not include the `.sld` and `.xml` ones
+  
+    ![image](https://user-images.githubusercontent.com/1278021/125493133-a5ec47ba-d37d-40be-b271-376bc457222d.png)
+
+- From the location `/opt/data/sample_data/pretty_maps/styles` upload the style `foss4g_buildings.sld`
+- Notice that the Legend presents 3 different symbols, notice also that no feature will be visibile unless you zoom very close to the buildings
+    ![image](https://user-images.githubusercontent.com/1278021/125494060-c8bebb58-15fc-4e53-9187-9e5da3deb17b.png)
+
+- By taking a closer look at the style source code, we can notice that:
+    * We have a set of `Rule` elements each one constrained by some `ScaleDenominator` limits.
+    * The `Shadow` rule, defines also a `Displacement` making the polygons translate on the `X-Y` layer
+    
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+      <sld:StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:sld="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc" xmlns:gml="http://www.opengis.net/gml" version="1.0.0">
+        <sld:UserLayer>
+          <sld:LayerFeatureConstraints>
+            <sld:FeatureTypeConstraint/>
+          </sld:LayerFeatureConstraints>
+          <sld:UserStyle>
+            <sld:Name>Buildings050714</sld:Name>
+            <sld:Title/>
+            <sld:IsDefault>1</sld:IsDefault>
+            <sld:FeatureTypeStyle>
+              <sld:Rule>
+                <sld:Name>Shadow</sld:Name>
+                <sld:MinScaleDenominator>5000.0</sld:MinScaleDenominator>
+                <sld:MaxScaleDenominator>15000.0</sld:MaxScaleDenominator>
+                <sld:PolygonSymbolizer>
+                  <sld:Geometry>
+                    <ogc:Function name="offset">
+                      <ogc:PropertyName>the_geom</ogc:PropertyName>
+                      <ogc:Literal>6.0</ogc:Literal>
+                      <ogc:Literal>-6.0</ogc:Literal>
+                    </ogc:Function>
+                  </sld:Geometry>
+                  <sld:Fill/>
+                </sld:PolygonSymbolizer>
+              </sld:Rule>
+            </sld:FeatureTypeStyle>
+            <sld:FeatureTypeStyle>
+              <sld:Rule>
+                <sld:Name>Label</sld:Name>
+                <sld:MaxScaleDenominator>10000.0</sld:MaxScaleDenominator>
+                <sld:PolygonSymbolizer>
+                  <sld:Fill>
+                    <sld:CssParameter name="fill">#FF0000</sld:CssParameter>
+                  </sld:Fill>
+                </sld:PolygonSymbolizer>
+                <sld:TextSymbolizer>
+                  <sld:Label>
+                    <ogc:PropertyName>LABEL_NAME</ogc:PropertyName>
+                  </sld:Label>
+                  <sld:Font>
+                    <sld:CssParameter name="font-family">Arial</sld:CssParameter>
+                    <sld:CssParameter name="font-size">12.0</sld:CssParameter>
+                    <sld:CssParameter name="font-style">normal</sld:CssParameter>
+                    <sld:CssParameter name="font-weight">normal</sld:CssParameter>
+                  </sld:Font>
+                  <sld:LabelPlacement>
+                    <sld:PointPlacement>
+                      <sld:AnchorPoint>
+                        <sld:AnchorPointX>
+                          <ogc:Literal>0.5</ogc:Literal>
+                        </sld:AnchorPointX>
+                        <sld:AnchorPointY>
+                          <ogc:Literal>0.5</ogc:Literal>
+                        </sld:AnchorPointY>
+                      </sld:AnchorPoint>
+                      <sld:Displacement>
+                        <sld:DisplacementX>
+                          <ogc:Literal>0.0</ogc:Literal>
+                        </sld:DisplacementX>
+                        <sld:DisplacementY>
+                          <ogc:Literal>0.0</ogc:Literal>
+                        </sld:DisplacementY>
+                      </sld:Displacement>
+                      <sld:Rotation>
+                        <ogc:Literal>0.0</ogc:Literal>
+                      </sld:Rotation>
+                    </sld:PointPlacement>
+                  </sld:LabelPlacement>
+                  <sld:Halo>
+                    <sld:Radius>
+                      <ogc:Literal>2</ogc:Literal>
+                    </sld:Radius>
+                    <sld:Fill>
+                      <sld:CssParameter name="fill">#FFFFFF</sld:CssParameter>
+                    </sld:Fill>
+                  </sld:Halo>
+                  <sld:Fill>
+                    <sld:CssParameter name="fill">#000000</sld:CssParameter>
+                  </sld:Fill>
+                  <sld:VendorOption name="autoWrap">100</sld:VendorOption>
+                  <sld:VendorOption name="maxDisplacement">50</sld:VendorOption>
+                </sld:TextSymbolizer>
+              </sld:Rule>
+              <sld:Rule>
+                <sld:Name>fill</sld:Name>
+                <sld:MaxScaleDenominator>25000.0</sld:MaxScaleDenominator>
+                <sld:PolygonSymbolizer>
+                  <sld:Fill>
+                    <sld:CssParameter name="fill">#B3B3B3</sld:CssParameter>
+                  </sld:Fill>
+                </sld:PolygonSymbolizer>
+              </sld:Rule>
+            </sld:FeatureTypeStyle>
+          </sld:UserStyle>
+        </sld:UserLayer>
+      </sld:StyledLayerDescriptor>
+     ```
+
+- Set the thumbnail as we have done previously
