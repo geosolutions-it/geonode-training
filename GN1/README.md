@@ -14,8 +14,6 @@
  - [Adding base types](ADDING_BASE_TYPES.md)
  - [Styling with GeoNode](STYLING_BASE.md)
  - [Pretty Maps with GeoNode](MAPPING_GEONODE.md)
- - [GeoNode Maps Features and Widgets](MAPS_FEATURES.md)
- - [Advanced Styling Features](STYLING_ADVANCED.md)
  - [Adding Other Media Types Contents](UPLOADING_DOCS.md)
  - [Playing with GeoStories](ADD_GEOSTORIES.md)
 
