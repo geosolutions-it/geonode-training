@@ -1,3 +1,3 @@
 # Playing with GeoStories
 
-#### [Next Section: Mastering GeoNode data publishing and management (GN2)](../GN2)
+#### [Next Section: Introduction to Configuring GeoNode (Basics)](CONFIGURING_GEONODE_BASIC.md)
