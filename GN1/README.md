@@ -15,6 +15,9 @@
  - [Styling with GeoNode](STYLING_BASE.md)
  - [Pretty Maps with GeoNode](MAPPING_GEONODE.md)
  - [GeoNode Maps Features and Widgets](MAPS_FEATURES.md)
+ - [Advanced Styling Features](STYLING_ADVANCED.md)
+ - [Adding Other Media Types Contents](UPLOADING_DOCS.md)
+ - [Playing with GeoStories](ADD_GEOSTORIES.md)
 
 ## What is GeoNode
 ![image](https://user-images.githubusercontent.com/1278021/125069069-8c73c880-e0b6-11eb-8aae-82a5a05b6846.png)
