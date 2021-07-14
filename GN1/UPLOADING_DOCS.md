@@ -40,6 +40,21 @@ It allows storing some metadata info withing the image or audio format.
 
 GeoNode tries to read some of those metadata fields and use them to fill the content metadata.
 
-As an instance, if you go back to the `flowers.jpg` details page, you will be able to notice that GeoNode automatically filled the `abstract` and `keywords
+As an instance, if you go back to the `flowers.jpg` details page, you will be able to notice that GeoNode automatically filled the `abstract`, `creation date` and `keywords` of the document
+
+   ![image](https://user-images.githubusercontent.com/1278021/125601340-94605ab7-03ca-4b4c-aeb2-2a097ce9e409.png)
+
+By clicking on the `Exif` tab, it will be possible to see the tags recognized by GeoNode
+
+   ![image](https://user-images.githubusercontent.com/1278021/125601653-68cd59ec-e98f-4f39-be83-e09a32a07ba9.png)
+
+### Other Media Types
+Go ahead and try uploading some other samples from the `/opt/data/sample_data/documents` folder.
+
+There are different type of examples you can test like:
+ - Archives
+ - Audio files
+ - Video files
+ - Images with different EXIF metadata and formats
 
 #### [Next Section: Playing with GeoStories](ADD_GEOSTORIES.md)
