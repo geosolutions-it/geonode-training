@@ -16,10 +16,10 @@ Topics covered are as follows:
 * GeoNode basic concepts
 * Quick installation guide
 * Using GeoNode
-* Registering as a user
-* Uploading and managing layers
-* Uploading and managing documents
-* Uploading and managing maps
+   * Registering as a user
+   * Uploading and managing layers
+   * Uploading and managing documents
+   * Uploading and managing maps
 * Introduction to configuring GeoNode
 * Introduction to administering GeoNode
 
