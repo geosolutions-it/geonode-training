@@ -57,4 +57,10 @@ There are different type of examples you can test like:
  - Video files
  - Images with different EXIF metadata and formats
 
+![image](https://user-images.githubusercontent.com/1278021/125605081-695c94c7-c9ed-429d-9429-eef4729b95c3.png)
+
+![image](https://user-images.githubusercontent.com/1278021/125605102-2f3ae0a6-c1a6-4e3c-a908-4ff1d50341b6.png)
+
+![image](https://user-images.githubusercontent.com/1278021/125605135-8805ae61-4342-47dc-90de-5b21c464669f.png)
+
 #### [Next Section: Playing with GeoStories](ADD_GEOSTORIES.md)
