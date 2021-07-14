@@ -12,10 +12,12 @@
  - [Interacting With Other Users and Groups](USER_GROUPS_INTERACTION.md)
  - [Adding Data to GeoNode](ADDING_DATA_TO_GEONODE.md)
  - [Adding base types](ADDING_BASE_TYPES.md)
- - [Styling with GeoNode](STYLING_BASE.md)
+ - [Styling with GeoNode (Basics)](STYLING_BASE.md)
  - [Pretty Maps with GeoNode](MAPPING_GEONODE.md)
  - [Adding Other Media Types Contents](UPLOADING_DOCS.md)
  - [Playing with GeoStories](ADD_GEOSTORIES.md)
+ - [Introduction to Configuring GeoNode (Basics)](CONFIGURING_GEONODE_BASIC.md)
+ - [Introduction to Administering GeoNode (Basics)](ADMINISTERING_GEONODE_BASIC.md)
 
 ## What is GeoNode
 ![image](https://user-images.githubusercontent.com/1278021/125069069-8c73c880-e0b6-11eb-8aae-82a5a05b6846.png)
