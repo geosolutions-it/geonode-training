@@ -257,4 +257,4 @@ As an example, go to any of the layers' details page and click on a point of the
 - If the machine is particularly slow, the save action might display a `timeout error`; you can ignore it and go to the `maps list`. Select the newly created map in order to enter the `Map details` page
     ![image](https://user-images.githubusercontent.com/1278021/125529519-f4961dbd-0f30-4045-acbc-ed497ffc4798.png)
 
-#### [Next Section: GeoNode Maps Features and Widgets](MAPS_FEATURES.md)
+#### [Next Section: Adding Other Media Types Contents](UPLOADING_DOCS.md)
