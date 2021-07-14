@@ -14,6 +14,7 @@
  - [Adding base types](ADDING_BASE_TYPES.md)
  - [Styling with GeoNode](STYLING_BASE.md)
  - [Pretty Maps with GeoNode](MAPPING_GEONODE.md)
+ - [GeoNode Maps Features and Widgets](MAPS_FEATURES.md)
 
 ## What is GeoNode
 ![image](https://user-images.githubusercontent.com/1278021/125069069-8c73c880-e0b6-11eb-8aae-82a5a05b6846.png)
