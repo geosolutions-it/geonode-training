@@ -35,9 +35,35 @@ You will be able to compose the frames by placing text, images, video, audio, ma
 
     ![image](https://user-images.githubusercontent.com/1278021/125652536-428d344c-1187-48bc-aa2e-ac942319f2b3.png)
 
-- Let's search for an image of Boulder in Colorado on Google and let's copy the image URL
+- Let's search for an image of Boulder in Colorado on Google and let's copy the `image URL`
 
-    
+    ![image](https://user-images.githubusercontent.com/1278021/125653470-7420f5a2-bf3b-4b94-b24d-6e4a24b2c4e9.png)
+
+- Click on `Images` and then add (`+`)
+
+    ![image](https://user-images.githubusercontent.com/1278021/125653599-4f525be9-7902-4c0a-b9e1-e8f58bbcdd63.png)
+
+- Fill the image form with the `URL` and other info, and then `Save`
+
+    ![image](https://user-images.githubusercontent.com/1278021/125653824-a437a953-998d-492c-bb82-1c3ccabf8ab8.png)
+
+- Select the newly created image content and `Apply`
+
+    ![image](https://user-images.githubusercontent.com/1278021/125653980-08271026-f017-4d23-a3d8-b21a00ea9bd0.png)
+
+- The image suddenly appear as the frame background
+
+    ![image](https://user-images.githubusercontent.com/1278021/125654143-c6088ba6-8d55-4e33-afd4-f27759f1f72b.png)
+
+- Time to save our new GeoStory before adding more contents
+
+    ![image](https://user-images.githubusercontent.com/1278021/125654245-10bec2d0-5db0-42ff-a2d4-f74d93dcc01e.png)
+
+    ![image](https://user-images.githubusercontent.com/1278021/125654290-7c1b6106-5a84-4653-9b15-916046b44f0f.png)
+
+- The new GeoStory is available now from the `Apps` list
+
+    ![image](https://user-images.githubusercontent.com/1278021/125654361-5970ddce-d482-45c3-bf65-a06d93ddbaac.png)
 
 
 #### [Next Section: Introduction to Configuring GeoNode (Basics)](CONFIGURING_GEONODE_BASIC.md)
