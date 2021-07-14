@@ -65,5 +65,11 @@ You will be able to compose the frames by placing text, images, video, audio, ma
 
     ![image](https://user-images.githubusercontent.com/1278021/125654361-5970ddce-d482-45c3-bf65-a06d93ddbaac.png)
 
+## Edit a GeoStory
+- From the `Apps` list, click on the GeoStory name; from the detail page, click on `Editing Tools` and then `GeoStory > Edit`
+
+    ![image](https://user-images.githubusercontent.com/1278021/125654673-076c5060-8c84-4150-b56f-d25bf91ae86d.png)
+
+
 
 #### [Next Section: Introduction to Configuring GeoNode (Basics)](CONFIGURING_GEONODE_BASIC.md)
