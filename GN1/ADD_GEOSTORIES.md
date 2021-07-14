@@ -70,6 +70,36 @@ You will be able to compose the frames by placing text, images, video, audio, ma
 
     ![image](https://user-images.githubusercontent.com/1278021/125654673-076c5060-8c84-4150-b56f-d25bf91ae86d.png)
 
+- Change the `fit` of the `Abstract` to `Vertical` and click on the `Plus` button at the bottom
 
+     ![image](https://user-images.githubusercontent.com/1278021/125661324-fe1c8fc0-50ea-4432-9fef-5db51b2d31ff.png)
+
+- Add an `Immersive Section`, select the `Boulder Map` from the available `Maps` on GeoNode
+
+     ![image](https://user-images.githubusercontent.com/1278021/125661675-c297bdd0-ba34-4964-a043-64728b04760c.png)
+
+- Add and fix some text (you can get it from Google) to the text section
+
+     ![image](https://user-images.githubusercontent.com/1278021/125661775-529714d4-eb86-4727-bffc-5c6d4b378d75.png)
+
+- Add a `Title Section` and insert the title `Boulder Trails` into the text box
+
+     ![image](https://user-images.githubusercontent.com/1278021/125661964-7e321607-846a-4a4b-9f80-883d7a03266b.png)
+
+- Add another `Immersive Section`, add the `Boulder Map` again and zoom to the `Middle Saint Vrain Trailhead location`. Search for some text and images on google and add them to the text box. Also change the size and positions of the media and text contents if needed
+
+     ![image](https://user-images.githubusercontent.com/1278021/125662445-c76e5844-c658-46bd-9b26-113f104dd230.png)
+
+- Click on the `Preview` button in order to check the outcomes; if everything is fine, `Save` the GeoStory
+
+     ![image](https://user-images.githubusercontent.com/1278021/125663125-89c9ad6e-6343-4a82-b1cf-464ff5a9bebb.png)
+
+- The new GeoStory is ready and can be viewed and accessed from the Apps list
+
+     ![image](https://user-images.githubusercontent.com/1278021/125663898-432806af-dea3-4d00-b537-ff638c30cdca.png)
+
+     ![image](https://user-images.githubusercontent.com/1278021/125663938-bb95e91b-4773-45dc-a4bc-96c589759869.png)     
+
+     ![image](https://user-images.githubusercontent.com/1278021/125663594-5f82c637-f438-4d33-8d6b-4a22422e1815.png)
 
 #### [Next Section: Introduction to Configuring GeoNode (Basics)](CONFIGURING_GEONODE_BASIC.md)
