@@ -90,6 +90,19 @@ You will be able to compose the frames by placing text, images, video, audio, ma
 
      ![image](https://user-images.githubusercontent.com/1278021/125662445-c76e5844-c658-46bd-9b26-113f104dd230.png)
 
+- Click on the map settings as shown below
+
+    ![image](https://user-images.githubusercontent.com/1278021/125765963-316a7274-542e-4b52-a909-eb5ab8ae9ba1.png)
+
+- Click on the tool tab as shown below
+
+    ![image](https://user-images.githubusercontent.com/1278021/125766039-a85599db-f0e8-401a-bf70-e66664439764.png)
+
+- Enable the option as shown in the figure belo, and zoom to the area of interest
+
+    ![image](https://user-images.githubusercontent.com/1278021/125766126-ba11c625-f874-4057-b128-1123554b0065.png)
+
+
 - Click on the `Preview` button in order to check the outcomes; if everything is fine, `Save` the GeoStory
 
      ![image](https://user-images.githubusercontent.com/1278021/125663125-89c9ad6e-6343-4a82-b1cf-464ff5a9bebb.png)
