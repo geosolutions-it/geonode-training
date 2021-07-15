@@ -20,5 +20,55 @@ There are plenty of variables listed on the `settings` file, most of them have a
 
 That means that GeoNode looks first for the variable value into the `System Environment` and, if no value or variable has been found, it falls back to a `default` one.
 
+You can find a full list of available settings from the GeoNode official documentation [here](https://docs.geonode.org/en/master/basic/settings/index.html#settings).
+
+### Exercise: Settings Update to Toggle User Registration
+Changing some GeoNode settings can be done by:
+
+1. Udate or add the corresponding `ENV` variable value (or add it if missing)
+2. Restart the Django service
+
+- Go to the folder `/opt/geonode/` and enable the Python `virtualenv` by typing:
+
+   ```python
+   workon geonode
+   ```
+
+- Edit the `UWSGI` file setting the system `ENV` by typing:
+
+   ```shell
+   sudo vim /etc/uwsgi/apps-enabled/geonode.ini
+   ```
+
+- Search for the line
+
+   ```ini
+   env = ACCOUNT_OPEN_SIGNUP=True
+   ```
+
+   and turn it to `False`
+   
+   ```ini
+   env = ACCOUNT_OPEN_SIGNUP=False
+   ```
+
+   save and close by typing the sequence `ESC` `:wq!`
+
+- Restart the `UWSGI` service by typing:
+
+   ```shell
+   touch geonode/wsgi.py
+   ```
+   
+- Follow the GeoNode `logs` in order to be sure that everything is ok
+
+   ```shell
+   sudo tail -500f /var/log/uwsgi/app/geonode.log
+   ```
+   
+- Once the service restarted successfully, refresh the GeoNode home page, sign out if logged in, and verify that the user registration is now disabled
+
+   ![image](https://user-images.githubusercontent.com/1278021/125792031-193feb95-0aac-412f-8250-b7816273b622.png)
+
 
 #### [Next Section: Introduction to Administering GeoNode (Basics)](ADMINISTERING_GEONODE_BASIC.md)
