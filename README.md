@@ -63,6 +63,36 @@ GeoSolutions will make available an all-in-one package to run the workshop as a 
 
 This is an **intermediate** training, GN1 modules is recommended as a precondition.
 
+### [Mastering GeoNode installation and configuration (GN3)](GN3)
+
+**DURATION**: 8 hours (2 sessions)
+
+**LEVEL**: Advanced
+
+The training aims to provide those wishing to build a spatial data infrastructure using GeoNode an in depth look into advanced installation, configuration and operation.
+
+Topics covered are as follows:
+* GeoNode installation options, including:
+   * GeoNode core Vs GeoNode project
+   * Using docker Vs SPC
+* Customizing look and feel		
+* Advanced GeoNode configuration, including:
+   * Monitoring and Analytics	
+   * LDAP connection
+* Advanced GeoNode Administration
+* Hardening GeoNode
+
+**PREREQUISITES**
+In order to participate basic knowledge of GeoNode is required as well as having a basic knowledge of GIS concepts and metadata standards.
+
+**ACCOMPLISHMENTS**
+At the end of the training will be able to master the installation and configuration of GeoNode as well as its operation in production.
+
+**OTHER INFORMATION**
+GeoSolutions will make available an all-in-one package to run the workshop as a VM for VirtualBox. This should be pre-installed on attendees laptops before the workshop.
+
+This is a **advanced** training, at least GN1 module is recommended as a precondition.
+
 ### [Mastering GeoNode Development (GN4)](GN4)
 
 **DURATION**: 8 hours (2 sessions)
