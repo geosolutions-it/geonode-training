@@ -21,4 +21,28 @@ This is particularly usefull when we need to recover from an unusual situation, 
 
 Notice that the dashboard is composed by several sections. In this introductionary module we will focus on some of them, the most common ones.
 
+### Announcements
+![image](https://user-images.githubusercontent.com/1278021/131642298-4c9959b2-cc4b-4f6b-8451-e2da1176295b.png)
+
+This section allows an admin to create or change public announcements to the portal.
+
+There are several types of announcements and those can be public, which means anyone will be able to see them, or `Members Only`, which means that only registered users will be able to see them.
+
+**Important**: _Remember, when creating a new announcement, make sure the_ `Site Wide` _option is enabled_
+      ![image](https://user-images.githubusercontent.com/1278021/131643156-15e23388-c3fb-4e2e-b05e-d3bfa0922af1.png)
+
+
+### Base Administration
+![image](https://user-images.githubusercontent.com/1278021/131643889-5991e033-125a-4bee-ba52-292205aaa25a.png)
+
+This section allows an admin to customize some of the default Metadata contents of GeoNode, like:
+ - Licenses
+ - Topic Categories
+ - Keywords
+ - Metadata Regions
+
+Not all the sections can be changed.
+
+**Warning**: _Change those contents only if you know what you are doing!_
+
 #### [Next Section: Mastering GeoNode data publishing and management (GN2)](../GN2)
