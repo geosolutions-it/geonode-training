@@ -32,7 +32,7 @@ At the end of the training will be able to perform a basic installation and conf
 **OTHER INFORMATION**
 GeoSolutions will make available an all-in-one package to run the workshop as a VM for VirtualBox. This should be pre-installed on attendees laptops before the workshop.
 
-This is a novice training, no other modules are recommended as a precondition.
+This is a **novice** training, no other modules are recommended as a precondition.
 
 ### [Mastering GeoNode data publishing and management (GN2)](GN2)
 
@@ -61,4 +61,32 @@ At the end of the training the attendees will be able to perform advanced config
 **OTHER INFORMATION**
 GeoSolutions will make available an all-in-one package to run the workshop as a VM for VirtualBox. This should be pre-installed on attendees laptops before the workshop.
 
-This is an intermediate training, GN1 modules is recommended as a precondition.
+This is an **intermediate** training, GN1 modules is recommended as a precondition.
+
+### [Mastering GeoNode Development (GN4)](GN4)
+
+**DURATION**: 8 hours (2 sessions)
+
+**LEVEL**: Advanced
+
+The training aims to provide attendees with information useful to customize and/or extend GeoNode.
+
+Topics covered are as follows:
+* GeoNode development options:
+   * GeoNode core Vs GeoNode project
+   * Using docker
+* Introduction to Django / Django project structure		
+* Further customizing look and feel
+* How to Customize  Templates / Add apps and functions to geonode-project	
+* Customize MapStore integration
+
+**PREREQUISITES**
+In order to participate basic knowledge of GeoNode is required as well as having a working knowledge of DJango, Python 3 and geospatial concepts.
+
+**ACCOMPLISHMENTS**
+At the end of the training attendees will be able to customize and/or extend GeoNode to suit their needs. 
+
+**OTHER INFORMATION**
+GeoSolutions will make available an all-in-one package to run the workshop as a VM for VirtualBox. This should be pre-installed on attendees laptops before the workshop.
+
+This is a **advanced** training, at least GN3 module is recommended as a precondition.
