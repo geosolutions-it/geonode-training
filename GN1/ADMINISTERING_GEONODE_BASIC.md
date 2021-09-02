@@ -45,4 +45,32 @@ Not all the sections can be changed.
 
 **Warning**: _Change those contents only if you know what you are doing!_
 
+### People
+![image](https://user-images.githubusercontent.com/1278021/131837708-c883e372-9ff8-4086-b9c6-483313dbfd03.png)
+
+This section allows an admin to manage the system `users` (i.e. the registered members).
+
+Through this panel it is possible to:
+
+ - Create/modify/delete users
+ - Diasable users or update/change their passwords
+ - Promote a user to `superuser`
+
+### Resources: Documents, Geoapps, Layers and Maps
+![image](https://user-images.githubusercontent.com/1278021/131838173-cd425070-a5a1-480c-ad30-39446c44caf1.png)
+
+This section allows an admin to manage the GeoNode `resources`.
+
+Through this panel it is possible to:
+
+ - Modify/delete resources
+ - Publish/unpublish resources
+
+### GeoNode Themes Library
+![image](https://user-images.githubusercontent.com/1278021/131838461-984d9095-534f-41fa-896b-8045cb0cfa03.png)
+
+This section allows an admin to manage the GeoNode `simple themes`.
+
+For more informations please check the GeoNode documents section [Simple Theming](https://docs.geonode.org/en/3.x/admin/admin_panel/index.html#simple-theming).
+
 #### [Next Section: Mastering GeoNode data publishing and management (GN2)](../GN2)
