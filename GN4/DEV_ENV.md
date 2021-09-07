@@ -226,3 +226,4 @@ Quit the server with CONTROL-C.
 
 - Connect to `http://localhost:8000` and verify GeoNode has started correctly
 
+#### [Next Section: Programmatically Customize the Look-and-Feel](LANDF_SIMPLE.md)
