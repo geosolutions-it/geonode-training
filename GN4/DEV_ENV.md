@@ -8,3 +8,129 @@ Notice that we will still need the following services to run on the system:
  - **PostgreSQL service w/ Portgis extensions**; we will learn how to link Dev GeoNode to an existing database and how to initialize a new one.
  - **Apache Tomcat9 with GeoServer**; we will still need a running GeoServer instance to be able to manage the geospatial datasets.
 
+### Stop GeoNode Services
+- Stop `NGINX` and `UWSGI` services
+
+```shell
+sudo systemctl stop nginx
+
+sudo systemctl status nginx
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+     Active: inactive (dead) since Tue 2021-09-07 15:56:19 BST; 19s ago
+       Docs: man:nginx(8)
+    Process: 633 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+    Process: 679 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+    Process: 4078 ExecStop=/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /run/nginx.pid (code=exited, status=0/SUCCESS)
+   Main PID: 683 (code=exited, status=0/SUCCESS)
+
+Sep 07 15:49:45 geonodevm-3 systemd[1]: Starting A high performance web server and a reverse proxy server...
+Sep 07 15:49:46 geonodevm-3 systemd[1]: Started A high performance web server and a reverse proxy server.
+Sep 07 15:56:19 geonodevm-3 systemd[1]: Stopping A high performance web server and a reverse proxy server...
+Sep 07 15:56:19 geonodevm-3 systemd[1]: nginx.service: Succeeded.
+Sep 07 15:56:19 geonodevm-3 systemd[1]: Stopped A high performance web server and a reverse proxy server.
+```
+
+```shell
+sudo systemctl stop uwsgi
+
+sudo systemctl status uwsgi
+● uwsgi.service - LSB: Start/stop uWSGI server instance(s)
+     Loaded: loaded (/etc/init.d/uwsgi; generated)
+     Active: failed (Result: exit-code) since Tue 2021-09-07 15:49:51 BST; 7min ago
+       Docs: man:systemd-sysv-generator(8)
+    Process: 714 ExecStart=/etc/init.d/uwsgi start (code=exited, status=1/FAILURE)
+      Tasks: 9 (limit: 4650)
+     Memory: 628.9M
+     CGroup: /system.slice/uwsgi.service
+             ├─ 909 /usr/bin/uwsgi --ini /usr/share/uwsgi/conf/default.ini --ini /etc/uwsgi/apps-enabled/geonode.ini --daemonize /var/log/uwsgi/app/geonode.log
+             ├─1260 /usr/bin/uwsgi --ini /usr/share/uwsgi/conf/default.ini --ini /etc/uwsgi/apps-enabled/geonode.ini --daemonize /var/log/uwsgi/app/geonode.log
+             ├─1261 /usr/bin/uwsgi --ini /usr/share/uwsgi/conf/default.ini --ini /etc/uwsgi/apps-enabled/geonode.ini --daemonize /var/log/uwsgi/app/geonode.log
+             ├─1262 /usr/bin/uwsgi --ini /usr/share/uwsgi/conf/default.ini --ini /etc/uwsgi/apps-enabled/geonode.ini --daemonize /var/log/uwsgi/app/geonode.log
+             ├─1263 /usr/bin/uwsgi --ini /usr/share/uwsgi/conf/default.ini --ini /etc/uwsgi/apps-enabled/geonode.ini --daemonize /var/log/uwsgi/app/geonode.log
+             ├─1264 /usr/bin/uwsgi --ini /usr/share/uwsgi/conf/default.ini --ini /etc/uwsgi/apps-enabled/geonode.ini --daemonize /var/log/uwsgi/app/geonode.log
+             ├─1266 /usr/bin/uwsgi --ini /usr/share/uwsgi/conf/default.ini --ini /etc/uwsgi/apps-enabled/geonode.ini --daemonize /var/log/uwsgi/app/geonode.log
+             ├─1270 /usr/bin/uwsgi --ini /usr/share/uwsgi/conf/default.ini --ini /etc/uwsgi/apps-enabled/geonode.ini --daemonize /var/log/uwsgi/app/geonode.log
+             └─1274 /usr/bin/uwsgi --ini /usr/share/uwsgi/conf/default.ini --ini /etc/uwsgi/apps-enabled/geonode.ini --daemonize /var/log/uwsgi/app/geonode.log
+
+Sep 07 15:49:51 geonodevm-3 systemd[1]: uwsgi.service: Failed with result 'exit-code'.
+Sep 07 15:49:51 geonodevm-3 systemd[1]: Failed to start LSB: Start/stop uWSGI server instance(s).
+Sep 07 15:50:21 geonodevm-3 uwsgi[1252]: DIGEST-MD5 common mech free
+Sep 07 15:50:30 geonodevm-3 uwsgi[1254]: DIGEST-MD5 common mech free
+Sep 07 15:50:31 geonodevm-3 uwsgi[1253]: DIGEST-MD5 common mech free
+Sep 07 15:50:32 geonodevm-3 uwsgi[1256]: DIGEST-MD5 common mech free
+Sep 07 15:50:33 geonodevm-3 uwsgi[1255]: DIGEST-MD5 common mech free
+Sep 07 15:50:33 geonodevm-3 uwsgi[1257]: DIGEST-MD5 common mech free
+Sep 07 15:50:33 geonodevm-3 uwsgi[1258]: DIGEST-MD5 common mech free
+Sep 07 15:50:34 geonodevm-3 uwsgi[1259]: DIGEST-MD5 common mech free
+
+sudo ps aux | grep uwsgi
+www-data     909  2.6  4.6 633312 185296 ?       S    15:49   0:12 /usr/bin/uwsgi --ini /usr/share/uwsgi/conf/default.ini --ini /etc/uwsgi/apps-enabled/geonode.ini --daemonize /var/log/uwsgi/app/geonode.log
+www-data    1260  0.0  3.2 636216 132544 ?       S    15:50   0:00 /usr/bin/uwsgi --ini /usr/share/uwsgi/conf/default.ini --ini /etc/uwsgi/apps-enabled/geonode.ini --daemonize /var/log/uwsgi/app/geonode.log
+www-data    1261  0.0  3.2 633956 129732 ?       S    15:50   0:00 /usr/bin/uwsgi --ini /usr/share/uwsgi/conf/default.ini --ini /etc/uwsgi/apps-enabled/geonode.ini --daemonize /var/log/uwsgi/app/geonode.log
+www-data    1262  0.0  3.3 636124 133028 ?       S    15:50   0:00 /usr/bin/uwsgi --ini /usr/share/uwsgi/conf/default.ini --ini /etc/uwsgi/apps-enabled/geonode.ini --daemonize /var/log/uwsgi/app/geonode.log
+www-data    1263  0.2  3.4 641636 139464 ?       S    15:50   0:01 /usr/bin/uwsgi --ini /usr/share/uwsgi/conf/default.ini --ini /etc/uwsgi/apps-enabled/geonode.ini --daemonize /var/log/uwsgi/app/geonode.log
+www-data    1264  0.1  3.4 639988 139432 ?       S    15:50   0:00 /usr/bin/uwsgi --ini /usr/share/uwsgi/conf/default.ini --ini /etc/uwsgi/apps-enabled/geonode.ini --daemonize /var/log/uwsgi/app/geonode.log
+www-data    1266  0.2  3.4 641840 138692 ?       S    15:50   0:00 /usr/bin/uwsgi --ini /usr/share/uwsgi/conf/default.ini --ini /etc/uwsgi/apps-enabled/geonode.ini --daemonize /var/log/uwsgi/app/geonode.log
+www-data    1270  0.2  3.4 642644 140540 ?       S    15:50   0:01 /usr/bin/uwsgi --ini /usr/share/uwsgi/conf/default.ini --ini /etc/uwsgi/apps-enabled/geonode.ini --daemonize /var/log/uwsgi/app/geonode.log
+www-data    1274  0.2  3.7 645728 150104 ?       S    15:50   0:01 /usr/bin/uwsgi --ini /usr/share/uwsgi/conf/default.ini --ini /etc/uwsgi/apps-enabled/geonode.ini --daemonize /var/log/uwsgi/app/geonode.log
+geonode+    4123  0.0  0.0  17544   724 pts/0    R+   15:57   0:00 grep --color=auto uwsgi
+
+sudo pkill -9 uwsgi
+
+sudo ps aux | grep uwsgi
+geonode+    4131  0.0  0.0  17544   660 pts/0    S+   15:57   0:00 grep --color=auto uwsgi
+```
+
+- Switch to `geonode` virtual env
+
+```shell
+workon geonode
+cd /opt/geonode
+```
+
+### Prepare the .env_dev Variables
+- Adjust the `.end_dev` file in order to match our current configuration, make sure `SITEURL`, DB connection settings and `GEOSERVER_*` URLs and connection params are correct
+
+```shell
+vim .env_dev
+```
+
+```ini
+...
+# #################
+# backend
+# #################
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+GEONODE_DATABASE=geonode
+GEONODE_DATABASE_PASSWORD=geonode
+GEONODE_GEODATABASE=geonode_data
+GEONODE_GEODATABASE_PASSWORD=geonode
+GEONODE_DATABASE_SCHEMA=public
+GEONODE_GEODATABASE_SCHEMA=public
+DATABASE_HOST=localhost
+DATABASE_PORT=5432
+DATABASE_URL=postgis://geonode:geonode@localhost:5432/geonode
+GEODATABASE_URL=postgis://geonode:geonode@localhost:5432/geonode_data
+GEONODE_DB_CONN_MAX_AGE=0
+GEONODE_DB_CONN_TOUT=5
+DEFAULT_BACKEND_DATASTORE=datastore
+...
+SITEURL=http://localhost:8000/
+...
+# #################
+# geoserver
+# #################
+GEOSERVER_WEB_UI_LOCATION=http://localhost:8080/geoserver/
+GEOSERVER_PUBLIC_LOCATION=http://localhost:8080/geoserver/
+GEOSERVER_LOCATION=http://localhost:8080/geoserver/
+GEOSERVER_ADMIN_USER=admin
+GEOSERVER_ADMIN_PASSWORD=geoserver
+```
+
+- Make sure the DB is aligned
+
+```shell
+./paver_dev.sh sync
+```
