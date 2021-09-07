@@ -129,8 +129,45 @@ GEOSERVER_ADMIN_USER=admin
 GEOSERVER_ADMIN_PASSWORD=geoserver
 ```
 
-- Make sure the DB is aligned
+### Make sure the DB and GeoNode are aligned
+
+- Align the migrations and static/media folders
 
 ```shell
 ./paver_dev.sh sync
 ```
+
+- Align the internal URLs and Metadata links
+
+```shell
+# The order is important! Those are regex expressions and will be executed one after the other...
+
+# Fix GeoServer URLs first
+./manage_dev.sh migrate_baseurl --source-address=http://localhost/geoserver --target-address=http://localhost:8080/geoserver
+
+# Fix GeoNode URLs
+./manage_dev.sh migrate_baseurl --source-address=http://localhost/ --target-address=http://localhost:8000/
+
+# Align the Metadata links
+./manage_dev.sh set_all_layers_metadata -d
+```
+
+### Make sure the GeoServer OAuth plugin is correctly configured
+- Adjust the GeoServer `PROXY_BASE_URL`
+  1. Login as `admin/geoserver` by using the `form login`
+  2. Update the `Global` settings of GeoServer
+
+
+![image](https://user-images.githubusercontent.com/1278021/132375154-5b5f9eae-d07b-4147-83e3-f74f1386a240.png)
+
+- Adjust the `REST Role Service`
+
+![image](https://user-images.githubusercontent.com/1278021/132375708-a5ecfedf-eca7-4cdc-934c-592e7726504c.png)
+
+- Adjust the `OAuth2 Security Filter`
+
+![image](https://user-images.githubusercontent.com/1278021/132375932-9ec8b03d-ef30-4613-89ee-d72f245d4c90.png)
+
+![image](https://user-images.githubusercontent.com/1278021/132376323-d9d63007-8775-4777-b04d-f0cba837c2b6.png)
+
+- Test the GeoServer `logout/login` with GeoNode
