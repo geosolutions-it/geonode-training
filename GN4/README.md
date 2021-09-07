@@ -3,7 +3,7 @@
 ## Table of Contents
 
  - [Preparation of the Dev Environment](DEV_ENV.md)
- - TODO
+ - [Programmatically Customize the Look-and-Feel](LANDF_SIMPLE.md)
 
 ## Prerequisites and GeoNode Training Virtual Machine
 
