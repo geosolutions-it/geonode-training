@@ -171,3 +171,58 @@ GEOSERVER_ADMIN_PASSWORD=geoserver
 ![image](https://user-images.githubusercontent.com/1278021/132376323-d9d63007-8775-4777-b04d-f0cba837c2b6.png)
 
 - Test the GeoServer `logout/login` with GeoNode
+
+### Let's Start GeoNode
+- Let's refresh the layers thumbnails and verify the settings are correct
+
+```shell
+./manage_dev.sh sync_geonode_layers --updatethumbnails
+
+Syncing layer 1/11: a__13tde815295_200803_0x6000m_cl
+Regenerating thumbnails...
+Syncing layer 2/11: Air_Runways
+Regenerating thumbnails...
+Syncing layer 3/11: BoulderCityLimits
+Regenerating thumbnails...
+Syncing layer 4/11: Buildings050714
+Regenerating thumbnails...
+Syncing layer 5/11: Mainrd
+Regenerating thumbnails...
+Syncing layer 6/11: Parcels
+Regenerating thumbnails...
+Syncing layer 7/11: pointlm
+Regenerating thumbnails...
+Syncing layer 8/11: srtm_boulder
+Regenerating thumbnails...
+Syncing layer 9/11: Streets
+Regenerating thumbnails...
+Syncing layer 10/11: Trails
+Regenerating thumbnails...
+Syncing layer 11/11: Wetlands_regulatory_area
+Regenerating thumbnails...
+There are 0 layers which could not be updated because of errors
+```
+
+- Start GeoNode in `development mode`
+
+```shell
+./paver_dev.sh start_django
+
+---> pavement.start_django
+ python -W ignore manage.py runserver 0.0.0.0:8000 &
+Performing system checks...
+
+System check identified some issues:
+
+WARNINGS:
+?: (urls.W005) URL namespace 'rest_framework' isn't unique. You may not be able to reverse all URLs in this namespace
+
+System check identified 1 issue (5 silenced).
+September 07, 2021 - 16:07:13
+Django version 2.2.20, using settings 'geonode.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+```
+
+- Connect to `http://localhost:8000` and verify GeoNode has started correctly
+
