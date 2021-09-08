@@ -2,6 +2,7 @@
 
 ## Table of Contents
 
+ - [Introduction to Django and Virtualenvs](DJANGO_INTRO.md)
  - [Preparation of the Dev Environment](DEV_ENV.md)
  - [Programmatically Customize the Look-and-Feel](LANDF_SIMPLE.md)
 
@@ -18,4 +19,4 @@
 
      **WARNING**: _In the next sections we might refer to some GeoNode users and datasets deployed and configured during the previous modules._
 
-#### [Next Section: Preparation of the Dev Environment](DEV_ENV.md)
+#### [Next Section: Introduction to Django and Virtualenvs](DJANGO_INTRO.md)
