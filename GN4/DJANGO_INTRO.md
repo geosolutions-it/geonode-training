@@ -1,4 +1,7 @@
 # Introduction to Django and Virtualenvs
+
+_This tutorial is referencing parts and wireframes by_ [A Complete Beginner's Guide to Django - Part 1](https://simpleisbetterthancomplex.com/series/2017/09/04/a-complete-beginners-guide-to-django-part-1.html)
+
 Django is a Web framework written in Python. A Web framework is a software that supports the development of dynamic Web sites, applications, and services. It provides a set of tools and functionalities that solves many common problems associated with Web development, such as security features, database access, sessions, template processing, URL routing, internationalization, localization, and much more.
 
 Using a Web framework, such as Django, enables us to develop secure and reliable Web applications very quickly in a standardized way, without having to reinvent the wheel.
@@ -122,5 +125,14 @@ Now open the following URL in a Web browser: `http://127.0.0.1:8000` and you sho
 ![image](https://user-images.githubusercontent.com/1278021/132476355-b57073a1-72fd-4ab5-b149-b3fb5241b087.png)
 
 Hit `CTRL + C` to stop the development server.
+
+## Django Apps
+In the Django philosophy we have two important concepts:
+
+* `app`: is a Web application that does something. An app usually is composed of a set of models (database tables), views, templates, tests.
+* `project`: is a collection of configurations and apps. One project can be composed of multiple apps, or a single app.
+
+It's important to note that you can't run a Django app without a project. Simple websites like a blog can be written entirely inside a single app, which could be named blog or weblog for example.
+
 
 #### [Next Section: Preparation of the Dev Environment](DEV_ENV.md)
