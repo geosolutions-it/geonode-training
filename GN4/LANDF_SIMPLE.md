@@ -50,6 +50,10 @@ Once we refresh the browser, we should see the change as follows
 
 ![image](https://user-images.githubusercontent.com/1278021/132380023-ae8a9a06-5e7f-47eb-85db-f1a61f9c0ab1.png)
 
+## Top Navbar MEnu
+Let's make some changes that will apply to the whole site. We will add a `Geocollections` entry in the `top menu bar`.
+
+Edit the `geonode_base.html` file in the templates folder and uncomment the list item adapting the text as well from:
 
 
 #### [Next Section: Programmatically Customize the Look-and-Feel](LANDF_SIMPLE.md)
