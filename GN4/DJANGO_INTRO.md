@@ -37,27 +37,27 @@ The GeoNode Virtual Environment must be created only the first time. You won’t
 ```shell
 which python3.8  # copy the path of python executable
 
-# Create the GeoNode Virtual Environment (first time only)
+# Create a test Virtual Environment (first time only)
 export WORKON_HOME=~/.virtualenvs
 source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
-mkvirtualenv --python=/usr/bin/python3.8 geonode  # Use the python path from above
+mkvirtualenv --python=/usr/bin/python3.8 boards  # Use the python path from above
 
 # Alterantively you can also create the virtual env like below
 mkdir -p ~/.virtualenvs
-python3.8 -m venv ~/.virtualenvs/geonode
-source ~/.virtualenvs/geonode/bin/activate
+python3.8 -m venv ~/.virtualenvs/boards
+source ~/.virtualenvs/boards/bin/activate
 ```
 
-- At this point your command prompt shows a `(geonode)` prefix, this indicates that your virtualenv is active.
+- At this point your command prompt shows a `(boards)` prefix, this indicates that your virtualenv is active.
 
 - The next time you need to access the Virtual Environment just run
 
 ```shell
 source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
-workon geonode
+workon boards
 
 # Alterantively you can also create the virtual env like below
-source ~/.virtualenvs/geonode/bin/activate
+source ~/.virtualenvs/boards/bin/activate
 ```
 
 - In order to save permanently the virtualenvwrapper environment
@@ -132,7 +132,138 @@ In the Django philosophy we have two important concepts:
 * `app`: is a Web application that does something. An app usually is composed of a set of models (database tables), views, templates, tests.
 * `project`: is a collection of configurations and apps. One project can be composed of multiple apps, or a single app.
 
-It's important to note that you can't run a Django app without a project. Simple websites like a blog can be written entirely inside a single app, which could be named blog or weblog for example.
+It's important to note that you can't run a Django **app** without a **project**. Simple websites like a blog can be written entirely inside a single app, which could be named **blog** or **weblog** for example.
 
+![image](https://user-images.githubusercontent.com/1278021/132478639-3c53c2c3-b8e7-499f-a2d4-18c850884dcc.png)
+
+It’s a way to organize the source code. In the beginning, it’s not very trivial to determine what is an app or what is not. How to organize the code and so on. But don’t worry much about that right now! Let’s first get comfortable with Django’s API and the fundamentals.
+
+Alright! So, to illustrate let’s create a simple Web Forum or Discussion Board. To create our first app, go to the directory where the `manage.py` file is and executes the following command:
+
+```shell
+django-admin startapp boards
+```
+
+Notice that we used the command `startapp` this time.
+
+This will give us the following directory structure:
+
+```shell
+myproject/
+ |-- myproject/
+ |    |-- boards/                <-- our new django app!
+ |    |    |-- migrations/
+ |    |    |    +-- __init__.py
+ |    |    |-- __init__.py
+ |    |    |-- admin.py
+ |    |    |-- apps.py
+ |    |    |-- models.py
+ |    |    |-- tests.py
+ |    |    +-- views.py
+ |    |-- myproject/
+ |    |    |-- __init__.py
+ |    |    |-- settings.py
+ |    |    |-- urls.py
+ |    |    |-- wsgi.py
+ |    +-- manage.py
+ +-- venv/
+```
+
+So, let’s first explore what each file does:
+
+* `migrations/`: here Django store some files to keep track of the changes you create in the `models.py` file, so to keep the database and the `models.py` synchronized.
+* `admin.py`: this is a configuration file for a built-in Django app called `Django Admin`.
+* `apps.py`: this is a configuration file of the app itself.
+* `models.py`: here is where we define the entities of our Web application. The models are translated automatically by Django into database tables.
+* `tests.py`: this file is used to write unit tests for the app.
+* `views.py`: this is the file where we handle the request/response cycle of our Web application.
+
+Now that we created our first app, let’s configure our project to _use_ it.
+
+`settings.py`
+
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+```
+
+As you can see, Django already come with 6 built-in apps installed. They offer common functionalities that most Web applications need, like authentication, sessions, static files management (images, javascripts, css, etc.) and so on.
+
+We will explore those apps as we progress in this tutorial series. But for now, let them be and just add our **boards** app to the list of `INSTALLED_APPS`:
+
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    'boards',
+]
+```
+
+Using the analogy of the square and circles from the previous comic, the yellow circle would be our `boards` app, and the `django.contrib.admin`, `django.contrib.auth`, etc, would be the red circles.
+
+## Hello, World!
+Let’s write our first **view**. We will explore it in great detail in the next tutorial. But for now, let’s just experiment how it looks like to create a new page with Django.
+
+Open the `views.py` file inside the **boards** app, and add the following code:
+
+`views.py`
+
+```python
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse('Hello, World!')
+```
+
+Views are Python functions that receive an `HttpRequest` object and returns an `HttpResponse` object. Receive a `request` as a parameter and returns a `response` as a result. That’s the flow you have to keep in mind!
+
+So, here we defined a simple **view** called `home` which simply returns a message saying `Hello, World!`.
+
+Now we have to tell Django _when to serve this view_. It’s done inside the `urls.py` file:
+
+`urls.py`
+
+```python
+from django.conf.urls import url
+from django.contrib import admin
+
+from boards import views
+
+urlpatterns = [
+    url(r'^$', views.home, name='home'),
+    url(r'^admin/', admin.site.urls),
+]
+```
+
+If you compare the snippet above with your `urls.py` file, you will notice we added the following new line: `url(r'^$', views.home, name='home')` and imported the views module from our app boards using `from boards import views`.
+
+Django works with `regex` to match the requested `URL`. For our home view, we are using the `^$` regex, which will match an `empty path`, which is the **homepage** (this url: `http://127.0.0.1:8000`). 
+
+If we wanted to match the URL `http://127.0.0.1:8000/homepage/`, our url would be: `url(r'^homepage/$', views.home, name='home')`.
+
+Let’s see what happen:
+
+```shell
+python manage.py runserver
+```
+
+In a Web browser, open the `http://127.0.0.1:8000` URL:
+
+![image](https://user-images.githubusercontent.com/1278021/132479724-88d99477-5d4f-414a-ad5f-bffce476e562.png)
+
+That’s it! You just created your very first view.
+
+_Further reading:_ [A Complete Beginner's Guide to Django - Part 2](https://simpleisbetterthancomplex.com/series/2017/09/11/a-complete-beginners-guide-to-django-part-2.html)
 
 #### [Next Section: Preparation of the Dev Environment](DEV_ENV.md)
