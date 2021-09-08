@@ -50,10 +50,36 @@ Once we refresh the browser, we should see the change as follows
 
 ![image](https://user-images.githubusercontent.com/1278021/132380023-ae8a9a06-5e7f-47eb-85db-f1a61f9c0ab1.png)
 
-## Top Navbar MEnu
+## Top Navbar Menu
 Let's make some changes that will apply to the whole site. We will add a `Geocollections` entry in the `top menu bar`.
 
-Edit the `geonode_base.html` file in the templates folder and uncomment the list item adapting the text as well from:
+Edit the `geonode_base.html` file in the `/opt/geonode/geonode/base/templates/` folder and add the following lines:
 
+```django
+{% extends "base.html" %}
+
+{% block tabs %}
+{{ block.super }}
+<li>
+ <a href="{{ PROJECT_ROOT }}/geocollections">Geocollections</a>
+</li>
+{% endblock tabs %}
+```
+
+Refresh the page and check the outcomes
+
+![image](https://user-images.githubusercontent.com/1278021/132534629-5bc74671-6bd0-47b2-823b-0847363dabc0.png)
+
+In order to practice a bit more with the templates inheritance of Django, try to check what happens if you move the statement `{{ block.super }}` after the list element:
+
+![image](https://user-images.githubusercontent.com/1278021/132535278-22f7bdc4-e8a1-4d9e-83f1-4a938cf01503.png)
+
+and also check what happens if you remove it completely:
+
+![image](https://user-images.githubusercontent.com/1278021/132535379-34222717-ee2c-493e-9462-fe4358a44aa6.png)
+
+This property of Django allows us to completely override the bahavior of parts of the templates accordingly to our needs.
+
+Currently by clicking over the menu we just created throws an error. This is because the related **view** and **url pattern** do not exist yet. We will create them in the next sections.
 
 #### [Next Section: Programmatically Customize the Look-and-Feel](LANDF_SIMPLE.md)
