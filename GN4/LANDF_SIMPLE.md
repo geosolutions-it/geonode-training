@@ -82,4 +82,4 @@ This property of Django allows us to completely override the bahavior of parts o
 
 Currently by clicking over the menu we just created throws an error. This is because the related **view** and **url pattern** do not exist yet. We will create them in the next sections.
 
-#### [Next Section: Programmatically Customize the Look-and-Feel](LANDF_SIMPLE.md)
+#### [Next Section: Link GeoNode to a geonode-project instance](GEONODE_PROJ_DEV.md)
