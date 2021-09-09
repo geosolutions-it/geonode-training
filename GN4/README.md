@@ -5,6 +5,7 @@
  - [Introduction to Django and Virtualenvs](DJANGO_INTRO.md)
  - [Preparation of the Dev Environment](DEV_ENV.md)
  - [Programmatically Customize the Look-and-Feel](LANDF_SIMPLE.md)
+ - [Link GeoNode to a geonode-project instance](GEONODE_PROJ_DEV.md)
 
 ## Prerequisites and GeoNode Training Virtual Machine
 
