@@ -50,5 +50,31 @@ Successfully installed Django-2.2.20 pytz-2021.1 sqlparse-0.4.1
 ```
 
 - The new VirtialEnv called `my_geonode` is now ready to be used.
+- Let's create the `my_django` project by using the `geonode-project` as a template
+
+```shell
+# Let's create the target folder first, with the right permissions
+cd /opt
+sudo mkdir geonode-project
+sudo chown -Rf geonode-vm-321: geonode-project/
+cd geonode-project/
+```
+- Let's create the instance by cloning the geonode-project template
+- First of all we need to get the correct link to the `geonode-project` template
+- Go to `https://github.com/GeoNode/geonode-project` and switch to the `3.2.x` branch
+
+![image](https://user-images.githubusercontent.com/1278021/132707758-69073cd2-cadc-49e9-934e-407166d46f56.png)
+
+- Copy the `zip file` link address
+
+![image](https://user-images.githubusercontent.com/1278021/132708095-6fc12adc-f2c7-4697-b30c-9a2107f1dd60.png)
+
+- Let's finally create the project
+
+
+```shell
+# Let's create the instance by cloning the geonode-project template
+django-admin startproject --template=https://github.com/GeoNode/geonode-project/archive/refs/heads/3.2.x.zip -e py,sh,md,rst,json,yml,ini,env,sample,properties -n monitoring-cron -n Dockerfile my_geonode
+```
 
 #### [Next Section: Link GeoNode to a geonode-project instance](GEONODE_PROJ_DEV.md)
