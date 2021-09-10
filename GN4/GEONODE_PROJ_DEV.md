@@ -176,7 +176,7 @@ cd /opt/geonode-project/my_geonode/
 
 - Let's edit the project `.env` in order to match the dev environment
 
-##### .env
+### .env
 ```shell
 cp /opt/geonode/.env_dev .
 cp /opt/geonode/manage_dev.sh .
@@ -391,5 +391,83 @@ diff -ruN .env .env_dev
 -# PostgreSQL
 -POSTGRESQL_MAX_CONNECTIONS=200
 ```
+
+**IMPORTANT**: _Make sure you are using the correct_ `settings` _file_
+
+```shell
+vim .env_dev
+```
+
+```ini
+DJANGO_SETTINGS_MODULE=my_geonode.settings
+GEONODE_INSTANCE_NAME=my_geonode
+```
+
+### Make sure the DB and GeoNode are aligned
+
+- Align the internal URLs and Metadata links
+
+```shell
+# The order is important! Those are regex expressions and will be executed one after the other...
+
+# Fix GeoServer URLs first
+./manage_dev.sh migrate_baseurl --source-address=http://localhost/geoserver --target-address=http://localhost:8080/geoserver
+
+# Fix GeoNode URLs
+./manage_dev.sh migrate_baseurl --source-address=http://localhost/ --target-address=http://localhost:8000/
+
+# Align the Metadata links
+./manage_dev.sh set_all_layers_metadata -d
+```
+### Start `my_geonode` in DEV Mode
+```shell
+./paver_dev.sh stary_django
+```
+
+- **Notice** that we don't need to fix GeoServer `OAuth2` endpoints since we did already on the previous section
+- Open the browser and go to the location `http://localhost:8000`
+- The main page and theme have been changed again
+
+![image](https://user-images.githubusercontent.com/1278021/132838719-068a6cd4-65df-43b7-81b0-853293b628b3.png)
+
+
+## Modify the Look-and-Feel Through the `geonode-project` Instance
+
+### Homepage
+- Modify some text from the `site_index.html` template
+
+
+```shell
+vim my_geonode/templates/site_index.html
+```
+
+```diff
+--- my_geonode/templates/site_index.html.org	2021-09-10 11:25:45.185777196 +0100
++++ my_geonode/templates/site_index.html	2021-09-10 11:28:09.255720387 +0100
+@@ -9,11 +9,11 @@
+ {% if custom_theme.welcome_theme == 'JUMBOTRON_BG' or not slides %}
+ <div class="jumbotron">
+   <div class="container">
+-    {% with jumbotron_welcome_title=custom_theme.jumbotron_welcome_title|default:"Welcome"|template_trans %}
++    {% with jumbotron_welcome_title=custom_theme.jumbotron_welcome_title|default:"My GeoNode is Awesome!!"|template_trans %}
+     <h1>{% trans jumbotron_welcome_title %}</h1>
+     {% endwith %}
+     <p></p>
+-    {% with jumbotron_welcome_content=custom_theme.jumbotron_welcome_content|default:"GeoNode is an open source platform for sharing geospatial data and maps."|template_trans %}
++    {% with jumbotron_welcome_content=custom_theme.jumbotron_welcome_content|default:"My GeoNode is an open source platform for sharing geospatial data and maps."|template_trans %}
+     <p>{% trans jumbotron_welcome_content %}</p>
+     {% endwith %}
+     {% if not custom_theme.jumbotron_cta_hide %}
+@@ -73,4 +73,4 @@
+   </div>
+ </div>
+ {% endif %}
+-{% endblock hero %}
+\ No newline at end of file
++{% endblock hero %}
+```
+
+![image](https://user-images.githubusercontent.com/1278021/132840646-15e34fda-deef-4112-832b-8ef1b6775db7.png)
+
 
 #### [Next Section: Link GeoNode to a geonode-project instance](GEONODE_PROJ_DEV.md)
