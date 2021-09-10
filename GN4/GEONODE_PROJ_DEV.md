@@ -163,7 +163,89 @@ pip install -e /opt/geonode
 We are good to go; the dependencies should be updated also. Let's prepare and start the `my_geonode` project.
 
 ```shell
+# Ensure the NGINX and UWSGI services have been stopped
+sudo systemctl stop nginx
+sudo pkill -9 uwsgi
+sudo pas aux | grep uwsgi
 
+# Ensure we are in the correct virtualenv and folder
+workon my_geonode
+cd /opt/geonode-project/my_geonode/
+```
+
+- Let's edit the project `.env` in order to match the dev environment
+
+##### .env
+```shell
+cp .env .env.org
+vim .env
+```
+
+```shell
+diff -ruN .env.org .env
+```
+
+```diff
+--- .env.org	2021-09-10 10:36:06.265060889 +0100
++++ .env	2021-09-10 10:38:46.721248912 +0100
+@@ -10,8 +10,8 @@
+ IS_CELERY=false
+ FORCE_REINIT=false
+ 
+-SITEURL=http://localhost/
+-ALLOWED_HOSTS=['django',]
++SITEURL=http://localhost:8000/
++ALLOWED_HOSTS=['django', '*']
+ 
+ # LANGUAGE_CODE=pt
+ # LANGUAGES=(('en','English'),('pt','Portuguese'))
+@@ -25,28 +25,28 @@
+ # #################
+ POSTGRES_USER=postgres
+ POSTGRES_PASSWORD=postgres
+-GEONODE_DATABASE=my_geonode
++GEONODE_DATABASE=geonode
+ GEONODE_DATABASE_PASSWORD=geonode
+-GEONODE_GEODATABASE=my_geonode_data
++GEONODE_GEODATABASE=geonode_data
+ GEONODE_GEODATABASE_PASSWORD=geonode
+ GEONODE_DATABASE_SCHEMA=public
+ GEONODE_GEODATABASE_SCHEMA=public
+-DATABASE_HOST=db
++DATABASE_HOST=localhost
+ DATABASE_PORT=5432
+-DATABASE_URL=postgis://my_geonode:geonode@db:5432/my_geonode
+-GEODATABASE_URL=postgis://my_geonode_data:geonode@db:5432/my_geonode_data
++DATABASE_URL=postgis://geonode:geonode@localhost:5432/geonode
++GEODATABASE_URL=postgis://geonode:geonode@localhost:5432/geonode_data
+ GEONODE_DB_CONN_MAX_AGE=0
+ GEONODE_DB_CONN_TOUT=5
+ DEFAULT_BACKEND_DATASTORE=datastore
+ BROKER_URL=amqp://guest:guest@rabbitmq:5672/
+-ASYNC_SIGNALS=True
++ASYNC_SIGNALS=False
+ 
+ # #################
+ # geoserver
+ # #################
+-GEOSERVER_WEB_UI_LOCATION=http://localhost/geoserver/
+-GEOSERVER_PUBLIC_LOCATION=http://localhost/geoserver/
+-GEOSERVER_LOCATION=http://geoserver:8080/geoserver/
++GEOSERVER_WEB_UI_LOCATION=http://localhost:8080/geoserver/
++GEOSERVER_PUBLIC_LOCATION=http://localhost:8080/geoserver/
++GEOSERVER_LOCATION=http://localhost:8080/geoserver/
+ GEOSERVER_ADMIN_USER=admin
+ GEOSERVER_ADMIN_PASSWORD=geoserver
+ 
+@@ -59,7 +59,7 @@
+ # Java Options & Memory
+ ENABLE_JSONP=true
+ outFormat=text/javascript
+-GEOSERVER_JAVA_OPTS=-Djava.awt.headless=true -Xms2G -Xmx4G -XX:+UnlockDiagnosticVMOptions -XX:+LogVMOutput -XX:LogFile=/var/log/jvm.log -XX:PerfDataSamplingInterval=500 -XX:SoftRefLRUPolicyMSPerMB=36000 -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:ParallelGCThreads=4 -Dfile.encoding=UTF8 -Djavax.servlet.request.encoding=UTF-8 -Djavax.servlet.response.encoding=UTF-8 -Duser.timezone=GMT -Dorg.geotools.shapefile.datetime=false -DGEOSERVER_CSRF_DISABLED=true -DPRINT_BASE_URL=http://geoserver:8080/geoserver/pdf -DALLOW_ENV_PARAMETRIZATION=true -Xbootclasspath/a:/usr/local/tomcat/webapps/geoserver/WEB-INF/lib/marlin-0.9.3-Unsafe.jar -Dsun.java2d.renderer=org.marlin.pisces.MarlinRenderingEngine
++GEOSERVER_JAVA_OPTS=-Djava.awt.headless=true -Xms2G -Xmx4G -XX:+UnlockDiagnosticVMOptions -XX:+LogVMOutput -XX:LogFile=/var/log/jvm.log -XX:PerfDataSamplingInterval=500 -XX:SoftRefLRUPolicyMSPerMB=36000 -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:ParallelGCThreads=4 -Dfile.encoding=UTF8 -Djavax.servlet.request.encoding=UTF-8 -Djavax.servlet.response.encoding=UTF-8 -Duser.timezone=GMT -Dorg.geotools.shapefile.datetime=false -DGEOSERVER_CSRF_DISABLED=true -DPRINT_BASE_URL=http://localhost:8080/geoserver/pdf -DALLOW_ENV_PARAMETRIZATION=true -Xbootclasspath/a:/usr/local/tomcat/webapps/geoserver/WEB-INF/lib/marlin-0.9.3-Unsafe.jar -Dsun.java2d.renderer=org.marlin.pisces.MarlinRenderingEngine
+ 
+ # Data Uploader
+ DEFAULT_BACKEND_UPLOADER=geonode.importer
 ```
 
 #### [Next Section: Link GeoNode to a geonode-project instance](GEONODE_PROJ_DEV.md)
