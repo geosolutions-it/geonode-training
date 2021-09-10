@@ -469,5 +469,61 @@ vim my_geonode/templates/site_index.html
 
 ![image](https://user-images.githubusercontent.com/1278021/132840646-15e34fda-deef-4112-832b-8ef1b6775db7.png)
 
+### The Theme
+
+To change the theme of our `geonode-project` we can act on the `site_base.css` file available in the `my_geonode/my_geonode/static/css` folder.
+
+The file is empty so we can inspect elements of the home page with the browser's developer tools and define `CSS` rules in there.
+
+For example, if we want to change the `background` of the `jumbotron`, in this file we can add
+
+```css
+.home .jumbotron { background: red }
+```
+
+Run the `collectstatic` management command in order to allow Django placing the static files on the correct folders.
+
+```shell
+./manage_dev.sh collectstatic
+```
+
+Then once we refresh the browser, we should see the change as follows:
+
+![image](https://user-images.githubusercontent.com/1278021/132841487-3a42c1f9-9301-4af7-9e3a-c681d25c1e91.png)
+
+Adding the `.home` _CSS class_ is necessary in order to let the rule get precedence over the GeoNode’s ones. 
+
+We can check the rules by inspecting the element in the developer console.
+
+![image](https://user-images.githubusercontent.com/1278021/132841918-184753bb-475e-48fa-b3e2-f59effb543fa.png)
+
+![image](https://user-images.githubusercontent.com/1278021/132842016-d004d93b-a5f0-4fa3-a664-cc24e64edc59.png)
+
+
+### The Top Menu
+
+Let's make some changes that will apply to the whole site. We can add a `Geocollections` entry in the **top menu bar**.
+
+Edit the `site_base.html` file in the templates folder and **uncomment** the list item adapting the text as well from:
+
+```diff
+--- my_geonode/templates/site_base.html.org	2021-09-10 11:46:44.763720387 +0100
++++ my_geonode/templates/site_base.html	2021-09-10 11:47:12.495720387 +0100
+@@ -3,10 +3,7 @@
+       <link href="{{ STATIC_URL }}css/site_base.css" rel="stylesheet"/>
+ {% endblock %}
+ {% block extra_tab %}
+-{% comment %}
+-Add Tab for Third Party Apps
+ <li>
+- <a href="{{ PROJECT_ROOT }}app">App</a>
++ <a href="{{ PROJECT_ROOT }}Geocollections">Geocollections</a>
+ </li>
+-{% endcomment %}
+ {% endblock %}
+```
+
+![image](https://user-images.githubusercontent.com/1278021/132842423-465d8e19-69d6-4ab4-9bb5-b0d69f946cdd.png)
+
 
 #### [Next Section: Link GeoNode to a geonode-project instance](GEONODE_PROJ_DEV.md)
