@@ -158,6 +158,7 @@ pip uninstall GeoNode
 
 # Let's install the local GeoNode in development mode
 pip install -e /opt/geonode
+pip install pygdal=="`gdal-config --version`.*"
 ```
 
 We are good to go; the dependencies should be updated also. Let's prepare and start the `my_geonode` project.
@@ -177,29 +178,47 @@ cd /opt/geonode-project/my_geonode/
 
 ##### .env
 ```shell
-cp .env .env.org
-vim .env
+cp /opt/geonode/.env_dev .
+cp /opt/geonode/manage_dev.sh .
+cp /opt/geonode/paver_dev.sh .
 ```
 
 ```shell
-diff -ruN .env.org .env
+diff -ruN .env .env_dev
 ```
 
 ```diff
---- .env.org	2021-09-10 10:36:06.265060889 +0100
-+++ .env	2021-09-10 10:38:46.721248912 +0100
-@@ -10,8 +10,8 @@
- IS_CELERY=false
- FORCE_REINIT=false
+--- .env	2021-09-10 10:36:06.265060889 +0100
++++ .env_dev	2021-09-10 11:02:40.453757048 +0100
+@@ -1,4 +1,4 @@
+-COMPOSE_PROJECT_NAME=my_geonode
++COMPOSE_PROJECT_NAME=geonode
+ DOCKER_HOST_IP=
+ DOCKER_ENV=production
+ # See https://github.com/geosolutions-it/geonode-generic/issues/28
+@@ -7,71 +7,50 @@
+ BACKUPS_VOLUME_DRIVER=local
  
+ C_FORCE_ROOT=1
+-IS_CELERY=false
+ FORCE_REINIT=false
+-
 -SITEURL=http://localhost/
 -ALLOWED_HOSTS=['django',]
-+SITEURL=http://localhost:8000/
-+ALLOWED_HOSTS=['django', '*']
++INVOKE_LOG_STDOUT=true
  
  # LANGUAGE_CODE=pt
  # LANGUAGES=(('en','English'),('pt','Portuguese'))
-@@ -25,28 +25,28 @@
+ 
++DJANGO_SETTINGS_MODULE=geonode.settings
+ GEONODE_INSTANCE_NAME=geonode
+-DJANGO_SETTINGS_MODULE=my_geonode.settings
+-UWSGI_CMD=uwsgi --ini /usr/src/my_geonode/uwsgi.ini
++GEONODE_LB_HOST_IP=
++GEONODE_LB_PORT=
+ 
+ # #################
+ # backend
  # #################
  POSTGRES_USER=postgres
  POSTGRES_PASSWORD=postgres
@@ -221,31 +240,156 @@ diff -ruN .env.org .env
  GEONODE_DB_CONN_MAX_AGE=0
  GEONODE_DB_CONN_TOUT=5
  DEFAULT_BACKEND_DATASTORE=datastore
- BROKER_URL=amqp://guest:guest@rabbitmq:5672/
+-BROKER_URL=amqp://guest:guest@rabbitmq:5672/
 -ASYNC_SIGNALS=True
++BROKER_URL=amqp://admin:admin@localhost:5672//
 +ASYNC_SIGNALS=False
  
- # #################
- # geoserver
- # #################
+-# #################
+-# geoserver
+-# #################
 -GEOSERVER_WEB_UI_LOCATION=http://localhost/geoserver/
 -GEOSERVER_PUBLIC_LOCATION=http://localhost/geoserver/
 -GEOSERVER_LOCATION=http://geoserver:8080/geoserver/
-+GEOSERVER_WEB_UI_LOCATION=http://localhost:8080/geoserver/
-+GEOSERVER_PUBLIC_LOCATION=http://localhost:8080/geoserver/
-+GEOSERVER_LOCATION=http://localhost:8080/geoserver/
- GEOSERVER_ADMIN_USER=admin
- GEOSERVER_ADMIN_PASSWORD=geoserver
+-GEOSERVER_ADMIN_USER=admin
+-GEOSERVER_ADMIN_PASSWORD=geoserver
+-
+-OGC_REQUEST_TIMEOUT=30
+-OGC_REQUEST_MAX_RETRIES=1
+-OGC_REQUEST_BACKOFF_FACTOR=0.3
+-OGC_REQUEST_POOL_MAXSIZE=10
+-OGC_REQUEST_POOL_CONNECTIONS=10
++SITEURL=http://localhost:8000/
  
-@@ -59,7 +59,7 @@
- # Java Options & Memory
- ENABLE_JSONP=true
- outFormat=text/javascript
+-# Java Options & Memory
+-ENABLE_JSONP=true
+-outFormat=text/javascript
 -GEOSERVER_JAVA_OPTS=-Djava.awt.headless=true -Xms2G -Xmx4G -XX:+UnlockDiagnosticVMOptions -XX:+LogVMOutput -XX:LogFile=/var/log/jvm.log -XX:PerfDataSamplingInterval=500 -XX:SoftRefLRUPolicyMSPerMB=36000 -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:ParallelGCThreads=4 -Dfile.encoding=UTF8 -Djavax.servlet.request.encoding=UTF-8 -Djavax.servlet.response.encoding=UTF-8 -Duser.timezone=GMT -Dorg.geotools.shapefile.datetime=false -DGEOSERVER_CSRF_DISABLED=true -DPRINT_BASE_URL=http://geoserver:8080/geoserver/pdf -DALLOW_ENV_PARAMETRIZATION=true -Xbootclasspath/a:/usr/local/tomcat/webapps/geoserver/WEB-INF/lib/marlin-0.9.3-Unsafe.jar -Dsun.java2d.renderer=org.marlin.pisces.MarlinRenderingEngine
-+GEOSERVER_JAVA_OPTS=-Djava.awt.headless=true -Xms2G -Xmx4G -XX:+UnlockDiagnosticVMOptions -XX:+LogVMOutput -XX:LogFile=/var/log/jvm.log -XX:PerfDataSamplingInterval=500 -XX:SoftRefLRUPolicyMSPerMB=36000 -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:ParallelGCThreads=4 -Dfile.encoding=UTF8 -Djavax.servlet.request.encoding=UTF-8 -Djavax.servlet.response.encoding=UTF-8 -Duser.timezone=GMT -Dorg.geotools.shapefile.datetime=false -DGEOSERVER_CSRF_DISABLED=true -DPRINT_BASE_URL=http://localhost:8080/geoserver/pdf -DALLOW_ENV_PARAMETRIZATION=true -Xbootclasspath/a:/usr/local/tomcat/webapps/geoserver/WEB-INF/lib/marlin-0.9.3-Unsafe.jar -Dsun.java2d.renderer=org.marlin.pisces.MarlinRenderingEngine
++ALLOWED_HOSTS="['django', '*']"
  
  # Data Uploader
  DEFAULT_BACKEND_UPLOADER=geonode.importer
+ TIME_ENABLED=True
+ MOSAIC_ENABLED=False
+-
+-# #################
+-# Jenkins
+-# CI/CD Server
+-# #################
+-JENKINS_HTTP_PORT=9080
+-JENKINS_HTTPS_PORT=9443
++HAYSTACK_SEARCH=False
++HAYSTACK_ENGINE_URL=http://elasticsearch:9200/
++HAYSTACK_ENGINE_INDEX_NAME=haystack
++HAYSTACK_SEARCH_RESULTS_PER_PAGE=200
+ 
+ # #################
+ # nginx
+@@ -85,7 +64,7 @@
+ HTTP_HOST=localhost
+ HTTPS_HOST=
+ 
+-HTTP_PORT=80
++HTTP_PORT=8000
+ HTTPS_PORT=443
+ 
+ # Let's Encrypt certificates for https encryption. You must have a domain name as HTTPS_HOST (doesn't work
+@@ -100,15 +79,29 @@
+ RESOLVER=127.0.0.11
+ 
+ # #################
++# geoserver
++# #################
++GEOSERVER_WEB_UI_LOCATION=http://localhost:8080/geoserver/
++GEOSERVER_PUBLIC_LOCATION=http://localhost:8080/geoserver/
++GEOSERVER_LOCATION=http://localhost:8080/geoserver/
++GEOSERVER_ADMIN_USER=admin
++GEOSERVER_ADMIN_PASSWORD=geoserver
++
++OGC_REQUEST_TIMEOUT=5
++OGC_REQUEST_MAX_RETRIES=1
++OGC_REQUEST_BACKOFF_FACTOR=0.3
++OGC_REQUEST_POOL_MAXSIZE=10
++OGC_REQUEST_POOL_CONNECTIONS=10
++
++# Java Options & Memory
++ENABLE_JSONP=true
++outFormat=text/javascript
++GEOSERVER_JAVA_OPTS="-Djava.awt.headless=true -Xms2G -Xmx4G -XX:+UnlockDiagnosticVMOptions -XX:+LogVMOutput -XX:LogFile=/var/log/jvm.log -XX:PerfDataSamplingInterval=500 -XX:SoftRefLRUPolicyMSPerMB=36000 -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:ParallelGCThreads=4 -Dfile.encoding=UTF8 -Djavax.servlet.request.encoding=UTF-8 -Djavax.servlet.response.encoding=UTF-8 -Duser.timezone=GMT -Dorg.geotools.shapefile.datetime=false -DGEOSERVER_CSRF_DISABLED=true -DPRINT_BASE_URL=http://geoserver:8080/geoserver/pdf -DALLOW_ENV_PARAMETRIZATION=true -Xbootclasspath/a:/usr/local/tomcat/webapps/geoserver/WEB-INF/lib/marlin-0.9.3-Unsafe.jar -Dsun.java2d.renderer=org.marlin.pisces.MarlinRenderingEngine"
++
++# #################
+ # Security
+ # #################
+ # Admin Settings
+-#
+-# ADMIN_PASSWORD is used to overwrite the GeoNode admin password **ONLY** the first time
+-# GeoNode is run. If you need to overwrite it again, you need to set the env var FORCE_REINIT,
+-# otherwise the invoke updateadmin task will be skipped and the current password already stored
+-# in DB will honored.
+-
+ ADMIN_USERNAME=admin
+ ADMIN_PASSWORD=admin
+ ADMIN_EMAIL=admin@localhost
+@@ -127,7 +120,7 @@
+ # Session/Access Control
+ LOCKDOWN_GEONODE=False
+ CORS_ORIGIN_ALLOW_ALL=True
+-X_FRAME_OPTIONS=SAMEORIGIN
++X_FRAME_OPTIONS="SAMEORIGIN"
+ SESSION_EXPIRED_CONTROL_ENABLED=True
+ DEFAULT_ANONYMOUS_VIEW_PERMISSION=True
+ DEFAULT_ANONYMOUS_DOWNLOAD_PERMISSION=True
+@@ -156,13 +149,13 @@
+ # Production and
+ # Monitoring
+ # #################
+-DEBUG=False
++DEBUG=True
+ 
+ SECRET_KEY='myv-y4#7j-d*p-__@j#*3z@!y24fz8%^z2v6atuy4bo9vqr1_a'
+ 
+-STATIC_ROOT=/mnt/volumes/statics/static/
+-MEDIA_ROOT=/mnt/volumes/statics/uploaded/
+-GEOIP_PATH=/mnt/volumes/statics/geoip.db
++# STATIC_ROOT=/mnt/volumes/statics/static/
++# MEDIA_ROOT=/mnt/volumes/statics/uploaded/
++# GEOIP_PATH=/mnt/volumes/statics/geoip.db
+ 
+ CACHE_BUSTING_STATIC_ENABLED=False
+ CACHE_BUSTING_MEDIA_ENABLED=False
+@@ -198,32 +191,3 @@
+ EXIF_ENABLED=True
+ CREATE_LAYER=True
+ FAVORITE_ENABLED=True
+-
+-# LDAP
+-LDAP_ENABLED=False
+-LDAP_SERVER_URL=ldap://<the_ldap_server>
+-LDAP_BIND_DN=uid=ldapinfo,cn=users,dc=ad,dc=example,dc=org
+-LDAP_BIND_PASSWORD=<something_secret>
+-LDAP_USER_SEARCH_DN=dc=ad,dc=example,dc=org
+-LDAP_USER_SEARCH_FILTERSTR=(&(uid=%(user)s)(objectClass=person))
+-LDAP_GROUP_SEARCH_DN=cn=groups,dc=ad,dc=example,dc=org
+-LDAP_GROUP_SEARCH_FILTERSTR=(|(cn=abt1)(cn=abt2)(cn=abt3)(cn=abt4)(cn=abt5)(cn=abt6))
+-LDAP_GROUP_PROFILE_MEMBER_ATTR=uniqueMember
+-
+-# CELERY
+-
+-# expressed in KB
+-# CELERY__MAX_MEMORY_PER_CHILD="200000"
+-# ## 
+-# Note right autoscale value must coincide with worker concurrency value
+-# CELERY__AUTOSCALE_VALUES="1,4" 
+-# CELERY__WORKER_CONCURRENCY="4"
+-# ##
+-# CELERY__OPTS="--without-gossip --without-mingle -Ofair -B -E"
+-# CELERY__BEAT_SCHEDULE="/mnt/volumes/statics/celerybeat-schedule"
+-# CELERY__LOG_LEVEL="INFO"
+-# CELERY__LOG_FILE="/var/log/celery.log"
+-# CELERY__WORKER_NAME="worker1@%h"
+-
+-# PostgreSQL
+-POSTGRESQL_MAX_CONNECTIONS=200
 ```
 
 #### [Next Section: Link GeoNode to a geonode-project instance](GEONODE_PROJ_DEV.md)
