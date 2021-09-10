@@ -517,13 +517,54 @@ Edit the `site_base.html` file in the templates folder and **uncomment** the lis
 -Add Tab for Third Party Apps
  <li>
 - <a href="{{ PROJECT_ROOT }}app">App</a>
-+ <a href="{{ PROJECT_ROOT }}Geocollections">Geocollections</a>
++ <a href="{{ PROJECT_ROOT }}geocollections">Geocollections</a>
  </li>
 -{% endcomment %}
  {% endblock %}
 ```
 
 ![image](https://user-images.githubusercontent.com/1278021/132842423-465d8e19-69d6-4ab4-9bb5-b0d69f946cdd.png)
+
+### A GeoNode Generic Page
+
+As you can see in the `templates` folder there are only the `site_index.html` and the `site_base.html` files. In order to customize another GeoNode page, for example the **layers list page**, you need to recreate _the same folder structure_ of the GeoNode templates folder and add a file with the same name.
+
+For the layers list page we can create a directory named `layers` inside the `templates` directory and a file named `layer_list.html` inside `layers`.
+
+The changes made in this file will only affect the layer list page.
+
+```shell
+mkdir -p my_geonode/templates/layers/
+cp /opt/geonode/geonode/layers/templates/layers/layer_list_default.html my_geonode/templates/layers/layer_list_default.html
+vim my_geonode/templates/layers/layer_list_default.html
+
+diff -ruN /opt/geonode/geonode/layers/templates/layers/layer_list_default.html my_geonode/templates/layers/layer_list_default.html
+```
+
+```diff
+--- /opt/geonode/geonode/layers/templates/layers/layer_list_default.html	2021-09-01 14:22:59.778823091 +0100
++++ my_geonode/templates/layers/layer_list_default.html	2021-09-10 11:55:32.195720387 +0100
+@@ -2,7 +2,7 @@
+ {% load i18n %}
+ {% load staticfiles %}
+ 
+-{% block title %} {% trans "Explore Layers" %} - {{ block.super }} {% endblock %}
++{% block title %} {% trans "Explore My Layers" %} - {{ block.super }} {% endblock %}
+ 
+ {% block body_class %}layers explore{% endblock %}
+ 
+@@ -11,7 +11,7 @@
+   {% if user.is_authenticated and not READ_ONLY_MODE %}
+     <a href="{% url "layer_upload" %}" class="btn btn-primary pull-right">{% trans "Upload Layers" %}</a>
+   {% endif %}
+-  <h2 class="page-title">{% trans "Explore Layers" %}</h2>
++  <h2 class="page-title">{% trans "Explore My Layers" %}</h2>
+ </div>
+   {% with include_type_filter='true' %}
+     {% with header='Type' %}
+```
+
+![image](https://user-images.githubusercontent.com/1278021/132843431-0d00d0e9-770f-4850-8c82-653f3f697c49.png)
 
 
 #### [Next Section: Link GeoNode to a geonode-project instance](GEONODE_PROJ_DEV.md)
