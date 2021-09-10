@@ -405,6 +405,16 @@ GEONODE_INSTANCE_NAME=my_geonode
 
 ### Make sure the DB and GeoNode are aligned
 
+```shell
+./paver_dev.sh sync
+```
+
+**WARNING**: _Whenever you face some issues with the migrations, please try upgrading the dependency as shown below_
+
+```shell
+pip install geonode-oauth-toolkit==2.2.2
+```
+
 - Align the internal URLs and Metadata links
 
 ```shell
