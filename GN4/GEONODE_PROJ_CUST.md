@@ -304,5 +304,50 @@ vim my_geonode/templates/base/_resourcebase_info_panel.html
 
 ![image](https://user-images.githubusercontent.com/1278021/133053625-ad93d6cc-bf87-4430-8ae5-b87dfedc068c.png)
 
+### API REST (v2)
+- Let's add the new `custom_md` field to the `REST API` of GeoNode
+
+   The APIs are reachable through the endpoint: `http://localhost:8000/api/v2/`
+   
+   Looking at the `http://localhost:8000/api/v2/resources` you will notice that the new field we just added is not visible
+   
+   ![image](https://user-images.githubusercontent.com/1278021/133063348-69beee93-9a10-4c39-b869-69c593eee441.png)
+
+- Modify the GeoNode `base` rest api endpoints in order to add the new field
+
+```shell
+vim /opt/geonode/geonode/base/api/serializers.py
+```
+
+```diff
+diff --git a/geonode/base/api/serializers.py b/geonode/base/api/serializers.py
+index c1a5e8679..909aca07e 100644
+--- a/geonode/base/api/serializers.py
++++ b/geonode/base/api/serializers.py
+@@ -293,6 +293,7 @@ class ResourceBaseSerializer(BaseDynamicModelSerializer):
+         self.fields['raw_data_quality_statement'] = serializers.CharField(read_only=True)
+         self.fields['metadata_only'] = serializers.BooleanField()
+         self.fields['processed'] = serializers.BooleanField(read_only=True)
++        self.fields['custom_md'] = serializers.CharField()
+ 
+         self.fields['embed_url'] = EmbedUrlField()
+         self.fields['thumbnail_url'] = ThumbnailUrlField()
+@@ -325,7 +326,8 @@ class ResourceBaseSerializer(BaseDynamicModelSerializer):
+             'popular_count', 'share_count', 'rating', 'featured', 'is_published', 'is_approved',
+             'detail_url', 'embed_url', 'created', 'last_updated',
+             'raw_abstract', 'raw_purpose', 'raw_constraints_other',
+-            'raw_supplemental_information', 'raw_data_quality_statement', 'metadata_only', 'processed'
++            'raw_supplemental_information', 'raw_data_quality_statement', 'metadata_only', 'processed',
++            'custom_md'
+             # TODO
+             # csw_typename, csw_schema, csw_mdsource, csw_insert_date, csw_type, csw_anytext, csw_wkt_geometry,
+             # metadata_uploaded, metadata_uploaded_preserve, metadata_xml,
+```
+
+- `http://localhost:8000/api/v2/resources?filter{custom_md.isnull}=False`
+
+  ![image](https://user-images.githubusercontent.com/1278021/133064948-84e0a153-7cb7-4911-b0a9-42ac286f7c93.png)
+
+- More info about `dynamic-rest` filtering options can be found at: `https://github.com/AltSchool/dynamic-rest#filtering`
 
 #### [Next Section: Save Changes to GitHub](GEONODE_PROJ_SAVE_GITHUB.md)
