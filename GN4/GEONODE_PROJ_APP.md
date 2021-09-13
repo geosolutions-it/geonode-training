@@ -161,6 +161,27 @@ admin.site.register(Geocollection, GeocollectionAdmin)
     ![image](https://user-images.githubusercontent.com/1278021/133111090-4ee7e3fc-e7fe-4ecd-b6fb-26cc7adc9d2a.png)
 
 ## Adding the Geocollections Details Template
+- Last thing we need to add in order to render the Geocollection details, is the `HTML template` used by the `django view`
+
+```shell
+mkdir -p my_geonode/templates/geocollections/
+```
+```shell
+vim my_geonode/templates/geocollections/geocollection_detail.html
+```
+```django
+{% extends "geonode_base.html" %}
+{% block body %}
+    <h2>Geocollection {{ object.name }}</h2>
+    <p>Group: {{ object.group.title }}</p>
+    <p>Resources:</p>
+    <ul>
+        {% for resource in object.resources.all %}
+            <li>{{ resource.title }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+```
 
 
 ### [Next Section: Add Tanslations to geonode-project](GEONODE_PROJ_TRX.md)
