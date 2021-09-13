@@ -1,6 +1,6 @@
 # Programmatically Customize the geonode-project instance
 
-### Homepage
+## Homepage
 - Modify some text from the `site_index.html` template
 
 
@@ -36,7 +36,7 @@ vim my_geonode/templates/site_index.html
 
 ![image](https://user-images.githubusercontent.com/1278021/132840646-15e34fda-deef-4112-832b-8ef1b6775db7.png)
 
-### The Theme
+## The Theme
 
 To change the theme of our `geonode-project` we can act on the `site_base.css` file available in the `my_geonode/my_geonode/static/css` folder.
 
@@ -67,7 +67,7 @@ We can check the rules by inspecting the element in the developer console.
 ![image](https://user-images.githubusercontent.com/1278021/132842016-d004d93b-a5f0-4fa3-a664-cc24e64edc59.png)
 
 
-### The Top Menu
+## The Top Menu
 
 Let's make some changes that will apply to the whole site. We can add a `Geocollections` entry in the **top menu bar**.
 
@@ -92,7 +92,7 @@ Edit the `site_base.html` file in the templates folder and **uncomment** the lis
 
 ![image](https://user-images.githubusercontent.com/1278021/132842423-465d8e19-69d6-4ab4-9bb5-b0d69f946cdd.png)
 
-### A GeoNode Generic Page
+## A GeoNode Generic Page
 
 As you can see in the `templates` folder there are only the `site_index.html` and the `site_base.html` files. In order to customize another GeoNode page, for example the **layers list page**, you need to recreate _the same folder structure_ of the GeoNode templates folder and add a file with the same name.
 
@@ -133,9 +133,9 @@ diff -ruN /opt/geonode/geonode/layers/templates/layers/layer_list_default.html m
 
 ![image](https://user-images.githubusercontent.com/1278021/132843431-0d00d0e9-770f-4850-8c82-653f3f697c49.png)
 
-### Modify Functionality: Add new Custom Metadata Field
+## Modify Functionality: Add new Custom Metadata Field
 
-#### Update the Model Base
+### Update the Model Base
 In this section, we will patch the `ResourceBase` of `GeoNode` and update the `templates` in order to add one more field to the `Metadata Schema`.
 
 We will add a `Custpm Md` field to the `ResourceBase` model and modify the `templates` in order to show the new field both into the `Metadata Wizard` and the `Layer Details` page.
@@ -250,7 +250,7 @@ index 48a0ef7f1..e0284988c 100644
 
 ![image](https://user-images.githubusercontent.com/1278021/133050807-bb921fcc-0b1e-413b-8664-3b896b46ceb2.png)
 
-#### Update the Layers Details Templates
+### Update the Layers Details Templates
 - Copy the default GeoNode `layer_details` template
 
 ```shell
@@ -304,7 +304,7 @@ vim my_geonode/templates/base/_resourcebase_info_panel.html
 
 ![image](https://user-images.githubusercontent.com/1278021/133053625-ad93d6cc-bf87-4430-8ae5-b87dfedc068c.png)
 
-### API REST (v2)
+## API REST (v2)
 - Let's add the new `custom_md` field to the `REST API` of GeoNode
 
    The APIs are reachable through the endpoint: `http://localhost:8000/api/v2/`
