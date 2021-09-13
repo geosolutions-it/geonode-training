@@ -228,6 +228,62 @@ git commit -a -m " - My GeoNode"
 git push afabiani main
 ```
 
+    ![image](https://user-images.githubusercontent.com/1278021/133094720-a3bdc7e2-9e9e-4fa4-89cf-485abd3062b9.png)
 
+## Link `geonode-project` to the Correct GeoNode
+- Edit the `geonode-prject` dependency file
+
+```shell
+cd /opt/geonode-project/my_geonode
+```
+```shell
+vim requirements.txt
+```
+   ![image](https://user-images.githubusercontent.com/1278021/133095771-73e74652-3155-4749-89c1-15d7f2cfd03e.png)
+
+```diff
+diff --git a/requirements.txt b/requirements.txt
+index d4b80df..7700b59 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,2 +1 @@
+-# -e git+https://github.com/GeoNode/geonode.git@3.2.x#egg=GeoNode
+-GeoNode==3.2.1
+\ No newline at end of file
++-e git+https://github.com/afabiani/geonode.git@geonode_training_32x#egg=GeoNode
+```
+
+- Commit and push the changes to the remote repo
+
+```shell
+git status
+
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   requirements.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+```shell
+git commit -m " - Link my_geonode to the correct GeoNode dist" requirements.txt 
+
+[main 7e62c60]  - Link my_geonode to the correct GeoNode dist
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+```
+```shell
+git push afabiani main
+
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 362 bytes | 362.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/afabiani/my_geonode.git
+   a40f891..7e62c60  main -> main
+```
 
 #### [Next Section: Put geonode-project in Production](GEONODE_PROJ_PROD.md)
