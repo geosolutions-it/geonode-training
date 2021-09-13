@@ -216,6 +216,83 @@ vim geocollections/models.py
 ./manage_dev.sh migrate
 ```
 
-- Notice that it is not possible define some `permissions` anymore with prefixes like `view_`, `add_`, `delete_` or something, because those have been natively introuced by Django since version 2.1
+- Notice that it is not possible to define some `permissions` anymore with prefixes like `view_`, `add_`, `delete_` or something, because those have been natively introuced by Django since version 2.1
+
+### Permission Logic Methods
+- Let's add few methods to the `Geocollection` `models` and `views` in order to be able to manage the `permissions`
+
+#### Default Permissions
+```shell
+vim geocollections/models.py
+```
+```diff
+--- geocollections/models.py.org	2021-09-13 18:36:24.181330710 +0100
++++ geocollections/models.py	2021-09-13 21:47:33.046309700 +0100
+@@ -1,4 +1,11 @@
+ from django.db import models
++from django.conf import settings
++from django.contrib.auth.models import Group
++from django.contrib.auth import get_user_model
++from django.contrib.contenttypes.models import ContentType
++
++from guardian.shortcuts import assign_perm
++from guardian.models import UserObjectPermission, GroupObjectPermission
  
+ from geonode.base.models import ResourceBase
+ from geonode.groups.models import GroupProfile
+@@ -13,6 +20,34 @@
+     name = models.CharField(max_length=128, unique=True)
+     slug = models.SlugField(max_length=128, unique=True)
+ 
++    def remove_object_permissions(self):
++        UserObjectPermission.objects.filter(content_type=ContentType.objects.get_for_model(self),
++                                            object_pk=self.id).delete()
++        GroupObjectPermission.objects.filter(content_type=ContentType.objects.get_for_model(self),
++                                             object_pk=self.id).delete()
++
++    def set_default_permissions(self):
++        """
++        Set default permissions.
++        """
++        # remove all permissions
++        self.remove_object_permissions()
++
++        # default permissions for anonymous users
++        anonymous_group, created = Group.objects.get_or_create(name='anonymous')
++
++        # assign permissions to 'Anyone' if 'DEFAULT_ANONYMOUS_VIEW_PERMISSION' is True
++        if settings.DEFAULT_ANONYMOUS_VIEW_PERMISSION:
++            assign_perm('access_geocollection', anonymous_group, self)
++            
++
++        # default permissions to the Geocollection group members
++        assign_perm('access_geocollection', self.group.group, self)
++
+     def __str__(self):
+         return self.name
+ 
++    class Meta:
++        permissions = (
++            ('access_geocollection', 'Can view geocollection'),
++        )
+```
+
+- Let's test the `set_default_permissions`
+
+```shell
+./manage_dev.sh shell
+```
+```django
+Python 3.8.10 (default, Jun  2 2021, 10:49:15) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.24.1 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: from geocollections.models import Geocollection
+
+In [2]: Geocollection.objects.first().set_default_permissions()
+
+In [3]: quit()
+```
+
+
 ### [Next Section: Add Tanslations to geonode-project](GEONODE_PROJ_TRX.md)
