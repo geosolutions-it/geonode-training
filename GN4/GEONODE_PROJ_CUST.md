@@ -133,5 +133,94 @@ diff -ruN /opt/geonode/geonode/layers/templates/layers/layer_list_default.html m
 
 ![image](https://user-images.githubusercontent.com/1278021/132843431-0d00d0e9-770f-4850-8c82-653f3f697c49.png)
 
+### Modify Functionality: Add new Custom Metadata Field
+In this section, we will patch the `ResourceBase` of `GeoNode` and update the `templates` in order to add one more field to the `Metadata Schema`.
+
+We will add a `Custpm Md` field to the `ResourceBase` model and modify the `templates` in order to show the new field both into the `Metadata Wizard` and the `Layer Details` page.
+
+- Prepare the VirtualEnv
+
+```shell
+workon my_geonode
+cd /opt/geonode-project/my_geonode/
+```
+
+- Update the GeoNode `ResourceBase` model
+
+```shell
+vim /opt/geonode/geonode/base/models.py
+```
+
+```diff
+diff --git a/geonode/base/models.py b/geonode/base/models.py
+index e2a5a409c..922c67db4 100644
+--- a/geonode/base/models.py
++++ b/geonode/base/models.py
+@@ -706,6 +706,7 @@ class ResourceBase(PolymorphicModel, PermissionLevelMixin, ItemBase):
+     data_quality_statement_help_text = _(
+         'general explanation of the data producer\'s knowledge about the lineage of a'
+         ' dataset')
++    custom_md_help_text = _('a custom metadata field')
+     # internal fields
+     uuid = models.CharField(max_length=36)
+     title = models.CharField(_('title'), max_length=255, help_text=_(
+@@ -959,6 +960,13 @@ class ResourceBase(PolymorphicModel, PermissionLevelMixin, ItemBase):
+     __is_approved = False
+     __is_published = False
+ 
++
++    custom_md = models.TextField(
++        _("Custom Md"),
++        blank=True,
++        null=True,
++        help_text=custom_md_help_text)
++
+     objects = ResourceBaseManager()
+ 
+     class Meta:
+```
+
+- Add the new field to the DB
+
+```shell
+./manage_dev.sh makemigrations
+./manage_dev.sh migrate
+```
+
+- Add the new field to `templates`
+
+```shell
+mkdir my_geonode/templates/layouts/
+cp /opt/geonode/geonode/layers/templates/layouts/panels.html my_geonode/templates/layouts/panels.html
+```
+
+```shell
+vim my_geonode/templates/layouts/panels.html
+```
+
+```diff
+--- /opt/geonode/geonode/layers/templates/layouts/panels.html	2021-09-01 14:22:59.778823091 +0100
++++ my_geonode/templates/layouts/panels.html	2021-09-10 15:48:39.691395977 +0100
+@@ -317,6 +317,10 @@
+                                 </div>
+                                 {% endblock thumbnail %}
+                                 <div class="col-lg-4">
++                                    <div id="req_item">
++                                      <span><label for="{{ layer_form.custom_md|id }}">{{ layer_form.custom_md.label }}</label></span>
++                                      {{ layer_form.custom_md }}
++                                    </div>
+                                     {% block layer_title %}
+                                     <div id="req_item">
+                                       <span><label for="{{ layer_form.title|id }}">{{ layer_form.title.label }}</label></span>
+```
+
+- Let's check the changes
+
+```shell
+./paver_dev.sh start_django
+```
+
+![image](https://user-images.githubusercontent.com/1278021/133050035-f86bf268-37fa-44e3-a370-7f4a756ebe6a.png)
+
 
 #### [Next Section: Save Changes to GitHub](GEONODE_PROJ_SAVE_GITHUB.md)
