@@ -8,9 +8,9 @@
  - [Link GeoNode to a geonode-project instance](GEONODE_PROJ_DEV.md)
  - [Programmatically Customize the geonode-project instance](GEONODE_PROJ_CUST.md)
  - [Save Changes to GitHub](GEONODE_PROJ_SAVE_GITHUB.md)
- - [Put geonode-project in Production](GEONODE_PROJ_PROD.md)
  - [Add an App with APIs to geonode-project](GEONODE_PROJ_APP.md)
  - [Add Tanslations to geonode-project](GEONODE_PROJ_TRX.md)
+ - [Put geonode-project in Production](GEONODE_PROJ_PROD.md)
  - [Upgrade GeoNode to Latest Version](GEONODE_UPGRADE.md)
 
 ## Prerequisites and GeoNode Training Virtual Machine
