@@ -521,4 +521,107 @@ Out[8]:
 
 In [9]: quit()
 ```
+
+#### Permissions Views and Urls
+- Let's use the `access_geocollection` permissions to control access to the views.
+- We will also define a specific view allowing us to check/set the geocollection permissions.
+
+```shell
+vim geocollections/views.py
+```
+```diff
+--- geocollections/views.py.org	2021-09-13 23:36:59.410056180 +0100
++++ geocollections/views.py	2021-09-13 23:52:22.977934917 +0100
+@@ -1,6 +1,50 @@
++import json
++
++from django.http import HttpResponse
+ from django.views.generic import DetailView
++from django.core.exceptions import PermissionDenied
++from django.contrib.auth.mixins import PermissionRequiredMixin
+ 
+ from .models import Geocollection
+ 
+-class GeocollectionDetail(DetailView):
++
++class GeocollectionDetail(PermissionRequiredMixin, DetailView):
+     model = Geocollection
++
++    def has_permission(self):
++        return self.request.user.has_perm('geocollection.access_geocollection', self)
++
++
++def geocollection_permissions(request, collection_name):
++
++    geocollection = Geocollection.objects.get(name=collection_name)
++    user = request.user
++
++    if user.has_perm('access_geocollection', geocollection):
++        return HttpResponse(
++            (f'You have the permission to access the geocollection "{collection_name}". '
++             'Please customize a template for this view'),
++            content_type='text/plain')
++    else:
++        raise PermissionDenied
++
++    if request.method == 'POST':
++        success = True
++        message = "Permissions successfully updated!"
++        try:
++            perm_spec = json.loads(request.body)
++            geocollection.set_permissions(perm_spec)
++
++            return HttpResponse(
++                json.dumps({'success': success, 'message': message}),
++                status=200,
++                content_type='text/plain'
++            )
++        except Exception as e:
++            success = False
++            message = f"Error updating permissions :(... error: {e}"
++            return HttpResponse(
++                json.dumps({'success': success, 'message': message}),
++                status=500,
++                content_type='text/plain'
++            )
+```
+
+- Let's add an `urlpattern` to access the `geocollection_permissions` view.
+
+```shell
+vim geocollections/urls.py
+```
+```diff
+--- geocollections/urls.py.org	2021-09-13 23:43:40.534056180 +0100
++++ geocollections/urls.py	2021-09-13 23:46:45.172949596 +0100
+@@ -1,9 +1,12 @@
+ from django.conf.urls import url
+ 
+-from .views import GeocollectionDetail
++from .views import GeocollectionDetail, geocollection_permissions
+ 
+ urlpatterns = [
+     url(r'^(?P<slug>[-\w]+)/$',
+         GeocollectionDetail.as_view(),
+         name='geocollection-detail'),
++    url(r'^permissions/(?P<collection_name>\w+)$',
++        geocollection_permissions,
++        name='geocollection_permissions')
+ ]
+```
+
+- Trying to access the views as an `admin` we will be able to get both the details and the permissions check
+
+##### admin
+![image](https://user-images.githubusercontent.com/1278021/133168106-79bfd999-7cac-4746-bda4-bbb221f27dcf.png)
+
+![image](https://user-images.githubusercontent.com/1278021/133168162-3d4ba427-6b78-405b-b688-59d89636ce1c.png)
+
+##### anonymous
+![image](https://user-images.githubusercontent.com/1278021/133168211-b9c3706f-35ce-41f9-a3f6-86f3e01437ad.png)
+
+![image](https://user-images.githubusercontent.com/1278021/133168248-70714492-1b87-46c3-b34d-7554ea541a4a.png)
+
+![image](https://user-images.githubusercontent.com/1278021/133168295-3f1c1d89-26a2-4ac5-89eb-f2098e9113a1.png)
+
 ### [Next Section: Add Tanslations to geonode-project](GEONODE_PROJ_TRX.md)
