@@ -56,7 +56,7 @@ class Geocollection(models.Model):
     name = models.CharField(max_length=128, unique=True)
     slug = models.SlugField(max_length=128, unique=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 ```
 
@@ -183,5 +183,39 @@ vim my_geonode/templates/geocollections/geocollection_detail.html
 {% endblock %}
 ```
 
+- Try now visiting the `geocollection` we just created; go to `http://localhost:8000/geocollections/boulder/`
+- The `URLs` of the `geocollection` are in the form `http://localhost:8000/geocollections/<the-name-of-the-created-geocollection>`
 
+    ![image](https://user-images.githubusercontent.com/1278021/133127678-5594625a-7aa3-4c62-a4a0-8948bbd3abe8.png)
+
+## Permissions
+The permissions in GeoNode are managed by `django-guardian`, a python library allowing to set _object level permissions_ (django has table level authorization).
+
+- First thing to do is to add the `permissions object` to the `database`. We can do this by adding the following `meta class` to our `Geocollection model`, `guardian` will take care of creating the objects for us.
+
+```shell
+vim geocollections/models.py
+```
+```diff
+--- geocollections/models.py.org	2021-09-13 18:36:24.181330710 +0100
++++ geocollections/models.py	2021-09-13 18:35:29.788540726 +0100
+@@ -16,3 +16,7 @@
+     def __str__(self):
+         return self.name
+ 
++    class Meta:
++        permissions = (
++            ('access_geocollection', 'Can view geocollection'),
++        )
+```
+
+- Run `makemigrations` and `migrate` managemnt commands to install them
+
+```shell
+./manage_dev.sh makemigrations
+./manage_dev.sh migrate
+```
+
+- Notice that it is not possible define some `permissions` anymore with prefixes like `view_`, `add_`, `delete_` or something, because those have been natively introuced by Django since version 2.1
+ 
 ### [Next Section: Add Tanslations to geonode-project](GEONODE_PROJ_TRX.md)
