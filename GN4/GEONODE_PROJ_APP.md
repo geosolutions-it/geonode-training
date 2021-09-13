@@ -160,6 +160,7 @@ admin.site.register(Geocollection, GeocollectionAdmin)
 
     ![image](https://user-images.githubusercontent.com/1278021/133111090-4ee7e3fc-e7fe-4ecd-b6fb-26cc7adc9d2a.png)
 
+## Adding the Geocollections Details Template
 
 
 ### [Next Section: Add Tanslations to geonode-project](GEONODE_PROJ_TRX.md)
