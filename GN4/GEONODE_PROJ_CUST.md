@@ -251,6 +251,58 @@ index 48a0ef7f1..e0284988c 100644
 ![image](https://user-images.githubusercontent.com/1278021/133050807-bb921fcc-0b1e-413b-8664-3b896b46ceb2.png)
 
 #### Update the Layers Details Templates
+- Copy the default GeoNode `layer_details` template
+
+```shell
+mkdir my_geonode/templates/layers
+cp /opt/geonode/geonode/layers/templates/layers/layer_detail.html my_geonode/templates/layers/layer_detail.html
+```
+
+- Add the new field to the `layer_details` template
+
+```shell
+vim my_geonode/templates/layers/layer_detail.html
+```
+
+![image](https://user-images.githubusercontent.com/1278021/133052525-a2a46eed-3a81-4d2b-9c88-22e3c639c572.png)
+
+```shell
+mkdir my_geonode/templates/base
+cp /opt/geonode/geonode/base/templates/base/resourcebase_info_panel.html my_geonode/templates/base/resourcebase_info_panel.html
+```
+
+```shell
+vim my_geonode/templates/base/resourcebase_info_panel.html
+```
+
+![image](https://user-images.githubusercontent.com/1278021/133052924-f7b3c258-972a-44a7-9011-a62d9886bdd1.png)
+
+```shell
+cp /opt/geonode/geonode/base/templates/base/_resourcebase_info_panel.html my_geonode/templates/base/_resourcebase_info_panel.html
+```
+
+```shell
+vim my_geonode/templates/base/_resourcebase_info_panel.html
+```
+
+```diff
+--- /opt/geonode/geonode/base/templates/base/_resourcebase_info_panel.html	2021-07-14 14:38:25.391987680 +0100
++++ my_geonode/templates/base/_resourcebase_info_panel.html	2021-09-13 09:47:42.768337828 +0100
+@@ -31,6 +31,11 @@
+     <dd itemprop="description">{{ resource.abstract|safe }}</dd>
+     {% endif %}
+ 
++    {% if resource.custom_md %}
++    <dt>{% trans "Custom Metadata" %}</dt>
++    <dd itemprop="description">{{ resource.custom_md|safe }}</dd>
++    {% endif %}
++
+     {% if resource.date %}
+     {% if resource.date_type == 'creation' %}
+     <dt>{% trans "Creation Date" %}</dt>
+```
+
+![image](https://user-images.githubusercontent.com/1278021/133053625-ad93d6cc-bf87-4430-8ae5-b87dfedc068c.png)
 
 
 #### [Next Section: Save Changes to GitHub](GEONODE_PROJ_SAVE_GITHUB.md)
