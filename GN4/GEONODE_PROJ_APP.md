@@ -282,7 +282,7 @@ vim geocollections/models.py
 ```shell
 ./manage_dev.sh shell
 ```
-```django
+```python
 Python 3.8.10 (default, Jun  2 2021, 10:49:15) 
 Type 'copyright', 'credits' or 'license' for more information
 IPython 7.24.1 -- An enhanced Interactive Python. Type '?' for help.
@@ -294,5 +294,60 @@ In [2]: Geocollection.objects.first().set_default_permissions()
 In [3]: quit()
 ```
 
+#### Permissions Setter on `perm_spec`
+- A `perm_spec` in GeoNode is a `JSON` object declaring the set of `permissions` to assign to `users`, `groups` or both of them.
+- Be careful, with `group` here we mean a `Django authority group` which is relared to a GeoNode `GroupProfile` throught its `slug`.
+- A sample `perm_spec` is something like the one here below:
+    ```json
+    perm_spec = {
+        "users": {
+            "AnonymousUser": [],
+            "test_user1": ["access_geocollection"],
+            "test_user2": [],
+        },
+        "groups": {
+            "registered-members": ["access_geocollection"]
+        }
+    }
+    ```
 
+```shell
+vim geocollections/models.py
+```
+```diff
+--- geocollections/models.py.org	2021-09-13 21:50:28.375254563 +0100
++++ geocollections/models.py	2021-09-13 21:54:16.775254563 +0100
+@@ -44,6 +44,23 @@
+         # default permissions to the Geocollection group members
+         assign_perm('access_geocollection', self.group.group, self)
+ 
++    def set_permissions(self, perm_spec):
++        anonymous_group = Group.objects.get(name='anonymous')
++        self.remove_object_permissions()
++
++        if 'users' in perm_spec and "AnonymousUser" in perm_spec['users']:
++            assign_perm('access_geocollection', anonymous_group, self)
++
++        if 'users' in perm_spec:
++            for user, perms in perm_spec['users'].items():
++                user = get_user_model().objects.get(username=user)
++                assign_perm('access_geocollection', user, self)
++
++        if 'groups' in perm_spec:
++            for group, perms in perm_spec['groups'].items():
++                group = Group.objects.get(name=group)
++                assign_perm('access_geocollection', group, self)
++
+     def __str__(self):
+         return self.name
+```
+
+- Let's test the `set_permissions`
+
+```shell
+./manage_dev.sh shell
+```
+```python
+
+```
 ### [Next Section: Add Tanslations to geonode-project](GEONODE_PROJ_TRX.md)
