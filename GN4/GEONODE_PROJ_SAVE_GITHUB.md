@@ -230,7 +230,7 @@ git push afabiani main
 
     ![image](https://user-images.githubusercontent.com/1278021/133094720-a3bdc7e2-9e9e-4fa4-89cf-485abd3062b9.png)
 
-## Link `geonode-project` to the Correct GeoNode
+## Link `geonode-project` to the Correct GeoNode Distribution
 - Edit the `geonode-prject` dependency file
 
 ```shell
@@ -286,4 +286,4 @@ To https://github.com/afabiani/my_geonode.git
    a40f891..7e62c60  main -> main
 ```
 
-#### [Next Section: Put geonode-project in Production](GEONODE_PROJ_PROD.md)
+#### [Next Section: Add an App with APIs to geonode-project](GEONODE_PROJ_APP.md)
