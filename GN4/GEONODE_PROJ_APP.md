@@ -612,12 +612,12 @@ vim geocollections/urls.py
 
 - Trying to access the views as an `admin` we will be able to get both the details and the permissions check
 
-##### admin
+### admin
 ![image](https://user-images.githubusercontent.com/1278021/133168106-79bfd999-7cac-4746-bda4-bbb221f27dcf.png)
 
 ![image](https://user-images.githubusercontent.com/1278021/133168162-3d4ba427-6b78-405b-b688-59d89636ce1c.png)
 
-##### anonymous
+### anonymous
 ![image](https://user-images.githubusercontent.com/1278021/133168211-b9c3706f-35ce-41f9-a3f6-86f3e01437ad.png)
 
 ![image](https://user-images.githubusercontent.com/1278021/133168248-70714492-1b87-46c3-b34d-7554ea541a4a.png)
