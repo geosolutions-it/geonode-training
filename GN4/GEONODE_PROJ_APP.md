@@ -109,5 +109,56 @@ urlpatterns = [
 ]
 ```
 
+- We also need to register the `app urls` to the `geonode-project urls`.
+- Let's modify the `my_geonode` `urls.py` file adding the following mappings
+
+```shell
+vim my_geonode/urls.py
+```
+```diff
+diff --git a/my_geonode/urls.py b/my_geonode/urls.py
+index 07b694f..bcf1cb7 100644
+--- a/my_geonode/urls.py
++++ b/my_geonode/urls.py
+@@ -26,7 +26,7 @@ from geonode.base import register_url_event
+ 
+ urlpatterns += [
+ ## include your urls here
+-
++    url(r'^geocollections/', include('geocollections.urls')),
+ ]
+ 
+ homepage = register_url_event()(TemplateView.as_view(template_name='site_index.html'))
+```
+
+## Enable the `geocollections` App into the Admin Panel
+- We need a user interface allowing us to create `geocollections`.
+- Django makes this very easy, we just need adding them to the `admin.py` file as follows
+
+```shell
+vim geocollections/admin.py
+```
+```python
+from django.contrib import admin
+
+from .models import Geocollection
+
+
+class GeocollectionAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("name",)}
+    filter_horizontal = ('resources',)
+
+admin.site.register(Geocollection, GeocollectionAdmin)
+```
+
+- Move to `http://localhost:8000/admin/` and search for the `Geocollections tab`
+
+
+    ![image](https://user-images.githubusercontent.com/1278021/133110817-1c17667f-abce-44e3-bd34-89f1301c3993.png)
+
+- Create a new `Geocollection` named `boulder` and add some `resources` to it
+
+    ![image](https://user-images.githubusercontent.com/1278021/133111090-4ee7e3fc-e7fe-4ecd-b6fb-26cc7adc9d2a.png)
+
 
 ### [Next Section: Add Tanslations to geonode-project](GEONODE_PROJ_TRX.md)
