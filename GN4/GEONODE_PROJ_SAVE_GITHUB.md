@@ -46,4 +46,32 @@ git branch
 git push <name of the remote> <name of the branch  <-- e.g: git push afabiani geonode_training_32x
 ```
 
+- Example
+```shell
+git push afabiani geonode_training_32x
+
+Username for 'https://github.com': afabiani
+Password for 'https://afabiani@github.com': 
+Total 0 (delta 0), reused 0 (delta 0)
+remote: 
+remote: Create a pull request for 'geonode_training_32x' on GitHub by visiting:
+remote:      https://github.com/afabiani/geonode/pull/new/geonode_training_32x
+remote: 
+To https://github.com/afabiani/geonode.git
+ * [new branch]          geonode_training_32x -> geonode_training_32x
+```
+
+![image](https://user-images.githubusercontent.com/1278021/133082197-eccaadf5-49d6-47c9-a5fd-00061287990f.png)
+
+## Generate a Push Token
+- GitHub will ask you to provide a `user/password` to perform `pushes/commits`, but it will force you to create a `token`
+- In order to create (or refresh) a `token`, go to `settings`
+
+    ![image](https://user-images.githubusercontent.com/1278021/133082730-f7addd68-fe8b-4b86-9f0b-bfa40eb916a7.png)
+
+- Click on `Developer Settings`
+
+    ![image](https://user-images.githubusercontent.com/1278021/133083004-53b1392c-22c5-4eaf-b98d-d16aeeac2db6.png)
+
+
 #### [Next Section: Put geonode-project in Production](GEONODE_PROJ_PROD.md)
