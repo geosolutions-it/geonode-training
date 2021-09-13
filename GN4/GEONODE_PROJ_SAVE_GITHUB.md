@@ -73,5 +73,17 @@ To https://github.com/afabiani/geonode.git
 
     ![image](https://user-images.githubusercontent.com/1278021/133083004-53b1392c-22c5-4eaf-b98d-d16aeeac2db6.png)
 
+- Generate a new `token`
+
+    ![image](https://user-images.githubusercontent.com/1278021/133083825-9e5f942f-80fc-45a8-afe7-cbd008cbf449.png)
+
+- Provide a `name`, and `expiration date` and select the `privileges`, the ones below will allow you to push commits to the repo
+
+    ![image](https://user-images.githubusercontent.com/1278021/133084043-609f2567-b770-49bd-aa46-e21ac873f6eb.png)
+
+- Copy the new `token` and store it somewhere, otherwise you will need to refresh it
+
+    ![image](https://user-images.githubusercontent.com/1278021/133084221-e1b1f69f-df7b-45c3-a726-37027ffc0386.png)
+
 
 #### [Next Section: Put geonode-project in Production](GEONODE_PROJ_PROD.md)
