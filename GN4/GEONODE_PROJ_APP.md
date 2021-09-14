@@ -746,4 +746,11 @@ Out[2]:
 In [3]: quit()
 ```
 
+## Adding APIs to Geocollection App
+In this section we are going to implement a very simple instance of GeoNode APIs for our Geocollection `app`, along with security integration.
+
+Currently GeoNode provides two types of API endpoints that have been usually identified as `API v1`, provided through [Django Tasypie](https://django-tastypie.readthedocs.io/en/latest/), and `API v2` which are provided by [Django Restframework](https://www.django-rest-framework.org/).
+
+**WARNING** _GeoNode 3.x still provides support for the_ `API v1`. _Those are deprecated and will be dropped in future versions._
+
 ### [Next Section: Add Tanslations to geonode-project](GEONODE_PROJ_TRX.md)
