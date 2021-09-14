@@ -316,7 +316,7 @@ vim geocollections/models.py
 ```
 ```diff
 --- geocollections/models.py.org	2021-09-13 18:36:24.181330710 +0100
-+++ geocollections/models.py	2021-09-13 22:54:31.946056180 +0100
++++ geocollections/models.py	2021-09-14 01:16:41.361828438 +0100
 @@ -1,8 +1,22 @@
 +import logging
 +import traceback
@@ -340,7 +340,7 @@ vim geocollections/models.py
  
  class Geocollection(models.Model):
      """
-@@ -13,6 +27,130 @@
+@@ -13,6 +27,131 @@
      name = models.CharField(max_length=128, unique=True)
      slug = models.SlugField(max_length=128, unique=True)
  
@@ -401,7 +401,8 @@ vim geocollections/models.py
 +
 +        if 'users' in perm_spec and "AnonymousUser" in perm_spec['users']:
 +            if perm_spec['users']['AnonymousUser']:
-+                assign_perm(perm_spec['users']['AnonymousUser'], anonymous_group, self)
++                for perm in perm_spec['users']['AnonymousUser']:
++                   assign_perm(perm, anonymous_group, self)
 +
 +        if 'users' in perm_spec:
 +            for username, perms in perm_spec['users'].items():
