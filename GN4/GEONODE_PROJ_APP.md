@@ -1773,11 +1773,104 @@ vim my_geonode/urls.py
 ```shell
 vim geocollections/views.py
 ```
+```diff
+--- geocollections/views.py.org_2	2021-09-14 13:41:23.290625216 +0100
++++ geocollections/views.py	2021-09-14 13:46:01.578625216 +0100
+@@ -8,7 +8,18 @@
+ from django.core.exceptions import PermissionDenied
+ from django.contrib.auth.mixins import PermissionRequiredMixin
+ 
++from dynamic_rest.viewsets import DynamicModelViewSet
++from dynamic_rest.filters import DynamicFilterBackend, DynamicSortingFilter
++
++from rest_framework.permissions import IsAuthenticatedOrReadOnly
++from rest_framework.authentication import SessionAuthentication, BasicAuthentication
++from oauth2_provider.contrib.rest_framework import OAuth2Authentication
++
++from geonode.base.api.pagination import GeoNodeApiPagination
++
+ from .models import Geocollection
++from .serializers import GeocollectionSerializer
++from .permissions import GeocollectionPermissionsFilter
+ 
+ logger = logging.getLogger(__name__)
+ 
+@@ -54,3 +65,19 @@
+                 status=500,
+                 content_type='text/plain'
+             )
++
++
++class GeocollectionViewSet(DynamicModelViewSet):
++    """
++    API endpoint that allows geocollections to be viewed or edited.
++    """
++    authentication_classes = [SessionAuthentication, BasicAuthentication, OAuth2Authentication]
++    permission_classes = [IsAuthenticatedOrReadOnly, ]
++    filter_backends = [
++        DynamicFilterBackend, DynamicSortingFilter,
++        GeocollectionPermissionsFilter
++    ]
++    queryset = Geocollection.objects.all()
++    serializer_class = GeocollectionSerializer
++    pagination_class = GeoNodeApiPagination
+```
+
+- API `Permissions`
+
+```shell
+vim geocollections/permissions.py
+```
+```diff
+from django.conf import settings
+from rest_framework.filters import BaseFilterBackend
+
+
+class GeocollectionPermissionsFilter(BaseFilterBackend):
+    """
+    A filter backend that limits results to those where the requesting user
+    has read object level permissions.
+    """
+    shortcut_kwargs = {
+        'accept_global_perms': True,
+    }
+
+    def filter_queryset(self, request, queryset, view):
+        # We want to defer this import until runtime, rather than import-time.
+        # See https://github.com/encode/django-rest-framework/issues/4608
+        # (Also see #1624 for why we need to make this import explicitly)
+        from guardian.shortcuts import get_objects_for_user
+
+        user = request.user
+
+        obj_with_perms = get_objects_for_user(
+            user,
+            'geocollection.access_geocollection',
+            **self.shortcut_kwargs
+        )
+
+        return queryset.filter(id__in=obj_with_perms.values('id'))
+```
 
 - API `Serializer`
 
 ```shell
 vim geocollections/serializers.py
+```
+```python
+from dynamic_rest.serializers import DynamicModelSerializer
+
+from .models import Geocollection
+
+
+class GeocollectionSerializer(DynamicModelSerializer):
+
+    class Meta:
+        model = Geocollection
+        name = 'geocollection'
+        fields = (
+            'pk', 'name', 'group', 'resources'
+        )
 ```
 
 - API urls
