@@ -753,4 +753,120 @@ Currently GeoNode provides two types of API endpoints that have been usually ide
 
 **WARNING** _GeoNode 3.x still provides support for the_ `API v1`. _Those are deprecated and will be dropped in future versions._
 
+### API v1 - Tasypie
+- Let's create the `api.py` file first
+
+```shell
+vim geocollections/api.py
+```
+```python
+import json
+from tastypie.resources import ModelResource
+from tastypie import fields
+from tastypie.constants import ALL_WITH_RELATIONS, ALL
+
+from geonode.api.api import ProfileResource, GroupResource
+from geonode.api.resourcebase_api import ResourceBaseResource
+
+from .models import Geocollection
+
+
+class GeocollectionResource(ModelResource):
+
+    users = fields.ToManyField(ProfileResource, attribute=lambda bundle: bundle.obj.group.group.user_set.all(), full=True)
+    group = fields.ToOneField(GroupResource, 'group__group', full=True)
+    resources = fields.ToManyField(ResourceBaseResource, 'resources', full=True)
+
+    class Meta:
+        queryset = Geocollection.objects.all().order_by('-group')
+        ordering = ['group']
+        allowed_methods = ['get']
+        resource_name = 'geocollections'
+        filtering = {
+            'group': ALL_WITH_RELATIONS,
+            'id': ALL
+        }
+```
+
+- API authorization
+
+```shell
+vim geocollections/api.py
+```
+```diff
+--- geocollections/api.py.org	2021-09-14 11:02:11.106936710 +0100
++++ geocollections/api.py	2021-09-14 11:02:14.948856713 +0100
+@@ -2,6 +2,9 @@
+ from tastypie.resources import ModelResource
+ from tastypie import fields
+ from tastypie.constants import ALL_WITH_RELATIONS, ALL
++from tastypie.authorization import DjangoAuthorization
++
++from guardian.shortcuts import get_objects_for_user
+ 
+ from geonode.api.api import ProfileResource, GroupResource
+ from geonode.api.resourcebase_api import ResourceBaseResource
+@@ -9,6 +12,21 @@
+ from .models import Geocollection
+ 
+ 
++class GeocollectionAuth(DjangoAuthorization):
++
++    def read_list(self, object_list, bundle):
++        permitted_ids = get_objects_for_user(
++            bundle.request.user,
++            'geocollections.access_geocollection').values('id')
++
++        return object_list.filter(id__in=permitted_ids)
++
++    def read_detail(self, object_list, bundle):
++        return bundle.request.user.has_perm(
++            'access_geocollection',
++            bundle.obj)
++
++
+ class GeocollectionResource(ModelResource):
+ 
+     users = fields.ToManyField(ProfileResource, attribute=lambda bundle: bundle.obj.group.group.user_set.all(), full=True)
+@@ -16,6 +34,7 @@
+     resources = fields.ToManyField(ResourceBaseResource, 'resources', full=True)
+ 
+     class Meta:
++        authorization = GeocollectionAuth()
+         queryset = Geocollection.objects.all().order_by('-group')
+         ordering = ['group']
+         allowed_methods = ['get']
+```
+
+- API urls
+
+```shell
+vim my_geonode/urls.py
+```
+```diff
+--- my_geonode/urls.py.org	2021-09-14 11:05:03.377028744 +0100
++++ my_geonode/urls.py	2021-09-14 11:05:54.934794761 +0100
+@@ -24,8 +24,15 @@
+ from geonode.urls import urlpatterns
+ from geonode.base import register_url_event
+ 
++from geonode.api.urls import api
++
++from geocollections.api import GeocollectionResource
++
++api.register(GeocollectionResource())
++
+ urlpatterns += [
+ ## include your urls here
++    url(r'', include(api.urls)),
+     url(r'^geocollections/', include('geocollections.urls')),
+ ]
+```
+
+- Let's test them; move to `http://localhost:8000/api/geocollections/`
+
+```json
+{"meta": {"limit": 1000, "next": null, "offset": 0, "previous": null, "total_count": 1}, "objects": [{"group": {"group_profile": {"access": "private", "categories": [], "created": "2021-06-30T18:38:07.129648", "description": "", "description_en": null, "detail_url": "/groups/group/registered-members/", "email": null, "id": 1, "last_modified": "2021-06-30T18:38:07.135664", "logo": null, "logo_url": "/static/geonode/img/missing_thumb.png", "manager_count": 0, "member_count": 3, "resource_uri": "/api/group_profile/1/", "slug": "registered-members", "title": "Registered Members", "title_en": "Registered Members"}, "id": 3, "name": "registered-members", "resource_counts": {"all": {"approved": 0, "published": 0, "total": 0, "visible": 0}, "document": {"approved": 0, "published": 0, "total": 0, "visible": 0}, "geoapp": {"approved": 0, "published": 0, "total": 0, "visible": 0}, "geostory": {"approved": 0, "published": 0, "total": 0, "visible": 0}, "layer": {"approved": 0, "published": 0, "total": 0, "visible": 0}, "map": {"approved": 0, "published": 0, "total": 0, "visible": 0}}, "resource_uri": "/api/groups/3/"}, "id": 1, "name": "boulder", "resource_uri": "/api/geocollections/1/", "resources": [{"abstract": "Boulder Colorado", "alternate": null, "attribution": null, "bbox_polygon": null, "category": null, "constraints_other": null, "created": "2021-07-14T15:45:42.514906", "csw_insert_date": "2021-07-15T09:16:50.224808", "csw_mdsource": "local", "csw_schema": "http://www.isotc211.org/2005/gmd", "csw_type": "dataset", "csw_typename": "gmd:MD_Metadata", "csw_wkt_geometry": "POLYGON((-180 -90,-180 90,180 90,180 -90,-180 -90))", "custom_md": null, "data_quality_statement": null, "date": "2021-07-14T15:45:42.494086", "date_type": "publication", "detail_url": "/apps/preview/36", "dirty_state": false, "doi": null, "edition": null, "featured": false, "group": null, "id": 36, "is_approved": true, "is_published": true, "keywords": [], "language": "eng", "last_updated": "2021-07-15T09:16:50.191068", "ll_bbox_polygon": null, "maintenance_frequency": null, "metadata_only": false, "metadata_uploaded": false, "metadata_uploaded_preserve": false, "owner": {"id": 1001, "username": "test_user1"}, "popular_count": 0, "purpose": null, "rating": 0, "regions": ["/api/regions/1/"], "resource_type": "geostory", "resource_uri": "/api/base/36/", "share_count": 0, "srid": "EPSG:4326", "supplemental_information": "No information provided", "temporal_extent_end": null, "temporal_extent_start": null, "thumbnail_url": "http://localhost:8000/static/geonode/img/missing_thumb.png", "title": "Boulder Colorado", "tkeywords": [], "uuid": ""}, {"abstract": "No abstract provided", "alternate": "geonode:BoulderCityLimits", "attribution": null, "bbox_polygon": "SRID=4326;POLYGON ((3055613.75 1229960.625, 3055613.75 1277375.875, 3090085.5 1277375.875, 3090085.5 1229960.625, 3055613.75 1229960.625))", "category": null, "constraints_other": null, "created": "2021-07-13T16:43:58.533229", "csw_insert_date": "2021-07-13T16:44:23.454513", "csw_mdsource": "local", "csw_schema": "http://www.isotc211.org/2005/gmd", "csw_type": "dataset", "csw_typename": "gmd:MD_Metadata", "csw_wkt_geometry": "SRID=4326;POLYGON ((-105.301591603937 39.96417673980012, -105.301591603937 40.09461709343572, -105.1779963136617 40.09461709343572, -105.1779963136617 39.96417673980012, -105.301591603937 39.96417673980012))", "custom_md": null, "data_quality_statement": null, "date": "2021-07-13T16:43:58.509987", "date_type": "publication", "detail_url": "/layers/geonode_data:geonode:BoulderCityLimits", "dirty_state": false, "doi": null, "edition": null, "featured": false, "group": null, "id": 18, "is_approved": true, "is_published": true, "keywords": [], "language": "eng", "last_updated": "2021-07-13T16:44:23.431238", "ll_bbox_polygon": "SRID=4326;POLYGON ((-105.301591603937 39.96445409752658, -105.3012123901718 40.09461709343572, -105.1779963136617 40.09433920944086, -105.1786105751238 39.96417673980012, -105.301591603937 39.96445409752658))", "maintenance_frequency": null, "metadata_only": false, "metadata_uploaded": false, "metadata_uploaded_preserve": false, "owner": {"id": 1001, "username": "test_user1"}, "popular_count": 0, "purpose": null, "rating": 0, "regions": ["/api/regions/1/"], "resource_type": "layer", "resource_uri": "/api/base/18/", "share_count": 0, "srid": "EPSG:2876", "supplemental_information": "No information provided", "temporal_extent_end": null, "temporal_extent_start": null, "thumbnail_url": "http://localhost:8000/uploaded/thumbs/layer-852259fc-e3f9-11eb-a768-47eca398f8be-thumb.png", "title": "BoulderCityLimits", "tkeywords": [], "uuid": "852259fc-e3f9-11eb-a768-47eca398f8be"}, {"abstract": "No abstract provided", "alternate": null, "attribution": null, "bbox_polygon": "SRID=4326;POLYGON ((-180 -90, -180 90, 180 90, 180 -90, -180 -90))", "category": null, "constraints_other": null, "created": "2021-07-14T09:50:11.673661", "csw_insert_date": "2021-07-14T09:50:13.468480", "csw_mdsource": "local", "csw_schema": "http://www.isotc211.org/2005/gmd", "csw_type": "document", "csw_typename": "gmd:MD_Metadata", "csw_wkt_geometry": "SRID=4326;POLYGON ((-180 -90, -180 90, 180 90, 180 -90, -180 -90))", "custom_md": null, "data_quality_statement": null, "date": "2021-07-14T09:50:11.520208", "date_type": "publication", "detail_url": "/documents/32", "dirty_state": false, "doi": null, "edition": null, "featured": false, "group": null, "id": 32, "is_approved": true, "is_published": true, "keywords": [], "language": "eng", "last_updated": "2021-07-14T09:50:13.439131", "ll_bbox_polygon": "SRID=4326;POLYGON ((-180 -90, -180 90, 180 90, 180 -90, -180 -90))", "maintenance_frequency": null, "metadata_only": false, "metadata_uploaded": false, "metadata_uploaded_preserve": false, "owner": {"id": 1001, "username": "test_user1"}, "popular_count": 0, "purpose": null, "rating": 0, "regions": ["/api/regions/1/"], "resource_type": "document", "resource_uri": "/api/base/32/", "share_count": 0, "srid": "4326", "supplemental_information": "No information provided", "temporal_extent_end": null, "temporal_extent_start": null, "thumbnail_url": "/static/geonode/img/missing_thumb.png", "title": "Boulder Colorado", "tkeywords": [], "uuid": "e19b9cae-e488-11eb-8431-fbbd1867106e"}, {"abstract": "No abstract provided", "alternate": "geonode:Buildings050714", "attribution": null, "bbox_polygon": "SRID=4326;POLYGON ((3045967.25 1206627.75, 3045967.25 1285209.75, 3108482.75 1285209.75, 3108482.75 1206627.75, 3045967.25 1206627.75))", "category": null, "constraints_other": null, "created": "2021-07-13T16:51:54.210684", "csw_insert_date": "2021-07-13T16:52:19.256312", "csw_mdsource": "local", "csw_schema": "http://www.isotc211.org/2005/gmd", "csw_type": "dataset", "csw_typename": "gmd:MD_Metadata", "csw_wkt_geometry": "SRID=4326;POLYGON ((-105.3361603091156 39.89992212782436, -105.3361603091156 40.11617646966664, -105.1121150420894 40.11617646966664, -105.1121150420894 39.89992212782436, -105.3361603091156 39.89992212782436))", "custom_md": null, "data_quality_statement": null, "date": "2021-07-13T16:51:54.056350", "date_type": "publication", "detail_url": "/layers/geonode_data:geonode:Buildings050714", "dirty_state": false, "doi": null, "edition": null, "featured": false, "group": null, "id": 19, "is_approved": true, "is_published": true, "keywords": [], "language": "eng", "last_updated": "2021-07-13T16:52:19.232245", "ll_bbox_polygon": "SRID=4326;POLYGON ((-105.3361603091156 39.90045483606045, -105.3356411675245 40.11617646966664, -105.1121150420894 40.11564208499033, -105.1133401975235 39.89992212782436, -105.3361603091156 39.90045483606045))", "maintenance_frequency": null, "metadata_only": false, "metadata_uploaded": false, "metadata_uploaded_preserve": false, "owner": {"id": 1001, "username": "test_user1"}, "popular_count": 0, "purpose": null, "rating": 0, "regions": ["/api/regions/1/"], "resource_type": "layer", "resource_uri": "/api/base/19/", "share_count": 0, "srid": "EPSG:2876", "supplemental_information": "No information provided", "temporal_extent_end": null, "temporal_extent_start": null, "thumbnail_url": "http://localhost:8000/uploaded/thumbs/layer-a07ba8e2-e3fa-11eb-a768-47eca398f8be-thumb.png?v=b512e364", "title": "Buildings050714", "tkeywords": [], "uuid": "a07ba8e2-e3fa-11eb-a768-47eca398f8be"}], "slug": "boulder", "users": [{"avatar_100": "/uploaded/avatars/test_user1/resized/240/flowers.jpg", "documents_count": 5, "first_name": "User1", "id": 1001, "last_name": "Test", "layers_count": 10, "maps_count": 1, "profile_detail_url": "/people/profile/test_user1/", "username": "test_user1"}, {"avatar_100": "https://www.gravatar.com/avatar/6b38efd9db8f3970a3d800b97cb731f3/?s=240", "documents_count": 0, "first_name": "", "id": 1002, "last_name": "", "layers_count": 0, "maps_count": 0, "profile_detail_url": "/people/profile/test_user2/", "username": "test_user2"}]}]}
+```
+
 ### [Next Section: Add Tanslations to geonode-project](GEONODE_PROJ_TRX.md)
