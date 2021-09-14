@@ -1312,7 +1312,7 @@ vim my_geonode/urls.py
   ]
 }
 ```
-- To get the single objecy, as `admin` move to `http://localhost:8000/api/geocollections/1`
+- To get the single object, as `admin` move to `http://localhost:8000/api/geocollections/1`
 
 ```json
 {
@@ -1764,6 +1764,47 @@ vim my_geonode/urls.py
   },
   "objects": []
 }
+```
+
+### API v2 - REST
+
+- API `ViewSet`
+
+```shell
+vim geocollections/views.py
+```
+
+- API `Serializer`
+
+```shell
+vim geocollections/serializers.py
+```
+
+- API urls
+
+```shell
+vim geocollections/urls.py
+```
+```diff
+--- geocollections/urls.py.org	2021-09-13 23:43:40.534056180 +0100
++++ geocollections/urls.py	2021-09-14 11:20:48.523370987 +0100
+@@ -1,9 +1,15 @@
+ from django.conf.urls import url
++from geonode.api.urls import router
+ 
+-from .views import GeocollectionDetail
++from .views import GeocollectionDetail, geocollection_permissions, GeocollectionViewSet
++
++router.register(r'geocollections', GeocollectionViewSet, 'geocollections')
+ 
+ urlpatterns = [
+     url(r'^(?P<slug>[-\w]+)/$',
+         GeocollectionDetail.as_view(),
+         name='geocollection-detail'),
++    url(r'^permissions/(?P<collection_name>\w+)$',
++        geocollection_permissions,
++        name='geocollection_permissions')
+ ]
 ```
 
 ### [Next Section: Add Tanslations to geonode-project](GEONODE_PROJ_TRX.md)
