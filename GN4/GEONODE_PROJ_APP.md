@@ -625,4 +625,98 @@ vim geocollections/urls.py
 
      ![image](https://user-images.githubusercontent.com/1278021/133168295-3f1c1d89-26a2-4ac5-89eb-f2098e9113a1.png)
 
+#### Permissions Set View Template
+- Let's modify the `geocollection_permissions` view in order to return a `FORM` allowing a user to set the `perm_spec` from the **browser**
+
+```shell
+vim geocollections/views.py
+```
+```diff
+--- geocollections/views.py.org	2021-09-13 23:36:59.410056180 +0100
++++ geocollections/views.py	2021-09-14 01:15:30.513828438 +0100
+@@ -1,6 +1,56 @@
++import json
++import logging
++import traceback
++
++from django.shortcuts import render
++from django.http import HttpResponse
+ from django.views.generic import DetailView
++from django.core.exceptions import PermissionDenied
++from django.contrib.auth.mixins import PermissionRequiredMixin
+ 
+ from .models import Geocollection
+ 
+-class GeocollectionDetail(DetailView):
++logger = logging.getLogger(__name__)
++
++
++class GeocollectionDetail(PermissionRequiredMixin, DetailView):
+     model = Geocollection
++
++    def has_permission(self):
++        return self.request.user.has_perm('geocollection.access_geocollection', self)
++
++
++def geocollection_permissions(request, collection_name):
++
++    geocollection = Geocollection.objects.get(name=collection_name)
++    user = request.user
++
++    if not user.has_perm('access_geocollection', geocollection):
++        raise PermissionDenied
++
++    if request.method == 'GET':
++        return render(request, 'geocollections/geocollection_permissions.html', context={'object': geocollection})
++
++    elif request.method == 'POST':
++        success = True
++        message = "Permissions successfully updated!"
++        try:
++            perm_spec = json.loads(request.POST.get('perm_spec'))
++            logger.info(f" ---- setting perm_sepc: {perm_spec}")
++            geocollection.set_permissions(perm_spec)
++
++            return HttpResponse(
++                json.dumps({'success': success, 'message': message}),
++                status=200,
++                content_type='text/plain'
++            )
++        except Exception as e:
++            traceback.print_exc()
++            logger.exception(e)
++            success = False
++            message = f"Error updating permissions :(... error: {e}"
++            return HttpResponse(
++                json.dumps({'success': success, 'message': message}),
++                status=500,
++                content_type='text/plain'
++            )
+```
+
+- Let's define now the `geocollections/geocollection_permissions.html` template to render and manage the `perm_spec` request
+
+```shell
+vim my_geonode/templates/geocollections/geocollection_permissions.html
+```
+```django
+{% extends "geonode_base.html" %}
+{% block body %}
+    <h2>Geocollection {{ object.name }}</h2>
+    <p>You have the permission to access the Geocollection: {{ object.name }}</p>
+    <p>Set Permissions:</p>
+    <form action="/geocollections/permissions/{{ object.name }}" method="POST" name="geocollections_perm_spec_form">
+       {% csrf_token %}
+       <label for="perm_spec">Perm Spec: </label><br>
+       <textarea id="perm_spec" name="perm_spec" rows=4 cols="50">{"users": {"AnonymousUser": ["access_geocollection"]}, "groups": {}}</textarea><br>
+       <input type="submit" value="Submit">
+    </form>
+{% endblock body%}
+
+{% block extra_script %}
+{{ block.super }}
+{% endblock extra_script %}
+```
+
+
 ### [Next Section: Add Tanslations to geonode-project](GEONODE_PROJ_TRX.md)
