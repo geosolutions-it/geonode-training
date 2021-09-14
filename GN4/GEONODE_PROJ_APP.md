@@ -2500,4 +2500,4 @@ vim geocollections/serializers.py
 }
 ```
 
-#### [Next Section: Add Tanslations to geonode-project](GEONODE_PROJ_TRX.md)
+#### [Next Section: Add Translations to geonode-project](GEONODE_PROJ_TRX.md)
