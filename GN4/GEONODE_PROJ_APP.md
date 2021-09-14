@@ -718,5 +718,32 @@ vim my_geonode/templates/geocollections/geocollection_permissions.html
 {% endblock extra_script %}
 ```
 
+- Let's test it; move to `http://localhost:8000/geocollections/permissions/boulder`
+
+    ![image](https://user-images.githubusercontent.com/1278021/133174540-98c77c36-9b94-45d4-a9b3-6d32acfa41c0.png)
+
+- Update the `perm_spec` and click on `Submit`
+
+    ![image](https://user-images.githubusercontent.com/1278021/133174597-1bb994c4-2739-44ec-8d53-94cbb1f13179.png)
+
+- Let's check if the `perm_spec` has changed on the backend
+
+```shell
+./manage_dev.sh shell
+```
+```python
+Python 3.8.10 (default, Jun  2 2021, 10:49:15) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.24.1 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: from geocollections.models import Geocollection
+
+In [2]: Geocollection.objects.get(name='boulder').get_all_level_info()
+Out[2]: 
+{'users': {<Profile: AnonymousUser>: ['access_geocollection']},
+ 'groups': {<Group: anonymous>: ['access_geocollection']}}
+
+In [3]: quit()
+```
 
 ### [Next Section: Add Tanslations to geonode-project](GEONODE_PROJ_TRX.md)
