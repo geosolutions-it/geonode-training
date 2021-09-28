@@ -1,5 +1,5 @@
 # Adding Other Media Types Contents
-As a content management system, GeoNode allows also uploading datasets which are not strictly *georeferences*, i.e. media contents that do not have any sort of geospatial information, like the layers.
+As a content management system, GeoNode allows also uploading datasets which are not strictly *georeferenced*, i.e. media contents that do not have any sort of geospatial information, like the layers.
 
 GeoNode currently supports a bunch of different media types, like documents, PDFs, images, videos and also audios.
 
