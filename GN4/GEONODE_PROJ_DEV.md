@@ -166,7 +166,7 @@ We are good to go; the dependencies should be updated also. Let's prepare and st
 ```shell
 # Ensure the NGINX and UWSGI services have been stopped
 sudo systemctl stop nginx
-sudo pkill -9 uwsgi
+sudo pkill -9 -f uwsgi
 sudo pas aux | grep uwsgi
 
 # Ensure we are in the correct virtualenv and folder
