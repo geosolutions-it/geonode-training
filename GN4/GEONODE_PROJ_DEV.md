@@ -431,7 +431,7 @@ pip install geonode-oauth-toolkit==2.2.2
 ```
 ### Start `my_geonode` in DEV Mode
 ```shell
-./paver_dev.sh stary_django
+./paver_dev.sh start_django
 ```
 
 - **Notice** that we don't need to fix GeoServer `OAuth2` endpoints since we did already on the previous section
