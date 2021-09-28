@@ -329,7 +329,7 @@ This procedure allows us to quickly update andh replace the current layer defaul
 - From the location `/opt/data/sample_data/pretty_maps/data/boulder` upload the layers:
    * `srtm_boulder`
    * `Streets`
-   * `Trails
+   * `Trails`
    * `Wetlands_regulatory_area`
    
    ![image](https://user-images.githubusercontent.com/1278021/125514558-d53f817a-8c94-4d90-a7a8-2f37f6206464.png)
