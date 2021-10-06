@@ -3,7 +3,7 @@ The purpose of this section is to provide you with basic informations on the str
 
 In order to simplify the installation procedure, a self-contained package comprising the various executables as well as the data used throughout the training are provided to download or can be viewed online at this link:
 
- - [GeoNode 3.2.1.ova](https://www.dropbox.com/s/724gqtss4nqifl8/GeoNode%203.2.1.ova?dl=1)
+ - [GeoNode 3.2.1.ova](https://www.dropbox.com/s/nftnjs4unsxal6d/GeoNode%203.2.1.ova?dl=1)
 
 The package is an Oracle VirtualBox `OVA` image which must be loaded into a running Virtual Box instance.
 
