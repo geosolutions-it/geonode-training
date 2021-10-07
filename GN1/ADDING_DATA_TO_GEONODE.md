@@ -62,7 +62,8 @@ These requests are normally performed in sequence by the client. Each one enable
 ### Ways to encode requests
 Requests in `OGC` protocols can normally be performed using two different paradigms:
 
-  * **KVP** or Key Value Pair. It’s a simple URL that supports all the requests parameters as pairs of keys and values in the query string. The `HTTP` request is a `GET` in this case. Here is an example of a `WFS GetFeature` in `KVP` mode:
+  * **KVP** or Key Value Pair. It’s a simple URL that supports all the requests parameters as pairs of keys and values in the query string. The `HTTP` request is a `GET` in this case. Here is an example of a `WFS GetFeature` in `KVP` mode
+
     ```shell
     http://demo.geo-solutions.it/geoserver/wfs?
       request=GetFeature&
@@ -71,7 +72,9 @@ Requests in `OGC` protocols can normally be performed using two different paradi
       propertyName=STATE_NAME,PERSONS&
       BBOX=-75.102613,40.212597,-72.361859,41.512517,EPSG:4326
     ```
-  * **XML POST**, contains a `XML` document describing the request and sent to the server as a `HTTP POST` request. Here is an example of a `WFS GetFeature` using `HTTP POST` mode:
+
+  * **XML POST**, contains a `XML` document describing the request and sent to the server as a `HTTP POST` request. Here is an example of a `WFS GetFeature` using `HTTP POST` mode
+
     ```xml
     <wfs:GetFeature service="WFS" version="1.0.0"
       outputFormat="GML2"
