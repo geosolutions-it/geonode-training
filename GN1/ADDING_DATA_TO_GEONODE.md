@@ -64,41 +64,41 @@ Requests in `OGC` protocols can normally be performed using two different paradi
 
   * **KVP** or Key Value Pair. It’s a simple URL that supports all the requests parameters as pairs of keys and values in the query string. The `HTTP` request is a `GET` in this case. Here is an example of a `WFS GetFeature` in `KVP` mode
 
-    ```shell
-    http://demo.geo-solutions.it/geoserver/wfs?
-      request=GetFeature&
-      version=1.1.0&
-      typeName=topp:states&
-      propertyName=STATE_NAME,PERSONS&
-      BBOX=-75.102613,40.212597,-72.361859,41.512517,EPSG:4326
-    ```
+```shell
+http://demo.geo-solutions.it/geoserver/wfs?
+  request=GetFeature&
+  version=1.1.0&
+  typeName=topp:states&
+  propertyName=STATE_NAME,PERSONS&
+  BBOX=-75.102613,40.212597,-72.361859,41.512517,EPSG:4326
+```
 
   * **XML POST**, contains a `XML` document describing the request and sent to the server as a `HTTP POST` request. Here is an example of a `WFS GetFeature` using `HTTP POST` mode
 
-    ```xml
-    <wfs:GetFeature service="WFS" version="1.0.0"
-      outputFormat="GML2"
-      xmlns:topp="http://www.openplans.org/topp"
-      xmlns:wfs="http://www.opengis.net/wfs"
-      xmlns:ogc="http://www.opengis.net/ogc"
-      xmlns:gml="http://www.opengis.net/gml"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.opengis.net/wfs
-                          http://schemas.opengis.net/wfs/1.0.0/WFS-basic.xsd">
-      <wfs:Query typeName="topp:states">
-        <ogc:PropertyName>topp:STATE_NAME</ogc:PropertyName>
-        <ogc:PropertyName>topp:PERSONS</ogc:PropertyName>
-        <ogc:Filter>
-          <ogc:BBOX>
-            <ogc:PropertyName>the_geom</ogc:PropertyName>
-            <gml:Box srsName="http://www.opengis.net/gml/srs/epsg.xml#4326">
-               <gml:coordinates>-75.102613,40.212597 -72.361859,41.512517</gml:coordinates>
-            </gml:Box>
-          </ogc:BBOX>
-       </ogc:Filter>s
-      </wfs:Query>
-    </wfs:GetFeature>
-    ```
+```xml
+<wfs:GetFeature service="WFS" version="1.0.0"
+  outputFormat="GML2"
+  xmlns:topp="http://www.openplans.org/topp"
+  xmlns:wfs="http://www.opengis.net/wfs"
+  xmlns:ogc="http://www.opengis.net/ogc"
+  xmlns:gml="http://www.opengis.net/gml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.opengis.net/wfs
+                      http://schemas.opengis.net/wfs/1.0.0/WFS-basic.xsd">
+  <wfs:Query typeName="topp:states">
+    <ogc:PropertyName>topp:STATE_NAME</ogc:PropertyName>
+    <ogc:PropertyName>topp:PERSONS</ogc:PropertyName>
+    <ogc:Filter>
+      <ogc:BBOX>
+        <ogc:PropertyName>the_geom</ogc:PropertyName>
+        <gml:Box srsName="http://www.opengis.net/gml/srs/epsg.xml#4326">
+           <gml:coordinates>-75.102613,40.212597 -72.361859,41.512517</gml:coordinates>
+        </gml:Box>
+      </ogc:BBOX>
+   </ogc:Filter>s
+  </wfs:Query>
+</wfs:GetFeature>
+```
 
 *GeoNode aims to simplify the process of publishing geospatial contents to the server and seamplessly expose them through the OGC Standard protocols*.
 
