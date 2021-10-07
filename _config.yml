@@ -1,4 +1,1 @@
 theme: jekyll-theme-slate
-markdown: kramdown
-kramdown:
-  input: Kramdown
