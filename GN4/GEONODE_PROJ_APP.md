@@ -701,6 +701,7 @@ vim geocollections/views.py
 ```shell
 vim my_geonode/templates/geocollections/geocollection_permissions.html
 ```
+{% raw %}
 ```django
 {% extends "geonode_base.html" %}
 {% block body %}
@@ -719,6 +720,7 @@ vim my_geonode/templates/geocollections/geocollection_permissions.html
 {{ block.super }}
 {% endblock extra_script %}
 ```
+{% endraw %}
 
 - Let's test it; move to `http://localhost:8000/geocollections/permissions/boulder`
 
