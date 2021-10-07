@@ -16,13 +16,16 @@ Follow these step to create a new one:
      ![image](https://user-images.githubusercontent.com/1278021/125270714-3b5c1280-e30a-11eb-9ad6-cfa14a77af5d.png)
 
  - On the next page, fill out the form. Enter a user name and password in the fields. Also, enter an email address.
+ 
      ```ini
      E-mail: test_user1@test.geonode.org
      Username: test_user1
      Password: test_user1
      Password (again): test_user1
      ```
+   
      ![image](https://user-images.githubusercontent.com/1278021/125271344-ee2c7080-e30a-11eb-8a03-abac2bb148bd.png)
+   
 - You will be automatically logged in and redirected to the GeoNode home page. On a production system, with a correctly configured `EMAIL SMTP` service, an email will be also sent confirming that you have signed up. If no errors occur during the registration, you will be able to recognize the username on the top-right side of the page:
 
     ![image](https://user-images.githubusercontent.com/1278021/125273295-0f8e5c00-e30d-11eb-97bf-b0e88b100616.png)
