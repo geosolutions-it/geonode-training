@@ -7,7 +7,7 @@
 ```shell
 vim my_geonode/templates/site_index.html
 ```
-
+{% raw %}
 ```diff
 --- my_geonode/templates/site_index.html.org	2021-09-10 11:25:45.185777196 +0100
 +++ my_geonode/templates/site_index.html	2021-09-10 11:28:09.255720387 +0100
@@ -33,6 +33,7 @@ vim my_geonode/templates/site_index.html
 \ No newline at end of file
 +{% endblock hero %}
 ```
+{% endraw %}
 
 ![image](https://user-images.githubusercontent.com/1278021/132840646-15e34fda-deef-4112-832b-8ef1b6775db7.png)
 
@@ -73,6 +74,7 @@ Let's make some changes that will apply to the whole site. We can add a `Geocoll
 
 Edit the `site_base.html` file in the templates folder and **uncomment** the list item adapting the text as well from:
 
+{% raw %}
 ```diff
 --- my_geonode/templates/site_base.html.org	2021-09-10 11:46:44.763720387 +0100
 +++ my_geonode/templates/site_base.html	2021-09-10 11:47:12.495720387 +0100
@@ -89,6 +91,7 @@ Edit the `site_base.html` file in the templates folder and **uncomment** the lis
 -{% endcomment %}
  {% endblock %}
 ```
+{% endraw %}
 
 ![image](https://user-images.githubusercontent.com/1278021/132842423-465d8e19-69d6-4ab4-9bb5-b0d69f946cdd.png)
 
@@ -107,7 +110,7 @@ vim my_geonode/templates/layers/layer_list_default.html
 
 diff -ruN /opt/geonode/geonode/layers/templates/layers/layer_list_default.html my_geonode/templates/layers/layer_list_default.html
 ```
-
+{% raw %}
 ```diff
 --- /opt/geonode/geonode/layers/templates/layers/layer_list_default.html	2021-09-01 14:22:59.778823091 +0100
 +++ my_geonode/templates/layers/layer_list_default.html	2021-09-10 11:55:32.195720387 +0100
@@ -130,6 +133,7 @@ diff -ruN /opt/geonode/geonode/layers/templates/layers/layer_list_default.html m
    {% with include_type_filter='true' %}
      {% with header='Type' %}
 ```
+{% endraw %}
 
 ![image](https://user-images.githubusercontent.com/1278021/132843431-0d00d0e9-770f-4850-8c82-653f3f697c49.png)
 
@@ -152,7 +156,7 @@ cd /opt/geonode-project/my_geonode/
 ```shell
 vim /opt/geonode/geonode/base/models.py
 ```
-
+{% raw %}
 ```diff
 diff --git a/geonode/base/models.py b/geonode/base/models.py
 index e2a5a409c..922c67db4 100644
@@ -181,6 +185,7 @@ index e2a5a409c..922c67db4 100644
  
      class Meta:
 ```
+{% endraw %}
 
 - Add the new field to the DB
 
@@ -199,7 +204,7 @@ cp /opt/geonode/geonode/layers/templates/layouts/panels.html my_geonode/template
 ```shell
 vim my_geonode/templates/layouts/panels.html
 ```
-
+{% raw %}
 ```diff
 --- /opt/geonode/geonode/layers/templates/layouts/panels.html	2021-09-01 14:22:59.778823091 +0100
 +++ my_geonode/templates/layouts/panels.html	2021-09-10 15:48:39.691395977 +0100
@@ -215,6 +220,7 @@ vim my_geonode/templates/layouts/panels.html
                                      <div id="req_item">
                                        <span><label for="{{ layer_form.title|id }}">{{ layer_form.title.label }}</label></span>
 ```
+{% endraw %}
 
 - Let's check the changes
 
@@ -229,7 +235,7 @@ vim my_geonode/templates/layouts/panels.html
 ```shell
 vim /opt/geonode/geonode/base/forms.py
 ```
-
+{% raw %}
 ```diff
 diff --git a/geonode/base/forms.py b/geonode/base/forms.py
 index 48a0ef7f1..e0284988c 100644
@@ -247,6 +253,7 @@ index 48a0ef7f1..e0284988c 100644
      owner = forms.ModelChoiceField(
          empty_label=_("Owner"),
 ```
+{% endraw %}
 
 ![image](https://user-images.githubusercontent.com/1278021/133050807-bb921fcc-0b1e-413b-8664-3b896b46ceb2.png)
 
@@ -284,7 +291,7 @@ cp /opt/geonode/geonode/base/templates/base/_resourcebase_info_panel.html my_geo
 ```shell
 vim my_geonode/templates/base/_resourcebase_info_panel.html
 ```
-
+{% raw %}
 ```diff
 --- /opt/geonode/geonode/base/templates/base/_resourcebase_info_panel.html	2021-07-14 14:38:25.391987680 +0100
 +++ my_geonode/templates/base/_resourcebase_info_panel.html	2021-09-13 09:47:42.768337828 +0100
@@ -301,6 +308,7 @@ vim my_geonode/templates/base/_resourcebase_info_panel.html
      {% if resource.date_type == 'creation' %}
      <dt>{% trans "Creation Date" %}</dt>
 ```
+{% endraw %}
 
 ![image](https://user-images.githubusercontent.com/1278021/133053625-ad93d6cc-bf87-4430-8ae5-b87dfedc068c.png)
 
@@ -318,7 +326,7 @@ vim my_geonode/templates/base/_resourcebase_info_panel.html
 ```shell
 vim /opt/geonode/geonode/base/api/serializers.py
 ```
-
+{% raw %}
 ```diff
 diff --git a/geonode/base/api/serializers.py b/geonode/base/api/serializers.py
 index c1a5e8679..909aca07e 100644
@@ -343,6 +351,7 @@ index c1a5e8679..909aca07e 100644
              # csw_typename, csw_schema, csw_mdsource, csw_insert_date, csw_type, csw_anytext, csw_wkt_geometry,
              # metadata_uploaded, metadata_uploaded_preserve, metadata_xml,
 ```
+{% endraw %}
 
 - `http://localhost:8000/api/v2/resources?filter{custom_md.isnull}=False`
 
