@@ -169,6 +169,7 @@ mkdir -p my_geonode/templates/geocollections/
 ```shell
 vim my_geonode/templates/geocollections/geocollection_detail.html
 ```
+{% raw %}
 ```django
 {% extends "geonode_base.html" %}
 {% block body %}
@@ -182,6 +183,7 @@ vim my_geonode/templates/geocollections/geocollection_detail.html
     </ul>
 {% endblock %}
 ```
+{% endraw %}
 
 - Try now visiting the `geocollection` we just created; go to `http://localhost:8000/geocollections/boulder/`
 - The `URLs` of the `geocollection` are in the form `http://localhost:8000/geocollections/<the-name-of-the-created-geocollection>`
