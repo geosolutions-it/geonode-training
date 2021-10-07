@@ -13,15 +13,16 @@ GeoNode is an Open Source, Content Management System (CMS) for geospatial data. 
 The training aims to provide those wishing to build a spatial data infrastructure an overview of the GeoNode capabilities to get started.
 
 Topics covered are as follows:
-* GeoNode basic concepts
-* Quick installation guide
-* Using GeoNode
-   * Registering as a user
-   * Uploading and managing layers
-   * Uploading and managing documents
-   * Uploading and managing maps
-* Introduction to configuring GeoNode
-* Introduction to administering GeoNode
+
+- GeoNode basic concepts
+- Quick installation guide
+- Using GeoNode
+   - Registering as a user
+   - Uploading and managing layers
+   - Uploading and managing documents
+   - Uploading and managing maps
+- Introduction to configuring GeoNode
+- Introduction to administering GeoNode
 
 **PREREQUISITES**
 In order to participate, no previous knowledge of GeoNode is required but having a basic knowledge of GIS concepts and metadata standards will be of great help.
