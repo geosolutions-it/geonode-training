@@ -1,2 +1,4 @@
 theme: jekyll-theme-slate
-markdown: GFM
+markdown: kramdown
+kramdown:
+  input: Kramdown
