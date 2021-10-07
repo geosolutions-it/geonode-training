@@ -170,7 +170,7 @@ mkdir -p my_geonode/templates/geocollections/
 vim my_geonode/templates/geocollections/geocollection_detail.html
 ```
 ```django
-...
+{% extends "geonode_base.html" %}
 {% block body %}
     <h2>Geocollection {{ object.name }}</h2>
     <p>Group: {{ object.group.title }}</p>
@@ -700,13 +700,13 @@ vim geocollections/views.py
 vim my_geonode/templates/geocollections/geocollection_permissions.html
 ```
 ```django
-...
+{% extends "geonode_base.html" %}
 {% block body %}
     <h2>Geocollection {{ object.name }}</h2>
     <p>You have the permission to access the Geocollection: {{ object.name }}</p>
     <p>Set Permissions:</p>
     <form action="/geocollections/permissions/{{ object.name }}" method="POST" name="geocollections_perm_spec_form">
-       { % csrf_token % }
+       {% csrf_token %}
        <label for="perm_spec">Perm Spec: </label><br>
        <textarea id="perm_spec" name="perm_spec" rows=4 cols="50">{"users": {"AnonymousUser": ["access_geocollection"]}, "groups": {}}</textarea><br>
        <input type="submit" value="Submit">
