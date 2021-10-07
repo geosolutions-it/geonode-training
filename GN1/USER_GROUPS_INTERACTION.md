@@ -13,14 +13,14 @@ You can invite your contacts typing their email addresses in the input field as 
     
     ![image](https://user-images.githubusercontent.com/1278021/125321558-1af97b80-e33d-11eb-900e-b5e966a2cab8.png)
 
-- In order to move on with the exercises and examples, let's create a new user, called `test_user2` similarly to the `test_user1` we just created on the previous section:
+- In order to move on with the exercises and examples, let's create a new user, called `test_user2` similarly to the `test_user1` we just created on the previous section.
 
-    - USERNAME: `test_user2`
-    - E-MAIL: `test_user2@test.geonode.org`
-    - PASSWORD: `test_user2`
-    - PASSWRD (Again): `test_user2`
- 
-    ![image](https://user-images.githubusercontent.com/1278021/125321581-2187f300-e33d-11eb-9b76-843a89eaf798.png)
+     - USERNAME: `test_user2`
+     - E-MAIL: `test_user2@test.geonode.org`
+     - PASSWORD: `test_user2`
+     - PASSWRD (Again): `test_user2`
+    
+     ![image](https://user-images.githubusercontent.com/1278021/125321581-2187f300-e33d-11eb-9b76-843a89eaf798.png)
 
 ## Viewing other Members Information
 - Once created, explore the memebers registered to the system by clicking on the `People` link from the `About` menu
