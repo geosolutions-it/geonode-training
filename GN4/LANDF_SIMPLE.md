@@ -11,7 +11,7 @@ Try to edit the content of the `jumbotron box` in the page, save and refresh you
 ```shell
 vim geonode/templates/index.html
 ```
-
+{% raw %}
 ```diff
 diff --git a/geonode/templates/index.html b/geonode/templates/index.html
 index 59de01808..bd13da2b2 100644
@@ -27,6 +27,7 @@ index 59de01808..bd13da2b2 100644
        {% endwith %}
        <p></p>
 ```
+{% endraw %}
 
 ![image](https://user-images.githubusercontent.com/1278021/132378649-0dbba09c-9593-4184-9387-8cf04d7d4c90.png)
 
@@ -55,6 +56,7 @@ Let's make some changes that will apply to the whole site. We will add a `Geocol
 
 Edit the `geonode_base.html` file in the `/opt/geonode/geonode/base/templates/` folder and add the following lines:
 
+{% raw %}
 ```django
 {% extends "base.html" %}
 
@@ -65,6 +67,7 @@ Edit the `geonode_base.html` file in the `/opt/geonode/geonode/base/templates/` 
 </li>
 {% endblock tabs %}
 ```
+{% endraw %}
 
 Refresh the page and check the outcomes
 
