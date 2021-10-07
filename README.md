@@ -44,14 +44,15 @@ This is a **novice** training, no other modules are recommended as a preconditio
 The training aims to provide those wishing to build a spatial data infrastructure using GeoNode an in depth look at the data publishing capabilities.
 
 Topics covered are as follows:
-* Advanced layers publishing and management
-   * Optimizing, publishing and styling GeoTIFF data
-   * Publishing Raster Time Series
-   * Optimizing, publishing and styling Vector data
-   * Publishing Vector Time Series
-* Advanced maps publishing and management
-   * Optimizing Maps, tips and tricks
-   * Charts and Widgets
+
+- Advanced layers publishing and management
+   - Optimizing, publishing and styling GeoTIFF data
+   - Publishing Raster Time Series
+   - Optimizing, publishing and styling Vector data
+   - Publishing Vector Time Series
+- Advanced maps publishing and management
+   - Optimizing Maps, tips and tricks
+   - Charts and Widgets
 
 **PREREQUISITES**
 In order to participate basic knowledge of GeoNode is required as well as having a basic knowledge of GIS concepts and metadata standards.
@@ -73,15 +74,16 @@ This is an **intermediate** training, GN1 modules is recommended as a preconditi
 The training aims to provide those wishing to build a spatial data infrastructure using GeoNode an in depth look into advanced installation, configuration and operation.
 
 Topics covered are as follows:
-* GeoNode installation options, including:
-   * GeoNode core Vs GeoNode project
-   * Using docker Vs SPC
-* Customizing look and feel		
-* Advanced GeoNode configuration, including:
-   * Monitoring and Analytics	
-   * LDAP connection
-* Advanced GeoNode Administration
-* Hardening GeoNode
+
+- GeoNode installation options, including:
+   - GeoNode core Vs GeoNode project
+   - Using docker Vs SPC
+- Customizing look and feel		
+- Advanced GeoNode configuration, including:
+   - Monitoring and Analytics	
+   - LDAP connection
+- Advanced GeoNode Administration
+- Hardening GeoNode
 
 **PREREQUISITES**
 In order to participate basic knowledge of GeoNode is required as well as having a basic knowledge of GIS concepts and metadata standards.
@@ -103,13 +105,13 @@ This is a **advanced** training, at least GN1 module is recommended as a precond
 The training aims to provide attendees with information useful to customize and/or extend GeoNode.
 
 Topics covered are as follows:
-* GeoNode development options:
-   * GeoNode core Vs GeoNode project
-   * Using docker
-* Introduction to Django / Django project structure		
-* Further customizing look and feel
-* How to Customize  Templates / Add apps and functions to geonode-project	
-* Customize MapStore integration
+- GeoNode development options:
+   - GeoNode core Vs GeoNode project
+   - Using docker
+- Introduction to Django / Django project structure		
+- Further customizing look and feel
+- How to Customize  Templates / Add apps and functions to geonode-project	
+- Customize MapStore integration
 
 **PREREQUISITES**
 In order to participate basic knowledge of GeoNode is required as well as having a working knowledge of DJango, Python 3 and geospatial concepts.
@@ -120,4 +122,4 @@ At the end of the training attendees will be able to customize and/or extend Geo
 **OTHER INFORMATION**
 GeoSolutions will make available an all-in-one package to run the workshop as a VM for VirtualBox. This should be pre-installed on attendees laptops before the workshop.
 
-This is a **advanced** training, at least GN3 module is recommended as a precondition.
+This is an **advanced** training, at least GN3 module is recommended as a precondition.
