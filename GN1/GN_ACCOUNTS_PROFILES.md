@@ -17,10 +17,10 @@ Follow these step to create a new one:
 
  - On the next page, fill out the form. Enter a user name and password in the fields. Also, enter an email address.
 
-     - E-mail: test_user1@test.geonode.org
-     - Username: test_user1
-     - Password: test_user1
-     - Password (again): test_user1
+     - E-mail: `test_user1@test.geonode.org`
+     - Username: `test_user1`
+     - Password: `test_user1`
+     - Password (again): `test_user1`
      
      ![image](https://user-images.githubusercontent.com/1278021/125271344-ee2c7080-e30a-11eb-8a03-abac2bb148bd.png)
    
