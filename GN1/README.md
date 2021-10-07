@@ -32,32 +32,32 @@ It is also designed to be a flexible platform that software developers can exten
   
 ### General
 
-Project homepage: https://geonode.org
+Project homepage: [https://geonode.org](https://geonode.org)
 
-Repository: https://github.com/GeoNode/geonode
+Repository: [https://github.com/GeoNode/geonode](https://github.com/GeoNode/geonode)
 
-Official Demo: http://stable.demo.geonode.org
+Official Demo: [http://stable.demo.geonode.org](http://stable.demo.geonode.org)
 
-GeoNode Wiki: https://github.com/GeoNode/geonode/wiki
+GeoNode Wiki: [https://github.com/GeoNode/geonode/wiki](https://github.com/GeoNode/geonode/wiki)
 
-Issue tracker: https://github.com/GeoNode/geonode-project/issues
+Issue tracker: [https://github.com/GeoNode/geonode-project/issues](https://github.com/GeoNode/geonode-project/issues)
 
 In case of sensitive bugs like security vulnerabilities, please contact a GeoNode Core Developer directly instead of using issue tracker. We value your effort to improve the security and privacy of this project!
 
 ### Related projects
 
-GeoNode Project: https://github.com/GeoNode/geonode-project
+GeoNode Project: [https://github.com/GeoNode/geonode-project](https://github.com/GeoNode/geonode-project)
 
-GeoNode at Docker: https://hub.docker.com/u/geonode
+GeoNode at Docker: [https://hub.docker.com/u/geonode](https://hub.docker.com/u/geonode)
 
-GeoNode OSGeo-Live: https://live.osgeo.org/en/
+GeoNode OSGeo-Live: [https://live.osgeo.org/en/](https://live.osgeo.org/en/)
 
 ## Licensing
 GeoNode is Copyright 2018 Open Source Geospatial Foundation (OSGeo).
 
 GeoNode is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. GeoNode is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License along with GeoNode. If not, see http://www.gnu.org/licenses.
+You should have received a copy of the GNU General Public License along with GeoNode. If not, see [http://www.gnu.org/licenses](http://www.gnu.org/licenses).
 
 ## Current Version and Features
 GeoNode current stable version: 3.2.1
@@ -67,10 +67,10 @@ Main Features: [State of GeoNode](https://www.dropbox.com/s/r7ftt38mleadzo6/Stat
 ## Get in touch with the community
 GeoNode is an open source project and contributors are needed to keep this project moving forward. Learn more on how to contribute on our Community Bylaws.
 
-User Mailing List: https://lists.osgeo.org/cgi-bin/mailman/listinfo/geonode-users
+User Mailing List: [https://lists.osgeo.org/cgi-bin/mailman/listinfo/geonode-users](https://lists.osgeo.org/cgi-bin/mailman/listinfo/geonode-users)
 
-Developer Mailing List: https://lists.osgeo.org/cgi-bin/mailman/listinfo/geonode-devel
+Developer Mailing List: [https://lists.osgeo.org/cgi-bin/mailman/listinfo/geonode-devel](https://lists.osgeo.org/cgi-bin/mailman/listinfo/geonode-devel)
 
-Gitter Chat: https://gitter.im/GeoNode/general
+Gitter Chat: [https://gitter.im/GeoNode/general](https://gitter.im/GeoNode/general)
 
 #### [Next Section: GeoNode Basics](BASICS.md)
