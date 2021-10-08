@@ -19,6 +19,7 @@ That not only allow the owners to better describe the contents and quality of th
 
     - **Title**: `Boulder Main Roads`
     - **Abstract**: `The dataset shows the main roads of the Boulde city, in Colorado.`
+    - **Publication Date**: Update the date to `now`
     - **Category**: `Transportation`
     - **Free-text Keywords**: `boulder, roads, transportation,`
     - **License**: `Open Data Commons Open Database License / OSM`
@@ -28,6 +29,5 @@ That not only allow the owners to better describe the contents and quality of th
 - Click on `Update` and wait for the page to be reloaded; the `info` panel will show the updated information.
 
     ![image](https://user-images.githubusercontent.com/1278021/136560938-02c8b965-66ce-44cf-b8d9-f30c999ace33.png)
-
 
 #### [Next Section: Finding Contents](ADV_SEARCH.md)
