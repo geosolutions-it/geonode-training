@@ -38,6 +38,30 @@ With some of the metadata fields correctly updated and populated, it will be muc
 
         ![image](https://user-images.githubusercontent.com/1278021/136565919-a75a38c4-0f40-4a91-9471-68a0becdb92d.png)
 
+    - The `REGIONS` filters work well only if the `Regions` have been correctly set on the metadata panel.
 
+        ![image](https://user-images.githubusercontent.com/1278021/136568346-340ac985-b6a9-4add-a67a-69e1c6e1fec3.png)
+
+    - Finally the `EXTENT` filter could be also a quick way to refine the list by _zooming_ over an area of interest
+
+        ![image](https://user-images.githubusercontent.com/1278021/136568547-d10e1933-673f-4ca2-b170-948c600f5b2f.png)
+
+## Advanced Search
+
+By moving to the main page and clicking on the `Advanced Search` link, will allow us to apply the `Quick Filters` above over any content type instead of a specific one
+
+![image](https://user-images.githubusercontent.com/1278021/136568858-9e0b1b8d-6aa3-40e9-9e0f-532421e12c6e.png)
+
+Notice that now the list shows all the types of data available on GeoNode
+
+![image](https://user-images.githubusercontent.com/1278021/136569097-ccfd4e44-e097-499f-aa81-26e8d709238d.png)
+
+## Contents Search
+
+By using the `search boxes` on the main page or on the top bar, it is also to search for sentences from the datasets' abstracts and purposes.
+
+When start typing, the _type ahead_ will show you probably some title matches; however if you put some content and click on the search lens, it will look also for matches on the abstracts.
+
+![image](https://user-images.githubusercontent.com/1278021/136570105-9e3a95c9-be79-47f7-b341-2dbe2d5f8112.png)
         
 #### [Next Section: Downloading, Replacing, Appending Data](REPLACE_DATASETS.md)
