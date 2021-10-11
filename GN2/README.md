@@ -4,8 +4,8 @@
 
  - [Improving Contents Metadata](CONTENTS_METADATA.md)
  - [Finding Contents](ADV_SEARCH.md)
+ - [Creating and Editing Data](CREATE_EDIT_DATA.md)
  - [Downloading, Replacing, Appending Data](REPLACE_DATASETS.md)
- - [Editing Data](EDIT_DATA.md)
  - [Accessing Data from External Clients (QGIS)](CONNECT_QGIS.md)
  - [Advanced layers publishing and management](ADV_LAYERS_PUB.md)
    - [Publishing data from a DB table](PUB_FROM_DB.md)
