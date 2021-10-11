@@ -708,6 +708,42 @@ In order to execute this exercise let's use some specifi sample dataset that wil
 
     ![image](https://user-images.githubusercontent.com/1278021/136764615-b79acefe-4056-469d-886e-88604678f231.png)
 
+- Go to the `distritos` layer detail page and click on `Editing Tools > Layer > Edit Data`
 
+    ![image](https://user-images.githubusercontent.com/1278021/136769237-439c0af7-c213-4fd8-8adc-efb85cd84ce2.png)
 
-#### [Next Section: Editing Data](EDIT_DATA.md)
+- Add a new polygon as shown in the figure below
+
+    ![image](https://user-images.githubusercontent.com/1278021/136770612-8637c73b-9b64-47bb-9188-929a8392758b.png)
+
+- Delete some features as shown in the figure below
+
+    ![image](https://user-images.githubusercontent.com/1278021/136770755-d3fef80a-9f74-4315-bc29-1cc840cc6e1d.png)
+
+- Go back to the layer details page; **remeber to clear the image cache of the browser everytime you perform an edit operation**
+
+    ![image](https://user-images.githubusercontent.com/1278021/136770946-c64e1012-57a4-4288-b73d-10d3a281818f.png)
+
+- Go to the `Editing Tools > Layer > Append Data`
+
+    ![image](https://user-images.githubusercontent.com/1278021/136771104-3bb5a179-c914-4665-8ec8-7b54188d2061.png)
+
+- Select the `distritos` shapefiles again and append them to the layer
+
+    ![image](https://user-images.githubusercontent.com/1278021/136771953-7abf3017-a932-46d5-9909-14ebae3aacca.png)
+
+- Go back to the layer details page, clear the image cache of the browser and refresh the page; notice that the operation restored the old deleted features by preserving the new ones
+
+    ![image](https://user-images.githubusercontent.com/1278021/136772132-0acfb4a3-b53d-41af-8806-2f0afe0b19c7.png)
+
+- Repeat the same this time by using the `Replace Layer` operation
+
+    ![image](https://user-images.githubusercontent.com/1278021/136772212-505318fc-785c-4370-a79d-24af9a81586c.png)
+
+    ![image](https://user-images.githubusercontent.com/1278021/136772271-2a58578f-1948-4c0e-8f63-0a5e35ba7378.png)
+
+- Go back to the layer details page, clear the image cache of the browser and refresh the page; notice now that the layer features have been restored to the original ones
+
+    ![image](https://user-images.githubusercontent.com/1278021/136772365-4592f4d3-0eca-4090-aafc-225983dc6f78.png)
+
+#### [Next Section: Accessing Data from External Clients (QGIS)](CONNECT_QGIS.md)
