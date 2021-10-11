@@ -700,4 +700,14 @@ This option is valid only for `VECTORIAL` datasets.
     }
     ```
 
+## Replace and Append Data
+
+In order to execute this exercise let's use some specifi sample dataset that will allow us to better visualize the outputs.
+
+- From `/opt/data/sample_data/append_data_samples/distritos` upload the `distritos.shp` Shapefile
+
+    ![image](https://user-images.githubusercontent.com/1278021/136764615-b79acefe-4056-469d-886e-88604678f231.png)
+
+
+
 #### [Next Section: Editing Data](EDIT_DATA.md)
