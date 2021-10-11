@@ -64,4 +64,4 @@ When start typing, the _type ahead_ will show you probably some title matches; h
 
 ![image](https://user-images.githubusercontent.com/1278021/136570105-9e3a95c9-be79-47f7-b341-2dbe2d5f8112.png)
         
-#### [Next Section: Downloading, Replacing, Appending Data](REPLACE_DATASETS.md)
+#### [Next Section: Creating and Editing Data](CREATE_EDIT_DATA.md)
