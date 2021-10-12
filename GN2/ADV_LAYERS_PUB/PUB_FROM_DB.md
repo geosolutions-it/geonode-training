@@ -135,11 +135,11 @@ In particular those are the steps that will allow us to convert the `Test Layer`
       --traceback           Raise on CommandError exceptions
       --no-color            Don't colorize the command output.
       --force-color         Force colorization of the command output.
-      ```
-      
-      ```shell
-      ./manage_dev.sh updatelayers --skip-geonode-registered -u test_user1 -w geonode -f test_layer_3857
-      ```
+    ```
+
+    ```shell
+    ./manage_dev.sh updatelayers --skip-geonode-registered -u test_user1 -w geonode -f test_layer_3857
+    ```
 
 - Verify that the new layer has been created on GeoNode and it belongs to `test_user1`
 
