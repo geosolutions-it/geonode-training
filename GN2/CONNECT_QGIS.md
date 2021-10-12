@@ -123,6 +123,50 @@ This is the easiest way to connect the client to GeoNode:
 
     ![image](https://user-images.githubusercontent.com/1278021/136935660-1c67970b-ddcb-40c4-a10c-593cf098b98b.png)
 
+- QGIS will create a new project with the layer already loaded and centered to the map
 
+    ![image](https://user-images.githubusercontent.com/1278021/136950197-9430ba5e-008a-410d-abf3-6f797c08d892.png)
 
+## Editing Contents: Values
+
+- Enable `Editing Mode` on QGIS and click on the `Info` button
+
+    ![image](https://user-images.githubusercontent.com/1278021/136950557-79ebfe19-42e7-4bc2-a570-e3284d3bce33.png)
+    
+- Click over the geometry to edit and, on the right panel, expand and click on the link `Edit feature form`
+
+    ![image](https://user-images.githubusercontent.com/1278021/136950920-6a177c0e-58fa-4229-8852-0e7b20c95e56.png)
+
+- That will show a small form with the values, change few ofthem and click on `OK` button
+
+    ![image](https://user-images.githubusercontent.com/1278021/136951126-0761cac6-7ba5-4517-bcbf-5b7c2ad976f9.png)
+
+- A small `floppy disk` button will pop near the editing one meaning that there are some pending changes to be committed to the server; click on it in order to persist the changes
+
+    ![image](https://user-images.githubusercontent.com/1278021/136951347-2b405b41-6f09-49cf-9e2e-3d56b3b6585a.png)
+
+- At a successfull commit, the `floppy disk` button will be disabled again
+
+## Editing Contents: Geometries
+
+- Enable `Editing Mode` on QGIS and click on the `Info` button
+
+    ![image](https://user-images.githubusercontent.com/1278021/136950557-79ebfe19-42e7-4bc2-a570-e3284d3bce33.png)
+
+- Click on the `Vertex Tool` and enable it; from now on by moving over a geometry you will be able to modify its vertices
+
+    ![image](https://user-images.githubusercontent.com/1278021/136952225-3827b983-f192-4285-a80a-facc85af2d33.png)
+
+- Once happy with the changes, save them like we have done previously on the values
+
+    ![image](https://user-images.githubusercontent.com/1278021/136952375-5fe8775a-f7da-4455-b2f8-6dfe7ba2bb57.png)
+
+- With this specific layer most probably you will get an error on the bounding box extension; this is caused by the native projection of the layer and the QGIS not being able to correctly manage the `dateline`
+
+    ![image](https://user-images.githubusercontent.com/1278021/136952674-ef76f8f3-1b0b-4a9d-a8fc-00832599ea11.png)
+
+- It is still possible to edit the layer from GeoNode directly, however in order to fix this issue easily, we will convert the layer into a `Mercator Projected` one.
+
+We will pass through the database in order to perform such operation. In the next section we will see how to re-project and store and a DB table a layer and then push it back to GeoNode.
+    
 #### [Next Section: Advanced layers publishing and management](ADV_LAYERS_PUB.md)
