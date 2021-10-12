@@ -109,5 +109,20 @@ This is the easiest way to connect the client to GeoNode:
 
     ![image](https://user-images.githubusercontent.com/1278021/136923358-3b54e963-49b2-4e78-9bcd-2fb4512a7c9d.png)
 
+## Attach Layer to the Project
+
+- Once the connection has been configured and saved, whatever it is, go back to the `WFS` panel, select the connection you just created and click on `Connect`
+
+    ![image](https://user-images.githubusercontent.com/1278021/136935422-d297ae37-b25b-4401-a796-bb1ba1bb29f5.png)
+
+- If everything goes weel, you should be able to see the server offering; it will list all the layers the user has access to
+
+    ![image](https://user-images.githubusercontent.com/1278021/136935553-b5db6117-bcc5-4d14-b48e-33bc6f87118f.png)
+
+- Select the `Test Layer` and click on `Add`
+
+    ![image](https://user-images.githubusercontent.com/1278021/136935660-1c67970b-ddcb-40c4-a10c-593cf098b98b.png)
+
+
 
 #### [Next Section: Advanced layers publishing and management](ADV_LAYERS_PUB.md)
