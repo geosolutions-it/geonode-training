@@ -46,7 +46,7 @@ This is the easiest way to connect the client to GeoNode:
 
 - Switch to `Basic` authentication, provide the `test_user1` credentials and click on `Convert to configuration`
 
-    ![image](https://user-images.githubusercontent.com/1278021/136918818-6af30219-1920-40b0-b138-612b885f284b.png)
+    ![image](https://user-images.githubusercontent.com/1278021/136922761-ff3890b1-7781-4ce9-986f-8cfe11c553bf.png)
 
 - Make sure the converted configuration is selected and click on `Detect` in order to verify that it works; click on `OK` when finished
 
@@ -96,6 +96,18 @@ This is the easiest way to connect the client to GeoNode:
     * **Save**
     
     ![image](https://user-images.githubusercontent.com/1278021/136921972-c047953f-978b-47d8-873e-1cb20b510f45.png)
+
+- Make sure the new configuration is selected and click on `Detect` in order to verify that it works; click on `OK` when finished
+
+    ![image](https://user-images.githubusercontent.com/1278021/136923742-a0fa4b95-bc66-4f2c-97af-f1bd6efc53d5.png)
+    
+- The client will open automatically a browser session, if you are not logged in, sign in with `test_user1`
+
+    ![image](https://user-images.githubusercontent.com/1278021/136923067-147aa88a-96d5-4a46-ba7f-053162efc283.png)
+
+- The window below means that the authetnication process was successfull; you can safely close it and go back to the client
+
+    ![image](https://user-images.githubusercontent.com/1278021/136923358-3b54e963-49b2-4e78-9bcd-2fb4512a7c9d.png)
 
 
 #### [Next Section: Advanced layers publishing and management](ADV_LAYERS_PUB.md)
