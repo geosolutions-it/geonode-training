@@ -8,14 +8,14 @@
  - [Downloading, Replacing, Appending Data](REPLACE_DATASETS.md)
  - [Accessing Data from External Clients (QGIS)](CONNECT_QGIS.md)
  - [Advanced layers publishing and management](ADV_LAYERS_PUB.md)
-   - [Publishing data from a DB table](PUB_FROM_DB.md)
-   - [Optimizing, publishing and styling GeoTIFF data](OPTIMIZE_RASTER.md)
-   - [Publishing Raster Time Series](PUB_RASTER_TIME_SERIES.md)
-   - [Optimizing, publishing and styling Vector data](OPTIMIZE_VECTOR.md)
-   - [Publishing Vector Time Series](PUB_VECTOR_TIME_SERIES.md)
+   - [Publishing data from a DB table](ADV_LAYERS_PUB/PUB_FROM_DB.md)
+   - [Optimizing, publishing and styling GeoTIFF data](ADV_LAYERS_PUB/OPTIMIZE_RASTER.md)
+   - [Publishing Raster Time Series](ADV_LAYERS_PUB/PUB_RASTER_TIME_SERIES.md)
+   - [Optimizing, publishing and styling Vector data](ADV_LAYERS_PUB/OPTIMIZE_VECTOR.md)
+   - [Publishing Vector Time Series](ADV_LAYERS_PUB/PUB_VECTOR_TIME_SERIES.md)
  - [Advanced maps publishing and management](ADV_MAPS_PUB.md)
-   - [Optimizing Maps, tips and tricks](OPTIMIZE_MAPS.md)
-   - [Charts and Widgets](MAPS_CHARTS_WIDGETS.md)
+   - [Optimizing Maps, tips and tricks](ADV_MAPS_PUB/OPTIMIZE_MAPS.md)
+   - [Charts and Widgets](ADV_MAPS_PUB/MAPS_CHARTS_WIDGETS.md)
 
 ## Prerequisites and GeoNode Training Virtual Machine
 
