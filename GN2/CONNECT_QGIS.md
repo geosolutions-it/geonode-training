@@ -92,10 +92,10 @@ This is the easiest way to connect the client to GeoNode:
     * **Scope**: `openid write`
     * **Token session**: `True`
     * **Access method**: `Header`
-    * **Token header**: `access_token`
+    * **Token header**: _empty_  (**it is important you leave this param empty*)*
     * **Save**
     
-    ![image](https://user-images.githubusercontent.com/1278021/136921972-c047953f-978b-47d8-873e-1cb20b510f45.png)
+    ![image](https://user-images.githubusercontent.com/1278021/136948695-5310e7fb-9bac-46c7-a32d-2843be89041c.png)
 
 - Make sure the new configuration is selected and click on `Detect` in order to verify that it works; click on `OK` when finished
 
