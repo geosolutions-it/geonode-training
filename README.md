@@ -46,8 +46,7 @@ The training aims to provide those wishing to build a spatial data infrastructur
 Topics covered are as follows:
 
 - Advanced layers publishing and management
-   - Optimizing, publishing and styling GeoTIFF data
-   - Publishing Raster Time Series
+   - Optimizing, publishing and styling Raster data
    - Optimizing, publishing and styling Vector data
    - Publishing Vector Time Series
 - Advanced maps publishing and management
