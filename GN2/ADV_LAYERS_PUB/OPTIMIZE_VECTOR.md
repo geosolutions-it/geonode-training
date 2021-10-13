@@ -189,5 +189,46 @@ The extension is available on GeoServer only. The standard CSS language has been
     
     ![image](https://user-images.githubusercontent.com/1278021/137175513-1054570a-66b5-457f-9662-374a29767b6f.png)
 
+## Patterns and Hatches
+
+- Upload the `ESRI Shapefile` named `tl_2010_08013_arealm` from the folder `/opt/data/sample_data/pretty_maps/data/boulder`
+
+    ![image](https://user-images.githubusercontent.com/1278021/137196440-3e9c582e-135f-4eba-a60e-b61b3ed80639.png)
+
+- Create a new `CSS` style named `CSS Area Landmarks` for the `tl_2010_08013_arealm` layer
+
+    ![image](https://user-images.githubusercontent.com/1278021/137196561-a7509c25-887a-438e-b47e-0fb533a84688.png)
+
+- Switch to the `text` editor insert the following `CSS`
+
+    ```css
+    [MTFCC='K2582'] [@scale < 500000] {
+        fill: url(./img/landmarks/area/grave_yard.png);
+        fill-mime: 'image/png';
+    }
+    ```
+    
+    ![image](https://user-images.githubusercontent.com/1278021/137196834-183f458c-210f-4f4b-a96c-e4d72b7234b9.png)
+
+    _The above CSS defines a <PolygonSymbolizer> with a <GraphicFill> pointing to a png ./img/landmarks/area/grave_yard.png in the GeoServer data directory, which will be used by GeoServer as pattern to fill the polygon._
+
+- The previous example uses a `png` as fill pattern; the next one uses a `font character` instead
+
+    ```css
+    [MTFCC='K2582'] [@scale < 500000] {
+      fill: #D3FFD3, symbol('ttf://Wingdings#0x0055');
+      fill-size: 16;
+      fill-opacity: 0.5, 1.0;
+      stroke: #6DB26D;
+      -gt-graphic-margin: 8;
+      :nth-symbol(2) {
+        stroke: #6DB26D;
+      }
+    }
+    ```
+    
+    ![image](https://user-images.githubusercontent.com/1278021/137197282-7fd896b9-e4bb-478a-a44a-1c3b59816e29.png)
+
+- Lets now take a look at another way to fill polygons using patterns, the `Hatches`.
 
 #### [Next Section: Publishing Vector Time Series](PUB_VECTOR_TIME_SERIES.md)
