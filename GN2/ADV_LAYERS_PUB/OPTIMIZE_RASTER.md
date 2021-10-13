@@ -725,4 +725,22 @@ The meaning of the main parameters is summarized below
 https://geoserver.geo-solutions.it/educational/en/raster_data/advanced_gdal/index.html
 ```
 
+## Publish the Optimized Mosaic on GeoNode
+
+- Activate the `geonode` virtual env and move to `/opt/geonode`
+- Run the `updatelayers` management command as follows
+
+    ```shell
+    ./manage_local.sh updatelayers --skip-geonode-registered -u test_user1 -w geonode -f boulder_bg_optimized
+    ```
+
+- Verify the new layer has been succesfully created on GeoNode
+
+    ![image](https://user-images.githubusercontent.com/1278021/137148232-60ad10ad-f06c-4a06-a5fd-8e20052841fe.png)
+
+- Add the new layer to the `Boulder` map, and drag it to the bottom
+
+    ![image](https://user-images.githubusercontent.com/1278021/137149455-231fd9b5-207e-4c01-bd07-b4f58b329518.png)
+
+
 #### [Next Section: Optimizing, publishing and styling Vector data](OPTIMIZE_VECTOR.md)
