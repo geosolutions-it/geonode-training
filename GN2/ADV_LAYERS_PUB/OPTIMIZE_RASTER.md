@@ -149,4 +149,15 @@ Once we created the `hillshade`, we will add it to GeoNode, provide a nice style
     ![image](https://user-images.githubusercontent.com/1278021/137104141-3bd67642-2826-441c-84da-0c624e9544fa.png)
 
 
+## Adding and Optimizing Raster Image Mosaics
+
+### Publishing an Image Mosaic
+
+In this section we are going to publish on GeoNode a `mosaic` of aerial `orthophotos` through the GeoServer `ImageMosaic` store.
+
+We will need to do some preparation first.
+
+- 
+
+
 #### [Next Section: Optimizing, publishing and styling Vector data](OPTIMIZE_VECTOR.md)
