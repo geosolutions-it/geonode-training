@@ -257,4 +257,48 @@ The extension is available on GeoServer only. The standard CSS language has been
 
     ![image](https://user-images.githubusercontent.com/1278021/137201180-a1886513-7aed-4754-be7e-19d23753788f.png)
 
+#### Dashes
+
+Lets now familiarize a bit with `Dashes`. We are going to see how it's possible to draw several kind of dashes to represent different types of trails or roads.
+
+- Edit the styles of the GeoNode layer `Trails`
+
+    ![image](https://user-images.githubusercontent.com/1278021/137201382-7bdc337a-4a30-4a1b-8254-856f28c4ad5d.png)
+
+- Create a new `CSS` style and name it `CSS Trails`
+
+    ![image](https://user-images.githubusercontent.com/1278021/137201447-86cf7096-da8e-4ee1-84f8-cb4636f47d7f.png)
+
+- Insert the following `CSS`
+
+    ```css
+    [@scale < 75000] {
+      stroke: #6B4900;
+      stroke-width: 0.1;
+      stroke-dasharray: 2.0;
+    }
+    ```
+
+    ![image](https://user-images.githubusercontent.com/1278021/137201623-ac7f133a-a201-4bf1-b85b-4381524dc4a7.png)
+
+- Encodes a dash pattern as a series of numbers separated by spaces. Odd-indexed numbers (first, third, etc) determine the length in pxiels to draw the line, and even-indexed numbers (second, fourth, etc) determine the length in pixels to blank out the line. Default is an unbroken line. Starting from version 2.1 dash arrays can be combined with graphic strokes to generate complex line styles with alternating symbols or a mix of lines and symbols.
+
+- Insert the following `CSS`
+
+    ```css
+    [@scale < 75000] {
+      stroke: #AA0000, symbol(circle);
+      stroke-dasharray: 10 14, 6 18;
+      stroke-dashoffset: 14, 0;
+      :nth-symbol(2) {
+        size: 6;
+        fill: #AA0000;
+      }
+    }
+    ```
+
+    ![image](https://user-images.githubusercontent.com/1278021/137201882-ad5853fb-9f79-4d69-94a0-5b12699b7314.png)
+
+    _We may notice two interesting things in this style, two `<LineSymbolizer>` the first one defining a circle `Mark` with a simple `dasharray` and the second one a simple stroke defining also a `dashoffset`. The latter specifies the distance in pixels into the dasharray pattern at which to start drawing. Default is `0`._
+
 #### [Next Section: Publishing Vector Time Series](PUB_VECTOR_TIME_SERIES.md)
