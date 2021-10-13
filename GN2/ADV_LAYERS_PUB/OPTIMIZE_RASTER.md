@@ -157,7 +157,51 @@ In this section we are going to publish on GeoNode a `mosaic` of aerial `orthoph
 
 We will need to do some preparation first.
 
-- 
+- Open a `terminal` and move to the folder `/opt/data/sample_data/user_data`; change the `write` permissions of the folder named `aerial` in order to allow the user to modify it
 
+    ```shell
+    cd /opt/data/sample_data/user_data
+    sudo chmod -Rf 777 aerial
+    ```
+
+- Move to `aerial` and delete the files `aerial.properties` and `sample_image.dat`
+
+    ```shell
+    cd aerial
+    rm aerial.properties sample_image.dat
+    ```
+
+- Create or edit a file named `indexer.properties` with the following contents
+
+    ```shell
+    vim indexer.properties
+    ```
+
+    ```ini
+    Caching=false
+    Schema=*the_geom:Polygon,location:String
+    ```
+
+- Create or edit a file named `datastore.properties` with the following contents
+
+    ```shell
+    vim datastore.properties
+    ```
+
+    ```ini
+    SPI=org.geotools.data.postgis.PostgisNGDataStoreFactory
+    host=localhost
+    port=5432
+    database=geonode_data
+    schema=public
+    user=geonode
+    passwd=geonode
+    Loose\ bbox=true
+    Estimated\ extends=false
+    validate\ connections=true
+    Connection\ timeout=10
+    preparedStatements=true
+    create\ database\ params=WITH\ TEMPLATE\=postgis20
+    ```
 
 #### [Next Section: Optimizing, publishing and styling Vector data](OPTIMIZE_VECTOR.md)
