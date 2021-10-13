@@ -151,6 +151,8 @@ Once we created the `hillshade`, we will add it to GeoNode, provide a nice style
 
 ## Adding and Optimizing Raster Image Mosaics
 
+An `Image Mosaic` is composed of a set of `datasets` which are exposed as a `single coverage`. The `ImageMosaic` format allows to **automatically** build and setup a mosaic from a set of `georeferenced datasets`. This section provides better instructions to configure an `Image Mosaic`.
+
 ### Publishing an Image Mosaic
 
 In this section we are going to publish on GeoNode a `mosaic` of aerial `orthophotos` through the GeoServer `ImageMosaic` store.
@@ -203,5 +205,40 @@ We will need to do some preparation first.
     preparedStatements=true
     create\ database\ params=WITH\ TEMPLATE\=postgis20
     ```
+
+- Go to the GeoServer admin dahsboard; log in as an `admin` and click on `Data > Stores > Add new store`
+
+    ![image](https://user-images.githubusercontent.com/1278021/137112715-7e655f77-9243-4e4b-a9e5-277583a210f5.png)
+
+- Select `ImageMosaic` form the list of the available `Raster Data Sources`
+
+    ![image](https://user-images.githubusercontent.com/1278021/137112890-18769296-902a-429c-86fe-43169b6dc1ba.png)
+
+- Provide the following inputs on the `ImageMosaic` form
+
+    * **Name**: `Aerial`
+    * **Title**: `Aerial`
+    * **URL***: `file:/opt/data/sample_data/user_data/aerial`
+
+    ![image](https://user-images.githubusercontent.com/1278021/137113263-dd6d600b-7274-4ee9-9dee-522fb74df0d9.png)
+
+- On the next windows, click on `Publish` and `Save` the layer
+
+    ![image](https://user-images.githubusercontent.com/1278021/137113436-c82e10d3-d9de-4b39-a911-1f128e5faa0c.png)
+
+    ![image](https://user-images.githubusercontent.com/1278021/137113518-8ea8a064-06c7-4926-b7b7-e6d29ff4adc3.png)
+
+- Move to the GeoServer `Layer Preview` section and open the `OpenLayers` preview for the `Aeriel` layer
+
+    ![image](https://user-images.githubusercontent.com/1278021/137114837-8e4f780d-39af-4d83-b986-9c2bf4f9e8b8.png)
+
+- We will suddenly notice two issues mainly:
+
+    1. The load, pan and zoom is _slow_
+    2. There are some _black_ tiles filling the bounding box
+
+    ![image](https://user-images.githubusercontent.com/1278021/137115090-1d654edb-0882-45f9-992d-edb57fef4567.png)
+
+### Optimizing an Image Mosaic
 
 #### [Next Section: Optimizing, publishing and styling Vector data](OPTIMIZE_VECTOR.md)
