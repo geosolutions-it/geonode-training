@@ -229,6 +229,32 @@ The extension is available on GeoServer only. The standard CSS language has been
     
     ![image](https://user-images.githubusercontent.com/1278021/137197282-7fd896b9-e4bb-478a-a44a-1c3b59816e29.png)
 
-- Lets now take a look at another way to fill polygons using patterns, the `Hatches`.
+- Let's now take a look at another way to fill polygons using patterns, the `Hatches`.
+- Edit the styles of the GeoNode layer `Wetlands_regulatory_areas`
+     
+    ![image](https://user-images.githubusercontent.com/1278021/137197567-3b4932c5-41ea-4a52-9c7a-d50027834fdd.png)
+
+- Create a new `CSS` style and name it `CSS Regulatory Area`
+
+    ![image](https://user-images.githubusercontent.com/1278021/137197692-0dd31cef-1260-42fb-83a0-fec4c348415a.png)
+
+- Insert the following `CSS`
+
+    ```css
+    [@scale < 10000] {
+      fill: symbol('shape://times');
+      fill-size: 8;
+      :nth-symbol(1) {
+        stroke: #ADD8E6;
+        stroke-width: 1.0;
+      };
+    }
+    ```
+
+    ![image](https://user-images.githubusercontent.com/1278021/137201075-fb7b7c4e-2e7b-4ca5-bca5-3fda4588962a.png)
+
+    On the previous example we used times as hatches mark. GeoServer makes available different kinds of hatches marks:
+
+    ![image](https://user-images.githubusercontent.com/1278021/137201180-a1886513-7aed-4754-be7e-19d23753788f.png)
 
 #### [Next Section: Publishing Vector Time Series](PUB_VECTOR_TIME_SERIES.md)
