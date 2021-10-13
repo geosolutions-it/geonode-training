@@ -628,7 +628,7 @@ The meaning of the main parameters is summarized below
 
     _Part of the gdalinfo output on the tiled dataset with overviews. Notice the Overviews properties._
 
-## Process in Bulk
+#### Process in Bulk
 Instead of manually repeating these 2 steps (retile + add overviews) for each file, we can invoke a few commands to get it automated.
 
 ```shell
@@ -656,5 +656,73 @@ Input file size is 2500, 2500
 ```
 
 At this point optimized datasets have been prepared and they are ready to be served by GeoServer as an `ImageMosaic`.
+
+### gdalwarp
+This utility allows to warp and reproject a dataset. The following steps provide instructions to reproject the aerial dataset (which has `EPSG:26913` coordinate reference system) to `WGS84` (`EPSG:4326`).
+
+Running the command
+
+```shell
+gdalwarp
+```
+
+allows to get the list of supported parameters
+
+```shell
+Usage: gdalwarp [--help-general] [--formats]
+       [-s_srs srs_def] [-t_srs srs_def] [-to "NAME=VALUE"]
+       [-order n | -tps | -rpc | -geoloc] [-et err_threshold]
+       [-refine_gcps tolerance [minimum_gcps]]
+       [-te xmin ymin xmax ymax] [-tr xres yres] [-tap] [-ts width height]
+       [-wo "NAME=VALUE"] [-ot Byte/Int16/...] [-wt Byte/Int16]
+       [-srcnodata "value [value...]"] [-dstnodata "value [value...]"] -dstalpha
+       [-r resampling_method] [-wm memory_in_mb] [-multi] [-q]
+       [-cutline datasource] [-cl layer] [-cwhere expression]
+       [-csql statement] [-cblend dist_in_pixels] [-crop_to_cutline]
+       [-of format] [-co "NAME=VALUE"]* [-overwrite]
+       srcfile* dstfile
+```
+
+The meaning of the main parameters is summarized below
+
+* `-s_srs`: allows to specify the source coordinate reference system
+* `-t_srs`: allows to specify the target coordinate reference system
+* `-te`: allows to set georeferenced extents (expressed in target CRS) of the output
+* `-tr`: allows to specify the output resolution (expressed in target georeferenced units)
+* `-ts`: allows to specify the output size in pixel and lines.
+* `-r`: allows to specify the resampling method (one of `near`, `bilinear`, `cubic`, `cubicspline` and `lanczos`)
+* `-srcnodata`: allows to specify band values to be excluded from interpolation.
+* `-dstnodata`: allows to specify nodata values on output file.
+* `-wm`: allows to specify the amount of memory (expressed in megabytes) used by the warping API for caching.
+
+#### gdalwarp - Reprojecting sample dataset to WGS84
+
+- Move to the `/opt/data/sample_data/user_data/retiled` folder
+
+    ```shell
+    cd /opt/data/sample_data/user_data/retiled
+    ```
+
+- Run the `gdalwarp` command
+
+    ```shell
+    gdalwarp -t_srs "EPSG:4326" -co "TILED=YES" 13tde815295_200803_0x6000m_cl.tif 13tde815295_200803_0x6000m_cl_warped.tif
+    ```
+
+- Check that reprojection has been successfull, by running the command
+
+    ```shell
+    gdalinfo 13tde815295_200803_0x6000m_cl_warped.tif
+    ```
+
+    ![image](https://user-images.githubusercontent.com/1278021/137146948-5abc1cb6-b72a-4f7f-be6d-8203dfd49883.png)
+
+    _Part of the gdalinfo output on the warped dataset. Notice the updated Coordinate System property._
+
+### Further Reading about GDAL
+
+```shell
+https://geoserver.geo-solutions.it/educational/en/raster_data/advanced_gdal/index.html
+```
 
 #### [Next Section: Optimizing, publishing and styling Vector data](OPTIMIZE_VECTOR.md)
