@@ -7,4 +7,4 @@ The extension is available on GeoServer only. The standard CSS language has been
 
 ### Styling raster data
 
-#### [Next Section: Publishing Raster Time Series](PUB_RASTER_TIME_SERIES.md)
+#### [Next Section: Optimizing, publishing and styling Vector data](OPTIMIZE_VECTOR.md)
