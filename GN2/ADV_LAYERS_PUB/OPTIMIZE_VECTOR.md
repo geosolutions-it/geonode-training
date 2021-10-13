@@ -189,7 +189,7 @@ The extension is available on GeoServer only. The standard CSS language has been
     
     ![image](https://user-images.githubusercontent.com/1278021/137175513-1054570a-66b5-457f-9662-374a29767b6f.png)
 
-## Patterns and Hatches
+### Patterns and Hatches
 
 - Upload the `ESRI Shapefile` named `tl_2010_08013_arealm` from the folder `/opt/data/sample_data/pretty_maps/data/boulder`
 
@@ -257,7 +257,7 @@ The extension is available on GeoServer only. The standard CSS language has been
 
     ![image](https://user-images.githubusercontent.com/1278021/137201180-a1886513-7aed-4754-be7e-19d23753788f.png)
 
-## Dashes
+### Dashes
 
 Lets now familiarize a bit with `Dashes`. We are going to see how it's possible to draw several kind of dashes to represent different types of trails or roads.
 
