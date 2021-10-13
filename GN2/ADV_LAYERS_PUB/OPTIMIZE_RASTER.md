@@ -317,5 +317,28 @@ We will need to do some preparation first.
 
     ![image](https://user-images.githubusercontent.com/1278021/137136942-5a66ff2e-c101-4a9d-a8b0-1f2ec5958509.png)
 
+## Image Mosaic Options
+
+There is plenty of options that can be tweaked in order to further optimize an `ImageMosaic`.
+
+* **Accurate resolution computation**: If `true`, computes the resolution of the granules in 9 points, the corners of the requested area and the middle points and take the better one. This will provide better results for cases where there is a lot more deformation on a subregion (top/bottom/sides) of the requested bbox with respect to others. Otherwise, compute the resolution using a basic affine scale transform.
+* **AllowMultithreading**: If `true`, enables tiles multithreading loading. This allows to perform parallelized loading of the granules that compose the mosaic.
+* **BackgroundValues**: Sets the value of the mosaic `background`. Depending on the nature of the mosaic it is wise to set a value for the `no data` area (usually `-9999`). This value is _repeated on all the mosaic bands_.
+* **Bands**: a comma separated list of band indexes that allows to expose only a particular subset of bands out of a multiband source. Normally not configured by hand, but driven by `SLD` styling instead.
+* **ExcessGranuleRemoval**: An option that should be enabled when using _scattered and deeply overlapping images_. By default the image mosaic will try to mosaic toghether all images in the requested area, even if some are behind and won’t show up in the final image. With excess granule removal the system will use the image footprint to determine which granules actually contribute pixels to the output, and will end up performing the image processing only on those actually contributing. Best used along with footprints and sorting (to control which images actually stay on top). Possible values are `NONE` or `ROI` (_Region Of Interest_).
+* **Filter**: Filters granules based on attributes from the input coverage.
+* **Footprint Behavior**: Sets the behavior of the regions of a granule that are _outside_ of the granule footprint. Can be `None` (_Ignore the footprint_), `Cut` (_Remove regions outside the footprint from the image. Does not add an alpha channel_), or `Transparent` (_Make regions outside the footprint completely transparent. Will add an alpha channel if one is not already present_). Defaults to `None`.
+* **InputTransparentColor**: Sets the transparent color for the granules prior to mosaicking them in order to control the superimposition process between them. When GeoServer composes the granules to satisfy the user request, some of them can overlap some others, therefore, setting this parameter with the opportune color avoids the overlap of no data areas between granules.
+* **MaxAllowedTiles**: Sets the maximum number of the tiles that can be load simultaneously for a request. In case of a large mosaic this parameter should be opportunely set to not saturating the server with too many granules loaded at the same time.
+* **MergeBehavior**: Merging behaviour for the various granules of the mosaic that GeoServer will produce. This parameter controls whether we want to merge in a single mosaic or stack all the bands into the final mosaic.
+* **OVERVIEW_POLICY**: Policy used to select the best matching overview for a given target output resolution. Possible values are `QUALITY` (pick an overview with a higher resolution and downsample), `NEAREST` (pick the one with the closest resolution), `SPEED` (pick the closest one with lower resolution) and `IGNORE` (do not use overviews).
+* **OutputTransparentColor**: Sets the transparent color for the created mosaic.
+* **SORTING**: Allows to specify the time order of the obtained granules set. Valid values are `DESC` (descending) or `ASC` (ascending). Note that it works just by using `DBMS` as indexes.
+* **SUGGESTED_TILE_SIZE**: Controls the tile size of the input granules as well as the tile size of the output mosaic. It consists of two positive integers separated by a comma, like `512,512`.
+* **USE_JAI_IMAGEREAD**: If `true`, GeoServer will make use of `JAI ImageRead` operation and its deferred loading mechanism to load granules; if `false`, GeoServer will perform direct `ImageIO` read calls which will result in immediate loading.
+
+## Introduction To Processing With GDAL Utilities
+
+
 
 #### [Next Section: Optimizing, publishing and styling Vector data](OPTIMIZE_VECTOR.md)
