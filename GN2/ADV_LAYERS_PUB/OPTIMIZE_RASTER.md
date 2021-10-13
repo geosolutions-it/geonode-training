@@ -571,5 +571,90 @@ The following steps provide instructions to tile the sample dataset previously c
     gdal_translate -co "TILED=YES" -co "BLOCKXSIZE=512" -co "BLOCKYSIZE=512"  -co "COMPRESS=JPEG" -co "PHOTOMETRIC=YCBCR" -co "QUALITY=85"  aerial/13tde815295_200803_0x6000m_cl.tif retiled/13tde815295_200803_0x6000m_cl.tif
     ```
 
+- Check that the output dataset has successfully been tiled, by running the command
+
+    ```shell
+    gdalinfo retiled/13tde815295_200803_0x6000m_cl.tif
+    ```
+
+    ![image](https://user-images.githubusercontent.com/1278021/137143475-bc4a9e67-c446-40dd-ad74-ac70b93cfeac.png)
+
+    _Part of the gdalinfo output on the tiled dataset. Notice the Block value now is 512x512._
+
+### gdaladdo
+This utility allows to add overviews to a dataset. The following steps provide instructions to add overviews to the tiled sample dataset.
+
+Running the command
+
+```shell
+gdaladdo
+```
+
+allows to get the list of supported parameters
+
+```shell
+Usage: gdaladdo [-r {nearest,average,gauss,average_mp,average_magphase,mode}]
+                [-ro] [--help-general] filename levels
+```
+
+The meaning of the main parameters is summarized below
+
+* `-r`: allows to specify the resampling algorithm (Nearest is the default value)
+* `-ro`: allows to open the dataset in read-only mode, in order to generate external overview (for GeoTIFF especially)
+* `filename`: represents the file to build overviews for.
+* `levels`: allows to specify a list of overview levels to build.
+
+#### gdaladdo - Adding overviews to the sample dataset
+
+- Move to the `retiled` folder
+
+    ```shell
+    cd retiled
+    ```
+
+- Run the `gdaladdo` command as follows
+
+    ```shell
+    gdaladdo -r average --config COMPRESS_OVERVIEW JPEG --config PHOTOMETRIC_OVERVIEW YCBCR --config JPEG_QUALITY_OVERVIEW 85 13tde815295_200803_0x6000m_cl.tif 2 4 8 16 32
+    ```
+
+- Check that the overviews have been added to the dataset, by running the command
+
+    ```shell
+    gdalinfo 13tde815295_200803_0x6000m_cl.tif
+    ```
+
+    ![image](https://user-images.githubusercontent.com/1278021/137144216-93e5a641-2ca0-455a-9aa7-e75e1616851b.png)
+
+    _Part of the gdalinfo output on the tiled dataset with overviews. Notice the Overviews properties._
+
+## Process in Bulk
+Instead of manually repeating these 2 steps (retile + add overviews) for each file, we can invoke a few commands to get it automated.
+
+```shell
+cd /opt/data/sample_data/user_data/aerial
+```
+
+```shell
+for i in `find *.tif`; do gdal_translate -CO "TILED=YES" -CO "BLOCKXSIZE=512" -CO "BLOCKYSIZE=512" -co "COMPRESS=JPEG" -co "PHOTOMETRIC=YCBCR" -co "QUALITY=85" $i ../optimized/$i; gdaladdo -r average --config COMPRESS_OVERVIEW JPEG --config PHOTOMETRIC_OVERVIEW YCBCR --config JPEG_QUALITY_OVERVIEW 85 ../optimized/$i 2 4 8 16 32; done
+```
+
+You should see a list of run like this
+
+```python
+...
+Input file size is 2500, 2500
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+Input file size is 2500, 2500
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+Input file size is 2500, 2500
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+...
+```
+
+At this point optimized datasets have been prepared and they are ready to be served by GeoServer as an `ImageMosaic`.
 
 #### [Next Section: Optimizing, publishing and styling Vector data](OPTIMIZE_VECTOR.md)
