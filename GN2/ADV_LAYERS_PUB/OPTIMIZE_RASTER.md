@@ -241,4 +241,81 @@ We will need to do some preparation first.
 
 ### Optimizing an Image Mosaic
 
+- Open a `terminal` and move to the folder `/opt/data/sample_data/user_data`; change the `write` permissions of the folder named `optimized` in order to allow the user to modify it
+
+    ```shell
+    cd /opt/data/sample_data/user_data
+    sudo chmod -Rf 777 optimized
+    ```
+
+- Move to `optimized` and delete the files `optimized.properties` and `sample_image.dat`
+
+    ```shell
+    cd optimized
+    rm optimized.properties sample_image.dat
+    ```
+
+- Create or edit a file named `indexer.properties` with the following contents
+
+    ```shell
+    vim indexer.properties
+    ```
+
+    ```ini
+    Caching=false
+    Schema=*the_geom:Polygon,location:String
+    ```
+
+- Create or edit a file named `datastore.properties` with the following contents
+
+    ```shell
+    vim datastore.properties
+    ```
+
+    ```ini
+    SPI=org.geotools.data.postgis.PostgisNGDataStoreFactory
+    host=localhost
+    port=5432
+    database=geonode_data
+    schema=public
+    user=geonode
+    passwd=geonode
+    Loose\ bbox=true
+    Estimated\ extends=false
+    validate\ connections=true
+    Connection\ timeout=10
+    preparedStatements=true
+    create\ database\ params=WITH\ TEMPLATE\=postgis20
+    ```
+
+- Add a new `ImageMosaic Data Source` like we already done before and provide the following parameters
+
+- Provide the following inputs on the `ImageMosaic` form
+
+    * **Name**: `boulder_bg_optimized`
+    * **Title**: `boulder_bg_optimized`
+    * **URL***: `file:/opt/data/sample_data/user_data/optimized`
+
+    ![image](https://user-images.githubusercontent.com/1278021/137135458-349f8209-4e87-4811-81c7-c1532edcc63f.png)
+
+- On the next windows, click on `Publish`, **change the name and title to** `boulder_bg_optimized` and `Save` the layer
+
+    ![image](https://user-images.githubusercontent.com/1278021/137135716-ec870eae-1499-46d0-9d47-e0e99e0c8c50.png)
+
+- Open the GeoServer `Layer Preview` and zoom/pan around, notice how faster is now the mosaic...
+
+    ![image](https://user-images.githubusercontent.com/1278021/137136033-4620044b-345a-4f6d-bd6d-bcdfde7a8ddf.png)
+
+    _The black tiles are still present._
+
+- Let's customize the mosaic options in order to improve the quality and remove the black tiles.
+- Customize the `ImageMosaic` properties. Set the `OutputTransparentColor` to the value `000000` (Which is the `Black` color). Click on `Save` when done.
+
+    ![image](https://user-images.githubusercontent.com/1278021/137136730-24378b4c-8128-4e51-974a-38408e7b9fb5.png)
+
+- Open the GeoServer `Layer Preview`, **clear the browser image cache** and zoom/pan around, notice the black tiles now gone
+
+    ![image](https://user-images.githubusercontent.com/1278021/137136942-5a66ff2e-c101-4a9d-a8b0-1f2ec5958509.png)
+
+
 #### [Next Section: Optimizing, publishing and styling Vector data](OPTIMIZE_VECTOR.md)
