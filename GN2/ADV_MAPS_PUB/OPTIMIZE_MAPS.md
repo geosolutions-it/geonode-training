@@ -66,9 +66,14 @@
 
     ![image](https://user-images.githubusercontent.com/1278021/137332485-783d1a44-1980-4e41-bb7d-e8a9e9e41aa5.png)
 
-- Let's try some more advanced filtering options; as an instance it is possible to filter the current layer by using the geometries from some other layer on the map. Go ahead and slect the `Streets` layer from the `Target Layer` select box; change the 
+- Let's try some more advanced filtering options; as an instance it is possible to filter the current layer by using the geometries from some other layer on the map. Go ahead and slect the `Streets` layer from the `Target Layer` select box; change the `Operation` to `Intersects`. Add an attribute filter, as an instance `LABEL_NAME` to `Colorado Ave`. By applying the filter you'll notice the `Mainrd` showing only the features matching the intersecting geometries from `Streets`
 
     ![image](https://user-images.githubusercontent.com/1278021/137333406-c0505bea-fe12-43d1-a3e8-f5f5cfa4f07f.png)
 
+- Save the filter and go back to the map; notice that a small `filter icon` appears now near the layer name and the map shows only the filtered features
+
+    ![image](https://user-images.githubusercontent.com/1278021/137334205-055092b9-fff7-4241-b360-7e9ae7d534b4.png)
+
+- You can optionally persist the changes on the map.
 
 #### [Next Section: Charts and Widgets](MAPS_CHARTS_WIDGETS.md)
