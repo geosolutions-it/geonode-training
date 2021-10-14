@@ -76,4 +76,37 @@
 
 - You can optionally persist the changes on the map.
 
+## Attributes Media Types Rendering on GetFeatureInfo
+
+The `GetFeatureInfo` is a special operation on the `OWS` protocol allwing us to query a dataset on a specific position in order to get back the values stored on the backend.
+
+In the case of a `VECTORIAL` layer, the outcome of the `GetFeatureInfo` is basically a set of `records`, i.e. `key-value` pairs where the `keys` are the `attibutes` from the `schema` below.
+
+In the simplest use case the outcome of the `GetFeatureInfo` is a plain text reporting the list of `attributes` along with the `values` on that specific `location`. As you can imagine, the values can be almost anything, even references to external `links` or `media contents`, like `images`, `videos` or `audios`.
+
+GeoNode is also able to apply, eventually, an `HTML template` to the `GetFeatureInfo` outcome. That means that GeoNode can render the output as an `HTML` content.
+
+From the layer metadata there's the possibility to `edit` such `template`. In particular there are two different ways to enable it:
+
+1. Basic; GeoNode will simply present the list of the available `attributes` allowing the user to change the order, visibility and `media-type` on each one.
+2. Advanced; GeoNode will present a `rich-text` editor panel allowing the user to define its own custom `HTML template`.
+
+In this section we will see how the `basic` one works by defining and editing a new `empty layer`.
+
+- Let's first create a new `empty layer` with the following attributes:
+
+    * `geometry type`: `Polygon`
+    * `image`: `String`
+    * `video`: `String`
+    * `audio`: `String`
+    * `href`: `String`
+
+    ![image](https://user-images.githubusercontent.com/1278021/137353728-21668fc7-f051-4702-9598-c9338aa19021.png)
+
+- Edit the layer data and add a new `polygon`
+
+    ![image](https://user-images.githubusercontent.com/1278021/137355503-7944b02e-b362-4cb6-91ba-05b0c50d866f.png)
+
+
+
 #### [Next Section: Charts and Widgets](MAPS_CHARTS_WIDGETS.md)
