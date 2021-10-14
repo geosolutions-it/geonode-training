@@ -66,5 +66,9 @@
 
     ![image](https://user-images.githubusercontent.com/1278021/137332485-783d1a44-1980-4e41-bb7d-e8a9e9e41aa5.png)
 
+- Let's try some more advanced filtering options; as an instance it is possible to filter the current layer by using the geometries from some other layer on the map. Go ahead and slect the `Streets` layer from the `Target Layer` select box; change the 
+
+    ![image](https://user-images.githubusercontent.com/1278021/137333406-c0505bea-fe12-43d1-a3e8-f5f5cfa4f07f.png)
+
 
 #### [Next Section: Charts and Widgets](MAPS_CHARTS_WIDGETS.md)
