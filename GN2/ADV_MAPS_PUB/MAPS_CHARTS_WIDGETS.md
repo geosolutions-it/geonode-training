@@ -40,6 +40,25 @@
 
     ![image](https://user-images.githubusercontent.com/1278021/137340874-fad8716d-7d23-4844-b483-f0af4751d3fb.png)
 
+- Open the `Advanced Options`, change the `Type` to `LOG` and notice the scale and preview changing accordingly
+
+    ![image](https://user-images.githubusercontent.com/1278021/137341426-2035b23f-b6b6-474b-8a94-5775c0967448.png)
+
+- Try changing it to `CATEGORY` also
+
+    ![image](https://user-images.githubusercontent.com/1278021/137341553-aebaae79-6251-4bf8-9b64-578c340cdaf3.png)
+
+- Change it back to `LINEAR`, optionally add a `Prefix` and `Format`, check the preview and save
+
+    ![image](https://user-images.githubusercontent.com/1278021/137341823-256b1a12-1422-442e-bcf5-75db93a91b3a.png)
+
+- Bind the chart to the map and try zooming on some regions of `Africa`; notice the chart adapting accordingly
+
+    ![image](https://user-images.githubusercontent.com/1278021/137342043-2d055699-2569-4380-a1c5-aeda7cd6e1b4.png)
+
+- Try zooming around over some other continents and see how the chart changes
+
+    ![image](https://user-images.githubusercontent.com/1278021/137342163-f9cc2678-7d0f-426a-8aa1-746cbe4cbd97.png)
 
 
 #### [Next Section: Mastering GeoNode installation and configuration (GN3)](../../GN3)
