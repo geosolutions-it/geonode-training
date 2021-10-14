@@ -107,6 +107,27 @@ In this section we will see how the `basic` one works by defining and editing a 
 
     ![image](https://user-images.githubusercontent.com/1278021/137355503-7944b02e-b362-4cb6-91ba-05b0c50d866f.png)
 
+- Fill the `attributes` with some links, e.g.
 
+    * `image`: `https://asia.olympus-imaging.com/content/000107506.jpg`
+    * `video`: `https://www.youtube.com/watch?v=-ucUFBTUYLI`
+    * `audio`: `https://samplelib.com/lib/preview/mp3/sample-3s.mp3`
+    * `href`: `https://geonode.org/`
+
+    ![image](https://user-images.githubusercontent.com/1278021/137355602-3bd6103a-b8cf-4e92-a63c-1212e22c14cf.png)
+
+- Save, click on the polygon and check the results
+
+    ![image](https://user-images.githubusercontent.com/1278021/137355905-a37938b0-922d-43d5-9d6d-e4b2cc1c41ce.png)
+
+- Now go back to the layer details, edit the metadata and move to the `Attributes` tab; change the contents as shown in the figure
+
+    ![image](https://user-images.githubusercontent.com/1278021/137356007-9a14d125-e334-4e62-ae98-bbae11ca4725.png)
+
+- Save, visualize the layer and click again on the polygon
+
+    ![image](https://user-images.githubusercontent.com/1278021/137356094-66a7bb1f-1631-474e-ad1f-5e2028edeb5f.png)
+
+    ![image](https://user-images.githubusercontent.com/1278021/137356122-baba9121-b5a4-4b38-bf35-cc2ef7e0ff91.png)
 
 #### [Next Section: Charts and Widgets](MAPS_CHARTS_WIDGETS.md)
