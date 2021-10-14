@@ -300,5 +300,9 @@ Lets now familiarize a bit with `Dashes`. We are going to see how it's possible 
     ![image](https://user-images.githubusercontent.com/1278021/137201882-ad5853fb-9f79-4d69-94a0-5b12699b7314.png)
 
     _We may notice two interesting things in this style, two `<LineSymbolizer>` the first one defining a circle `Mark` with a simple `dasharray` and the second one a simple stroke defining also a `dashoffset`. The latter specifies the distance in pixels into the dasharray pattern at which to start drawing. Default is `0`._
+    
+## Further Reading
+
+- [Color compositing and color blending](https://geoserver.geo-solutions.it/educational/en/pretty_maps/sld_composite-blend.html)
 
 #### [Next Section: Publishing Vector Time Series](PUB_VECTOR_TIME_SERIES.md)
