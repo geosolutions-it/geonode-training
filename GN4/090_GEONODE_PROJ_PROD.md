@@ -161,4 +161,4 @@ vim paver_prod.sh
 ./manage_dev.sh sync_geonode_layers --updatepermissions --updateattributes
 ```
 
-#### [Next Section: Upgrade GeoNode to Latest Version](GEONODE_UPGRADE.md)
+#### [Next Section: Upgrade GeoNode to Latest Version](100_GEONODE_UPGRADE.md)

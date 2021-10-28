@@ -1,4 +1,4 @@
-# Introduction to Django and Virtualenvs
+# Introduction to Django
 
 _This tutorial is referencing parts and wireframes by_ [A Complete Beginner's Guide to Django - Part 1](https://simpleisbetterthancomplex.com/series/2017/09/04/a-complete-beginners-guide-to-django-part-1.html)
 
@@ -10,10 +10,10 @@ The development of Django is supported by the [Django Software Foundation](https
 
 The basic setup consists of installing **Python**, **Virtualenv**, and **Django**.
 
-## Vitualenvs
-Using virtual environments is not mandatory, but it’s highly recommended. If you are just getting started, it’s better to start with the right foot.
+## Virtual environments
+Using virtual environments (_virtualenvs_) is not mandatory, but it’s highly recommended. If you are just getting started, it’s better to start with the right foot.
 
-When developing Web sites or Web projects with Django, it’s very common to have to install external libraries to support the development. Using virtual environments, each project you develop will have its isolated environment. So the dependencies won’t clash. It also allows you to maintain in your local machine projects that run on different Django versions.
+When developing Web sites or Web projects with Django, it’s very common to have to install external libraries to support the development. Using virtual environments, each project you develop will have its isolated environment, so that the dependencies won’t clash. It also allows you to maintain in your local machine projects that run on different Django versions.
 
 - In order to create a `virtualenv`, it is necessary to install some system packages. In a Ubuntu system, as an instance, we can rely on `Python 3.8` and `Virtualenverapper`
 
@@ -25,10 +25,10 @@ sudo apt install -y build-essential gdal-bin \
     libxslt1-dev libjpeg-dev libpng-dev libpq-dev libgdal-dev \
     software-properties-common build-essential \
     git unzip gcc zlib1g-dev libgeos-dev libproj-dev \
-    sqlite3 spatialite-bin libsqlite3-mod-spatialite libsqlite3-dev
+    sqlite3 spatialite-bin libsqlite3-mod-spatialite libsqlite3-dev libmemcached-dev
 ```
 
-Since geonode needs a large number of different python libraries and packages, its recommended to use a python virtual environment to avoid conflicts on dependencies with system wide python packages and other installed software. See also documentation of [Virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/stable/) package for more information.
+Since GeoNode needs a large number of different python libraries and packages, it's recommended to use a python virtual environment to avoid conflicts on dependencies with system-wide python packages and other installed software. See also documentation of [Virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/stable/) package for more information.
 
 The GeoNode Virtual Environment must be created only the first time. You won’t need to create it again everytime.
 
@@ -42,7 +42,7 @@ export WORKON_HOME=~/.virtualenvs
 source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 mkvirtualenv --python=/usr/bin/python3.8 boards  # Use the python path from above
 
-# Alterantively you can also create the virtual env like below
+# Alternatively you can also create the virtual env like below
 mkdir -p ~/.virtualenvs
 python3.8 -m venv ~/.virtualenvs/boards
 source ~/.virtualenvs/boards/bin/activate
@@ -56,7 +56,7 @@ source ~/.virtualenvs/boards/bin/activate
 source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 workon boards
 
-# Alterantively you can also create the virtual env like below
+# Alternatively you can also activate the virtual env like below
 source ~/.virtualenvs/boards/bin/activate
 ```
 
@@ -73,11 +73,11 @@ source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 - Whenever you switch project, or you need to create a new GeoNode or `geonode-project` instance, make sure to create and activate a specific `virtualenv` for that one.
 
 ## Django
-- In order to install Django on a new `virtualenv`, you will need to run the `pip` utility command, e.g.:
+- In order to install Django on a new `virtualenv`, you will need to run the `pip` utility command, in the format `pip install Django==<version>`, e.g.:
 
 ```shell
 # This will use the same Python version of the virtualenv
-pip install Django==<version>
+pip install Django==2.2.20
 ```
 
 - To start a new Django project, run the command below
@@ -86,11 +86,11 @@ pip install Django==<version>
 django-admin startproject myproject
 ```
 
-The command-line utility django-admin is automatically installed with Django.
+The command-line utility `django-admin` is automatically installed with Django.
 
 After we run the command above, it will generate the base folder structure for a Django project.
 
-Right now, our myproject directory looks like this:
+Right now, our `myproject` directory looks like this:
 
 ```shell
 myproject/                  <-- higher level folder
@@ -106,10 +106,10 @@ myproject/                  <-- higher level folder
 
 Our initial project structure is composed of five files:
 
-* `manage.py`: a shortcut to use the django-admin command-line utility. It’s used to run management commands related to our project. We will use it to run the development server, run tests, create migrations and much more.
+* `manage.py`: a shortcut to use the `django-admin` command-line utility. It’s used to run management commands related to our project. We will use it to run the development server, run tests, create migrations and much more.
 * `__init__.py`: this empty file tells Python that this folder is a Python package.
 * `settings.py`: this file contains all the project’s configuration. We will refer to this file all the time!
-* `urls.py`: this file is responsible for mapping the routes and paths in our project. For example, if you want to show something in the URL /about/, you have to map it here first.
+* `urls.py`: this file is responsible for mapping the routes and paths in our project. For example, if you want to show something in the URL `/about/`, you have to map it here first.
 * `wsgi.py`: this file is a simple gateway interface used for deployment. You don’t have to bother about it. Just let it be for now.
 
 Django comes with a simple web server installed. It’s very convenient during the development, so we don’t have to install anything else to run the project locally. We can test it by executing the command:
@@ -138,7 +138,7 @@ It's important to note that you can't run a Django **app** without a **project**
 
 It’s a way to organize the source code. In the beginning, it’s not very trivial to determine what is an app or what is not. How to organize the code and so on. But don’t worry much about that right now! Let’s first get comfortable with Django’s API and the fundamentals.
 
-Alright! So, to illustrate let’s create a simple Web Forum or Discussion Board. To create our first app, go to the directory where the `manage.py` file is and executes the following command:
+Alright! So, to illustrate let’s create a simple Web Forum or Discussion Board. To create our first app, go to the directory where the `manage.py` file is and execute the following command:
 
 ```shell
 django-admin startapp boards
@@ -235,24 +235,25 @@ Now we have to tell Django _when to serve this view_. It’s done inside the `ur
 `urls.py`
 
 ```python
-from django.conf.urls import url
 from django.contrib import admin
-
+from django.urls import path
 from boards import views
 
 urlpatterns = [
-    url(r'^$', views.home, name='home'),
-    url(r'^admin/', admin.site.urls),
+    path('', views.home, name='home'),
+    path('^admin/', admin.site.urls),
 ]
 ```
 
-If you compare the snippet above with your `urls.py` file, you will notice we added the following new line: `url(r'^$', views.home, name='home')` and imported the views module from our app boards using `from boards import views`.
+Comparing this snippet with the original `urls.py` file, you will notice two added lines:
+- `path('', views.home, name='home'),`: the empty path `''`is bound to the `home` view
+- `from boards import views`: just an import that tells which is the referenced `views.home`.
 
-Django works with `regex` to match the requested `URL`. For our home view, we are using the `^$` regex, which will match an `empty path`, which is the **homepage** (this url: `http://127.0.0.1:8000`). 
+If we wanted to match the URL `http://127.0.0.1:8000/homepage/`, our url would be: `path('^homepage/$', views.home, name='home')`.
 
-If we wanted to match the URL `http://127.0.0.1:8000/homepage/`, our url would be: `url(r'^homepage/$', views.home, name='home')`.
+This is just a really simple example. In a similar way we could match URLs defined using regular expressions, or also ask Django to parse parameters embedded in the path (for instance to implement a REST API).
 
-Let’s see what happen:
+Run the server and let’s see what happen:
 
 ```shell
 python manage.py runserver
@@ -266,4 +267,4 @@ That’s it! You just created your very first view.
 
 _Further reading:_ [A Complete Beginner's Guide to Django - Part 2](https://simpleisbetterthancomplex.com/series/2017/09/11/a-complete-beginners-guide-to-django-part-2.html)
 
-#### [Next Section: Preparation of the Dev Environment](DEV_ENV.md)
+#### [Next Section: Deploying a development environment](020_DEV_ENV.md)

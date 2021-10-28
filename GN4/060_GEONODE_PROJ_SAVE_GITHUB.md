@@ -1,7 +1,7 @@
-# Save Changes to GitHub
+# Save changes to GitHub
 
-## Prepare the GeoNode Fork
-- Go to GitHup `https://github.com/GeoNode/geonode` and select the correct version/branch linked to the `geonode-project`
+## Prepare the GeoNode fork
+- Go to GitHub `https://github.com/GeoNode/geonode` and select the correct version/branch linked to the `geonode-project`
    
 ```shell
 cat requirements.txt 
@@ -12,7 +12,7 @@ cat requirements.txt
 
     ![image](https://user-images.githubusercontent.com/1278021/133079530-5d34ab88-73ab-4db8-a119-539d0aa90242.png)
 
-- Wait for the process to finish... at the end you will be able to see GeoNode on your own `repository` with the same branches and the same commits of `upstream`
+- Wait for the process to finish. At the end you will be able to see GeoNode on your own `repository` with the same branches and the same commits of `upstream`
 
     ![image](https://user-images.githubusercontent.com/1278021/133079926-15e9dedb-6809-4a78-9ee2-ea930ac1dbfb.png)
 
@@ -23,41 +23,44 @@ cat requirements.txt
 
 - Go back to the shell and move to
 
-    `cd /opt/geonode`
+  ```shell
+  cd /opt/geonode
+  ```
     
 - Type the following commands
 
-```shell
-# Add the new GitHub remote address
-git remote add <a name> <the fork URL>   <-- e.g.: git remote add afabiani https://github.com/afabiani/geonode.git
-
-# Update the .git references
-git fetch --all
-
-# Create a new branch
-git checkout -b geonode_training_32x
-
-# Double check you switched to the correct branch
-git branch
-  3.2.x
-* geonode_training_32x
-
-# Push the new branch to your fork
-git push <name of the remote> <name of the branch  <-- e.g: git push afabiani geonode_training_32x
-```
+    ```shell
+    # Add the new GitHub remote address
+    git remote add <a name> <the fork URL>   <-- e.g.: git remote add afabiani https://github.com/afabiani/geonode.git
+    
+    # Update the .git references
+    git fetch --all
+    
+    # Create a new branch
+    git checkout -b geonode_training_32x
+    
+    # Double check you switched to the correct branch
+    git branch
+      3.2.x
+    * geonode_training_32x
+    
+    # Push the new branch to your fork
+    git push <name of the remote> <name of the branch  <-- e.g: git push afabiani geonode_training_32x
+    ```
 
 - Example
-```shell
-git push afabiani geonode_training_32x
 
-Total 0 (delta 0), reused 0 (delta 0)
-remote: 
-remote: Create a pull request for 'geonode_training_32x' on GitHub by visiting:
-remote:      https://github.com/afabiani/geonode/pull/new/geonode_training_32x
-remote: 
-To https://github.com/afabiani/geonode.git
- * [new branch]          geonode_training_32x -> geonode_training_32x
-```
+    ```shell
+    git push afabiani geonode_training_32x
+    
+    Total 0 (delta 0), reused 0 (delta 0)
+    remote: 
+    remote: Create a pull request for 'geonode_training_32x' on GitHub by visiting:
+    remote:      https://github.com/afabiani/geonode/pull/new/geonode_training_32x
+    remote: 
+    To https://github.com/afabiani/geonode.git
+     * [new branch]          geonode_training_32x -> geonode_training_32x
+    ```
 
 ![image](https://user-images.githubusercontent.com/1278021/133082197-eccaadf5-49d6-47c9-a5fd-00061287990f.png)
 
@@ -157,53 +160,55 @@ Date:   Tue Aug 31 17:57:04 2021 +0200
     
     # Conflicts:
     #       .clabot
-...
+[...]
 ```
 
- - Push the changes to the remote repostory
+- Push the changes to the remote repository in the format 
 
-```shell
-git push <name of the remote> <name of the branch  <-- e.g: git push afabiani geonode_training_32x
-```
+    ```shell
+    git push <name of the remote> <name of the branch  
+    ```
 
 - Example
-```shell
-git push afabiani geonode_training_32x
 
-Enumerating objects: 19, done.
-Counting objects: 100% (19/19), done.
-Delta compression using up to 2 threads
-Compressing objects: 100% (11/11), done.
-Writing objects: 100% (11/11), 1.34 KiB | 684.00 KiB/s, done.
-Total 11 (delta 9), reused 0 (delta 0)
-remote: Resolving deltas: 100% (9/9), completed with 8 local objects.
-To https://github.com/afabiani/geonode.git
-   911a0f14e..b359f1c49  geonode_training_32x -> geonode_training_32x
-```
+    ```shell
+    git push afabiani geonode_training_32x
+    
+    Enumerating objects: 19, done.
+    Counting objects: 100% (19/19), done.
+    Delta compression using up to 2 threads
+    Compressing objects: 100% (11/11), done.
+    Writing objects: 100% (11/11), 1.34 KiB | 684.00 KiB/s, done.
+    Total 11 (delta 9), reused 0 (delta 0)
+    remote: Resolving deltas: 100% (9/9), completed with 8 local objects.
+    To https://github.com/afabiani/geonode.git
+       911a0f14e..b359f1c49  geonode_training_32x -> geonode_training_32x
+    ```
 
-## Create a Rpository for the geonode-project
-The steps are more or less the same as above, except that this time we have to create a **new repository** from scratch instead of **forking** an existing one.
+## Create a new repository for the geonode project
 
-- Create a new repository for the `geonode-project`
+The steps are more or less the same as above, except that this time we have to create a **brand new repository** from scratch instead of **forking** an existing one.
 
-```shell
-/opt/geonode-project/my_geonode
+- Initialize the working dir as a _git repository_
 
-# Initialise an empty Git repository
-git init
-```
+    ```shell
+    cd /opt/geonode-project/my_geonode
+    git init
+    ```
+  
+- Create a new repository on github
 
-   * Go to `https://github.com/<name>?tab=repositories` (e.g. `https://github.com/afabiani?tab=repositories`),  and create a new `repository`
+  - Go to `https://github.com/<name>?tab=repositories` (e.g. `https://github.com/afabiani?tab=repositories`),  and create a new `repository`
    
       ![image](https://user-images.githubusercontent.com/1278021/133092826-17a6a932-7765-4f8c-8b17-5a4d49124f5a.png)
 
-   * Provide a name
+  - Provide a name
    
-      ![image](https://user-images.githubusercontent.com/1278021/133092987-bfe3a8d6-ac1f-43b3-91ce-314730d9aa9a.png)
+     ![image](https://user-images.githubusercontent.com/1278021/133092987-bfe3a8d6-ac1f-43b3-91ce-314730d9aa9a.png)
 
-   * Copy the link
+  - Copy the link
    
-      ![image](https://user-images.githubusercontent.com/1278021/133093132-ee0a9415-917b-4b38-b00e-a7888882f1f3.png)
+     ![image](https://user-images.githubusercontent.com/1278021/133093132-ee0a9415-917b-4b38-b00e-a7888882f1f3.png)
 
 - Add the `repository` to the `geonode-project`
 
@@ -231,7 +236,7 @@ git push afabiani main
     ![image](https://user-images.githubusercontent.com/1278021/133094720-a3bdc7e2-9e9e-4fa4-89cf-485abd3062b9.png)
 
 ## Link `geonode-project` to the Correct GeoNode Distribution
-- Edit the `geonode-prject` dependency file
+- Edit the `geonode-project` dependency file
 
 ```shell
 cd /opt/geonode-project/my_geonode
@@ -286,4 +291,4 @@ To https://github.com/afabiani/my_geonode.git
    a40f891..7e62c60  main -> main
 ```
 
-#### [Next Section: Add an App with APIs to geonode-project](GEONODE_PROJ_APP.md)
+#### [Next Section: Add an App with APIs to geonode-project](070_GEONODE_PROJ_APP.md)

@@ -2,16 +2,18 @@
 
 ## Table of Contents
 
- - [Introduction to Django and Virtualenvs](DJANGO_INTRO.md)
- - [Preparation of the Dev Environment](DEV_ENV.md)
- - [Programmatically Customize the Look-and-Feel](LANDF_SIMPLE.md)
- - [Link GeoNode to a geonode-project instance](GEONODE_PROJ_DEV.md)
- - [Programmatically Customize the geonode-project instance](GEONODE_PROJ_CUST.md)
- - [Save Changes to GitHub](GEONODE_PROJ_SAVE_GITHUB.md)
- - [Add an App with APIs to geonode-project](GEONODE_PROJ_APP.md)
- - [Add Translations to geonode-project](GEONODE_PROJ_TRX.md)
- - [Put geonode-project in Production](GEONODE_PROJ_PROD.md)
- - [Upgrade GeoNode to Latest Version](GEONODE_UPGRADE.md)
+ - [Introduction to GeoNode development](005_INTRODUCTION.md)
+ - [Introduction to Django](010_DJANGO_INTRO.md)
+ - [Deploying a development environment](020_DEV_ENV.md)
+ - [Look-and-Feel customization](030_LF_SIMPLE.md)
+ - [Create a geonode project](040_create_project.md)
+ - [Customize a geonode project UI](050_project_customize_ui.md)
+ - [Customize the model](055_project_customize_model.md)
+ - [Save changes to GitHub](060_GEONODE_PROJ_SAVE_GITHUB.md)
+ - [Add an App with APIs to geonode-project](070_GEONODE_PROJ_APP.md)
+ - [Add Translations to geonode-project](080_GEONODE_PROJ_I18N.md)
+ - [Put geonode-project in Production](090_GEONODE_PROJ_PROD.md)
+ - [Upgrade GeoNode to Latest Version](100_GEONODE_UPGRADE.md)
 
 ## Prerequisites and GeoNode Training Virtual Machine
 
@@ -26,4 +28,4 @@
 
      **WARNING**: _In the next sections we might refer to some GeoNode users and datasets deployed and configured during the previous modules._
 
-#### [Next Section: Introduction to Django and Virtualenvs](DJANGO_INTRO.md)
+#### [Next Section: Introduction to Django](010_DJANGO_INTRO.md)
