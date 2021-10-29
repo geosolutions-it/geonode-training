@@ -103,4 +103,4 @@ git commit -a -m " - GeoCollections App + Translations"
 git push <fork name> <branch name>    <-- e.g.: git push afabiani main
 ```
 
-#### [Next Section: Put geonode-project in Production](090_GEONODE_PROJ_PROD.md)
+#### [Next Section: GeoNode and Docker](085_geonode_docker.md)
