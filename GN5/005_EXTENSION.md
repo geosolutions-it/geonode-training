@@ -144,6 +144,7 @@ my_geonode/
 
 - edit the `my_geonode/templates/geonode-mapstore-client/_geonode_config.html` template to include this new extension
 
+{% raw %}
 ```django
 <!-- _geonode_config.html file in the my_geonode project -->
 {% extends 'geonode-mapstore-client/_geonode_config.html' %}
@@ -159,6 +160,7 @@ my_geonode/
 </script>
 {% endblock %}
 ```
+{% endraw %}
 
 After this steps a box with a message is visible on the map viewer
 

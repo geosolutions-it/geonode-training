@@ -21,6 +21,7 @@ my_geonode/
 
 3) add the following block extension in the `_geonode_config.html` template 
 
+{% raw %}
 ```django
 <!-- _geonode_config.html file in the my_geonode project -->
 {% extends 'geonode-mapstore-client/_geonode_config.html' %}
@@ -33,6 +34,7 @@ my_geonode/
 </script>
 {% endblock %}
 ```
+{% endraw %}
 
 Now the `window.__GEONODE_CONFIG__.overrideLocalConfig` function can be used to override the localConfig json file.
 
@@ -42,6 +44,7 @@ Now the `window.__GEONODE_CONFIG__.overrideLocalConfig` function can be used to 
 
 Note: not all configuration can be applied to the geonode-mapstore-client because the environment is different from the MapStore product
 
+{% raw %}
 ```django
 <!-- _geonode_config.html file in the my_geonode project -->
 {% extends 'geonode-mapstore-client/_geonode_config.html' %}
@@ -79,9 +82,11 @@ Note: not all configuration can be applied to the geonode-mapstore-client becaus
 </script>
 {% endblock %}
 ```
+{% endraw %}
 
 - Restore a plugin in a page
 
+{% raw %}
 ```django
 <!-- _geonode_config.html file in the my_geonode project -->
 {% extends 'geonode-mapstore-client/_geonode_config.html' %}
@@ -103,8 +108,11 @@ Note: not all configuration can be applied to the geonode-mapstore-client becaus
 </script>
 {% endblock %}
 ```
+{% endraw %}
+
 - Remove a plugin from a page
 
+{% raw %}
 ```django
 {% extends 'geonode-mapstore-client/_geonode_config.html' %}
 {% block override_local_config %}
@@ -129,6 +137,7 @@ Note: not all configuration can be applied to the geonode-mapstore-client becaus
 </script>
 {% endblock %}
 ```
+{% endraw %}
 
 ## Customize default map env variables
 
