@@ -1,0 +1,1 @@
+docker run --rm --volume /home/giohappy/dev/geonode/geonode-training/GN1:/data --user 1000:1000 pandoc/latex --pdf-engine=xelatex --toc --number-sections --template=geosolutions.latex README.md BASICS.md -o GN1.pdf
