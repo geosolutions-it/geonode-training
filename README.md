@@ -110,7 +110,7 @@ Topics covered are as follows:
 - Introduction to Django / Django project structure		
 - Further customizing look and feel
 - How to Customize  Templates / Add apps and functions to geonode-project	
-- Customize MapStore integration
+- Customize MapStore integration (GN5)
 
 **PREREQUISITES**
 In order to participate basic knowledge of GeoNode is required as well as having a working knowledge of DJango, Python 3 and geospatial concepts.
@@ -122,3 +122,25 @@ At the end of the training attendees will be able to customize and/or extend Geo
 GeoSolutions will make available an all-in-one package to run the workshop as a VM for VirtualBox. This should be pre-installed on attendees laptops before the workshop.
 
 This is an **advanced** training, at least GN3 module is recommended as a precondition.
+
+### [Mastering GeoNode/MapStore Client Customization and Development (GN5)](GN5)
+
+**DURATION**: 4 hours (1 sessions part of GN4)
+
+**LEVEL**: Advanced
+
+The training aims to provide attendees with information useful to customize and/or extend GeoNode/MapStore integration.
+
+Topics covered are as follows:
+- Description of GeoNode MapStore client integration
+- Customization of the MapStore integration
+
+**PREREQUISITES**
+In order to participate basic knowledge of GeoNode is required as well as having a working knowledge of DJango, Python 3, Javascript, React.js, CSS, and geospatial concepts.
+
+**ACCOMPLISHMENTS**
+At the end of the training attendees will be able to customize and/or extend GeoNode/MapStore integration to suit their needs. 
+
+**OTHER INFORMATION**
+
+This is an **advanced** training, at least GN3 and GN4 modules are recommended as a precondition.
