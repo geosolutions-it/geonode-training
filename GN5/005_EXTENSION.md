@@ -144,7 +144,7 @@ my_geonode/
 
 - edit the `my_geonode/templates/geonode-mapstore-client/_geonode_config.html` template to include this new extension
 
-```html
+```django
 <!-- _geonode_config.html file in the my_geonode project -->
 {% extends 'geonode-mapstore-client/_geonode_config.html' %}
 {% block override_local_config %}

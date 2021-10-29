@@ -21,7 +21,7 @@ my_geonode/
 
 3) add the following block extension in the `_geonode_config.html` template 
 
-```html
+```django
 <!-- _geonode_config.html file in the my_geonode project -->
 {% extends 'geonode-mapstore-client/_geonode_config.html' %}
 {% block override_local_config %}
@@ -42,7 +42,7 @@ Now the `window.__GEONODE_CONFIG__.overrideLocalConfig` function can be used to 
 
 Note: not all configuration can be applied to the geonode-mapstore-client because the environment is different from the MapStore product
 
-```html
+```django
 <!-- _geonode_config.html file in the my_geonode project -->
 {% extends 'geonode-mapstore-client/_geonode_config.html' %}
 {% block override_local_config %}
@@ -82,7 +82,7 @@ Note: not all configuration can be applied to the geonode-mapstore-client becaus
 
 - Restore a plugin in a page
 
-```html
+```django
 <!-- _geonode_config.html file in the my_geonode project -->
 {% extends 'geonode-mapstore-client/_geonode_config.html' %}
 {% block override_local_config %}
@@ -105,7 +105,7 @@ Note: not all configuration can be applied to the geonode-mapstore-client becaus
 ```
 - Remove a plugin from a page
 
-```html
+```django
 {% extends 'geonode-mapstore-client/_geonode_config.html' %}
 {% block override_local_config %}
 <script>
