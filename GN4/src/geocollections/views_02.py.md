@@ -21,7 +21,7 @@ class GeocollectionDetail(PermissionRequiredMixin, DetailView):
         return self.request.user.has_perm('geocollection.access_geocollection', self)
 
 def geocollection_permissions(request, collection_name):
-    geocollection = Geocollection.objects.get(name=collection_name)
+    geocollection = Geocollection.objects.get(slug=collection_name)
     user = request.user
 
     if not user.has_perm('access_geocollection', geocollection):

@@ -413,7 +413,7 @@ vim geocollections/urls.py
      url(r'^(?P<slug>[-\w]+)/$',
          GeocollectionDetail.as_view(),
          name='geocollection-detail'),
-+    url(r'^permissions/(?P<collection_name>\w+)$',
++    url(r'^permissions/(?P<collection_name>\w+)/$',
 +        geocollection_permissions,
 +        name='geocollection_permissions')
  ]

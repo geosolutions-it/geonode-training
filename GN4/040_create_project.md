@@ -288,7 +288,7 @@ Align the internal URLs and Metadata links
 
 Finally, start `my_geonode` with either
 ```shell
-./manage_dev.py runserver 0.0.0.0:8000
+./manage_dev.sh runserver 0.0.0.0:8000
 ```
 or (run in background)
 ```shell

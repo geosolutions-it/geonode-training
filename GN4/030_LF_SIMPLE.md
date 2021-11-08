@@ -112,8 +112,8 @@ This is a powerful concept that allows to define a hierarchy of page layouts, wh
 
 In the file we edited, we `extend`ed  the `base.html` file. Inside `base.html` we have several named `block`s. When we extend a parent template, we can redefine any one of the parent's block, in order to customize the page. This is what we did when we added the `{% raw %}{% block tabs %}{% endraw %}` block in the `geonode_base.html` file: we redefined the content of the `tabs` block defined in the parent template.
 
-## `{{ block.super }}` variable
-If you need to get the content of the block from the parent template, the `{{ block.super }}` variable will do the trick. This is useful if you want to add to the contents of a parent block instead of completely overriding it.
+## `{% raw %}{{ block.super }}{% endraw %}` variable
+If you need to get the content of the block from the parent template, the `{% raw %}{{ block.super }}{% endraw %}` variable will do the trick. This is useful if you want to add to the contents of a parent block instead of completely overriding it.
 That's what we did when redefining the `tabs` block: we reused the previous content of the block of the parent template. By moving the `super` variable before or after the content we added, we could decide where our new content could be placed with respect to the existing content. 
 
 
