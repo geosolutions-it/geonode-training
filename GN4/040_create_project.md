@@ -155,7 +155,7 @@ The default `requirements.txt` file contains two dependencies, that is
 - core GeoNode
 - `geonode_mapstore_client`: the adapter for using mapstore in GeoNode
 
-Performing a `pip install -r reqs.txt` would install these sources inside the virtual environment hidden directory, but we need our copy of the sources to be installed (remember, we need a setup for developers!)
+Performing a `pip install -r requirements.txt` would install these sources inside the virtual environment hidden directory, but we need our copy of the sources to be installed (remember, we need a setup for developers!)
 
 Edit the file `requirements.txt` and comment out the line
 ```
