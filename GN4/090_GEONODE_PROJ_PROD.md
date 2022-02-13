@@ -10,7 +10,7 @@ cd /opt/geonode-project/my_geonode
 ./manage_dev.sh stop_django
 
 sudo systemctl stop nginx
-sudo pkill -9 uwsgi
+sudo pkill -9 -f uwsgi
 ```
 
 - Create the new `UWSGI app`

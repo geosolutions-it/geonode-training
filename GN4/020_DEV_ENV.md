@@ -33,7 +33,7 @@ sudo ps aux | grep uwsgi
 ```
 If you find any uwsgi process left, you can `kill` them right away:
 ```bash
-sudo pkill -9 uwsgi
+sudo pkill -9 -f uwsgi
 ```
 
 

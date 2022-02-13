@@ -56,7 +56,7 @@ cd /opt/geonode-project/my_geonode/
 ```
 
 ```shell
-sudo pkill -9 uwsgi
+sudo pkill -9 -f uwsgi
 sudo ps aux | grep uwsgi
 
 sudo /etc/init.d/uwsgi restart
