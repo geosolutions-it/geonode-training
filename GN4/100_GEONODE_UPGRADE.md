@@ -8,10 +8,10 @@ cd /opt/geonode
 
 ```shell
 git fetch --all --prune
-git pull origin 3.2.x
+git pull origin 3.3.x
 
 From https://github.com/GeoNode/geonode
- * branch                3.2.x      -> FETCH_HEAD
+ * branch                3.3.x      -> FETCH_HEAD
 Merge made by the 'recursive' strategy.
  .clabot                                                |   3 ++-
  .env                                                   |   2 +-

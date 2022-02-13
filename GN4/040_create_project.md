@@ -1,6 +1,6 @@
 # Create a geonode project
 
-The [`geonode-project` repository](https://github.com/GeoNode/geonode-project/tree/3.2.x) contains a Django project **template** allowing us to create a brand new web project which _has GeoNode core as a dependency_.
+The [`geonode-project` repository](https://github.com/GeoNode/geonode-project/tree/3.3.x) contains a Django project **template** allowing us to create a brand new web project which _has GeoNode core as a dependency_.
 
 In simple words, through this project template we are able to customize somehow our GeoNode instance without actually touching the GeoNode core code.
 
@@ -72,7 +72,7 @@ cd geonode-project/
 
 Now clone the geonode-project template from the repository:
 ```shell
-git clone https://github.com/GeoNode/geonode-project.git -b 3.2.x
+git clone https://github.com/GeoNode/geonode-project.git -b 3.3.x
 ```
 
 Create the `my_django` project by using the `geonode-project` as a template:
@@ -159,7 +159,7 @@ Performing a `pip install -r reqs.txt` would install these sources inside the vi
 
 Edit the file `requirements.txt` and comment out the line
 ```
-#-e git+https://github.com/GeoNode/geonode.git@3.2.x#egg=GeoNode
+#-e git+https://github.com/GeoNode/geonode.git@3.3.x#egg=GeoNode
 ```
 
 then install the other listed requirements:

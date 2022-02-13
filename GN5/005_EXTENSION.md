@@ -2,7 +2,7 @@
 
 This section shows how to add a plugin using the extension support in MapStore without re-compile of the bundle of the geonode-mapstore-cient applications. This new extensibility should be used for simple plugins.
 
-Note: the version of mapstore used in this extension is different from the version used by geonode-mapstore-client 3.2.x so some functionalities of the framework could not be available
+Note: the version of mapstore used in this extension is different from the version used by geonode-mapstore-client 3.3.x so some functionalities of the framework could not be available
 
 ## Setup extension
 

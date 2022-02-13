@@ -20,7 +20,7 @@
 
 * If you have successfully completed one of the previous _training modules_, you can keep using the same _Virtual Machine_ deployed at [GN1](../GN1/QUICK_INSTALL.md)
 * If you are starting this module from scratch, you might want to install a _Virtual Machine_ with dataset already configured and deployed.
-   - Download the _Virtual Machine OVA_ archive named [GeoNode 3.2.1 - GN2](https://www.dropbox.com/s/7sqdz0fe1i3hdem/GeoNode%203.2.1%20-%20GN2.ova?dl=1)
+   - Download the _Virtual Machine OVA_ archive named [GeoNode 3.3.x - GN2](https://www.dropbox.com/s/tbryx6zf85fnntg/GeoNode%203.3.x%20-%20GN2.ova?dl=1)
    
      **WARNING**: _The file is quite big, about_ `8.7 GB`. _Please make sure you downloaded it before the training actually starts._
    -  Deploy and start the _Virtual Machine_ as described on GN1 section [Quick Installation Guide](../GN1/QUICK_INSTALL.md)

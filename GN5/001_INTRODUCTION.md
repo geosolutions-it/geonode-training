@@ -1,6 +1,6 @@
 # Introduction on GeoNode MapStore client
 
-The [geonode-mapstore-client](https://github.com/GeoNode/geonode-mapstore-client/tree/3.2.x) is a downstream project of [MapStore](https://github.com/geosolutions-it/MapStore2). GeoNode uses MapStore as a frontend framework to include map/layers viewers and editors or application related to the concept of spatial data.
+The [geonode-mapstore-client](https://github.com/GeoNode/geonode-mapstore-client/tree/3.3.x) is a downstream project of [MapStore](https://github.com/geosolutions-it/MapStore2). GeoNode uses MapStore as a frontend framework to include map/layers viewers and editors or application related to the concept of spatial data.
 
 The geonode-mapstore-client respository provides two main modules:
 

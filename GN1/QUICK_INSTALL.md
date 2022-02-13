@@ -3,7 +3,7 @@ The purpose of this section is to provide you with basic informations on the str
 
 In order to simplify the installation procedure, a self-contained package comprising the various executables as well as the data used throughout the training are provided to download or can be viewed online at this link:
 
- - [GeoNode 3.2.1.ova](https://www.dropbox.com/s/nftnjs4unsxal6d/GeoNode%203.2.1.ova?dl=1)
+ - [GeoNode 3.3.x.ova](https://www.dropbox.com/s/6pfgk37trbnnj57/GeoNode%203.3.x.ova?dl=1)
 
 The package is an Oracle VirtualBox `OVA` image which must be loaded into a running Virtual Box instance.
 
@@ -45,7 +45,7 @@ The package is an Oracle VirtualBox `OVA` image which must be loaded into a runn
      ![image](https://user-images.githubusercontent.com/1278021/125093258-6c520280-e0d2-11eb-8b6f-b9acfd56ea01.png)
 
 ## Start and test the GeoNode Virtual Machine
-* Select the GeoNode 3.2.1 image and click on the `Start` button
+* Select the GeoNode 3.3.x image and click on the `Start` button
      ![image](https://user-images.githubusercontent.com/1278021/125098426-4844f000-e0d7-11eb-8cc6-7050ab9045e3.png)
 
 * Wait for the system to startup, you should be able to see the `Ubuntu` desktop

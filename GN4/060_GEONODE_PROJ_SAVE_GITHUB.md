@@ -5,7 +5,7 @@
    
 ```shell
 cat requirements.txt 
-# -e git+https://github.com/GeoNode/geonode.git@3.2.x#egg=GeoNode
+# -e git+https://github.com/GeoNode/geonode.git@3.3.x#egg=GeoNode
 ```
 
 - Click on the `Fork` button and select the target `repository`
@@ -41,7 +41,7 @@ cat requirements.txt
     
     # Double check you switched to the correct branch
     git branch
-      3.2.x
+      3.3.x
     * geonode_training_32x
     
     # Push the new branch to your fork
@@ -150,7 +150,7 @@ Date:   Mon Sep 13 14:24:52 2021 +0100
 
      - Added a custom_md field to the GeoNode ResourceBase metadata
 
-commit 911a0f14eb7204c622c807ba877b4a2dce3e3caa (afabiani/geonode_training_32x, 3.2.x)
+commit 911a0f14eb7204c622c807ba877b4a2dce3e3caa (afabiani/geonode_training_32x, 3.3.x)
 Author: Toni <toni.schoenbuchner@csgis.de>
 Date:   Tue Aug 31 17:57:04 2021 +0200
 
@@ -252,8 +252,8 @@ index d4b80df..7700b59 100644
 --- a/requirements.txt
 +++ b/requirements.txt
 @@ -1,2 +1 @@
--# -e git+https://github.com/GeoNode/geonode.git@3.2.x#egg=GeoNode
--GeoNode==3.2.1
+-# -e git+https://github.com/GeoNode/geonode.git@3.3.x#egg=GeoNode
+-GeoNode==3.3.x
 \ No newline at end of file
 +-e git+https://github.com/afabiani/geonode.git@geonode_training_32x#egg=GeoNode
 ```

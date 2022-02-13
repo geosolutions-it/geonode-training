@@ -205,4 +205,4 @@ Note: WMTS layers are not currently supported as background layer
 
 here the default background layers configuration used by geonode
 
-- https://github.com/GeoNode/geonode/blob/3.2.x/geonode/settings.py#L1553-L1617
+- https://github.com/GeoNode/geonode/blob/3.3.x/geonode/settings.py#L1553-L1617

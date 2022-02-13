@@ -193,7 +193,7 @@ This service allows to proxy every HTTP based application through the `http://lo
 
   `sudo vim /etc/nginx/sites-enabled/geonode`
 
-### GeoNode 3.2.1
+### GeoNode 3.3.x
 GeoNode is provided by an instance of the [UWSGI](https://uwsgi-docs.readthedocs.io/en/latest/Systemd.html) service.
 
 You can access the GeoNode interface by pointing the browser to:
@@ -209,7 +209,7 @@ You can access the GeoNode interface by pointing the browser to:
 
   `cd /opt/geonode`
 
-- The GeoNode current commit is set to `b87472a44f8d5af75647620f6dcddd9164332d22 (HEAD -> 3.2.x, origin/3.2.x) - Thu Jul 8 17:06:37 2021 +0200`.
+- The GeoNode current commit is set to `b87472a44f8d5af75647620f6dcddd9164332d22 (HEAD -> 3.3.x, origin/3.3.x) - Thu Jul 8 17:06:37 2021 +0200`.
 - You can check the GeoNode source code version and history by running the following command from the GeoNode source code folder:
 
   `git log`

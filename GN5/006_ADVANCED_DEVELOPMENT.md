@@ -7,7 +7,7 @@ This section shows how to setup the geonode-mapstore-client to work on custom br
 - clone the repository in your workspace
 
 ```cmd
-git clone --recursive https://github.com/GeoNode/geonode-mapstore-client.git -b 3.2.x
+git clone --recursive https://github.com/GeoNode/geonode-mapstore-client.git -b 3.3.x
 ```
 
 - activate virtual environment

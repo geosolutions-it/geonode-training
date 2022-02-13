@@ -60,7 +60,7 @@ GeoNode is free software: you can redistribute it and/or modify it under the ter
 You should have received a copy of the GNU General Public License along with GeoNode. If not, see [http://www.gnu.org/licenses](http://www.gnu.org/licenses).
 
 ## Current Version and Features
-GeoNode current stable version: 3.2.1
+GeoNode current stable version: 3.3.x
 
 Main Features: [State of GeoNode](https://www.dropbox.com/s/r7ftt38mleadzo6/State%20of%20GeoNode%203.2.0%20-%20v1.2.pdf?dl=1)
 

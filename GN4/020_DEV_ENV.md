@@ -64,7 +64,7 @@ You may have your GeoNode code already checked out, anyway let's repeat here the
   sudo mkdir -p /opt/geonode/; sudo usermod -a -G www-data $USER; sudo chown -Rf $USER:www-data /opt/geonode/; sudo chmod -Rf 775 /opt/geonode/
 
   # Clone the GeoNode source code on /opt/geonode
-  cd /opt; git clone https://github.com/GeoNode/geonode.git -b 3.2.x geonode
+  cd /opt; git clone https://github.com/GeoNode/geonode.git -b 3.3.x geonode
   ```
 - Install the Python packages needed by GeoNode: 
   ```bash
