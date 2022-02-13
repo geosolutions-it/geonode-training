@@ -19,13 +19,16 @@ When developing Web sites or Web projects with Django, it’s very common to hav
 
 ```shell
 # Install packages from GeoNode core
-sudo apt install -y build-essential gdal-bin \
+sudo add-apt-repository ppa:ubuntugis/ppa
+sudo apt update -y
+sudo apt install -y --allow-downgrades build-essential \
+    python3-gdal=3.3.2+dfsg-2~focal2 gdal-bin=3.3.2+dfsg-2~focal2 libgdal-dev=3.3.2+dfsg-2~focal2 \
     python3.8-dev python3.8-venv virtualenvwrapper \
-    libxml2 libxml2-dev gettext \
-    libxslt1-dev libjpeg-dev libpng-dev libpq-dev libgdal-dev \
+    libxml2 libxml2-dev gettext libmemcached-dev zlib1g-dev \
+    libxslt1-dev libjpeg-dev libpng-dev libpq-dev \
     software-properties-common build-essential \
     git unzip gcc zlib1g-dev libgeos-dev libproj-dev \
-    sqlite3 spatialite-bin libsqlite3-mod-spatialite libsqlite3-dev libmemcached-dev
+    sqlite3 spatialite-bin libsqlite3-mod-spatialite libsqlite3-dev
 ```
 
 Since GeoNode needs a large number of different python libraries and packages, it's recommended to use a python virtual environment to avoid conflicts on dependencies with system-wide python packages and other installed software. See also documentation of [Virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/stable/) package for more information.
